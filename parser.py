@@ -2,7 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import os
-import re
 from datetime import datetime
 
 def get_last_post(channel_name):
@@ -12,7 +11,7 @@ def get_last_post(channel_name):
         print(f"Парсинг {url}...")
         
         headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
         }
         
         response = requests.get(url, headers=headers, timeout=15)
@@ -34,10 +33,6 @@ def get_last_post(channel_name):
         # Берем последнее (первое) сообщение
         latest = messages[0]
         
-        # Извлекаем текст
-        text_element = latest.find('div', class_='tgme_widget_message_text')
-        text = text_element.get_text() if text_element else ''
-        
         # Извлекаем дату
         date_element = latest.find('time', class_='time')
         date = date_element['datetime'] if date_element else datetime.now().isoformat()
@@ -50,17 +45,16 @@ def get_last_post(channel_name):
         views_element = latest.find('span', class_='tgme_widget_message_views')
         views = views_element.text if views_element else '0'
         
-        # Парсим данные прокси из текста
-        proxy_data = parse_proxy_data(text)
+        # Сохраняем ВЕСЬ HTML поста целиком
+        post_html = str(latest)
         
         return {
             'success': True,
             'channel': channel_name,
-            'text': text,
+            'post_html': post_html,
             'date': date,
             'url': post_url,
             'views': views,
-            'proxy': proxy_data,
             'parsed_at': datetime.now().isoformat()
         }
         
@@ -68,32 +62,8 @@ def get_last_post(channel_name):
         print(f"Ошибка: {e}")
         return {'success': False, 'error': str(e)}
 
-def parse_proxy_data(text):
-    """Извлекает данные прокси из текста поста"""
-    proxy = {
-        'server': '',
-        'port': '',
-        'secret': ''
-    }
-    
-    lines = text.split('\n')
-    for line in lines:
-        line = line.strip()
-        if 'Server:' in line:
-            proxy['server'] = line.replace('Server:', '').strip()
-        elif 'Port:' in line:
-            proxy['port'] = line.replace('Port:', '').strip()
-        elif 'Secret:' in line:
-            secret = line.replace('Secret:', '').strip()
-            # Убираем @username если есть
-            if '@' in secret:
-                secret = secret.split('@')[0].strip()
-            proxy['secret'] = secret
-    
-    return proxy
-
 def generate_html(data):
-    """Создает HTML страницу с постом"""
+    """Создает HTML страницу с оригинальным постом из Telegram"""
     
     if not data or not data.get('success'):
         html = f"""<!DOCTYPE html>
@@ -120,14 +90,12 @@ def generate_html(data):
             f.write(html)
         return
     
-    p = data['proxy']
-    
     html = f"""<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Последний прокси | @ProxyMTProto</title>
+    <title>Последний пост | @ProxyMTProto</title>
     <style>
         body {{
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -137,7 +105,7 @@ def generate_html(data):
             background: #17212b;
             color: #fff;
         }}
-        .post {{
+        .container {{
             background: #242f3d;
             border-radius: 12px;
             padding: 20px;
@@ -154,56 +122,19 @@ def generate_html(data):
             color: #2ea6ff;
             font-weight: 600;
         }}
-        .original-text {{
-            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
-            white-space: pre-wrap;
+        .telegram-post {{
             background: #1e2a36;
-            padding: 15px;
             border-radius: 8px;
+            padding: 15px;
             margin: 15px 0;
             border-left: 4px solid #2ea6ff;
-            line-height: 1.5;
         }}
-        .proxy-card {{
-            background: #1e2a36;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 15px 0;
-            border: 1px solid #3e546c;
-        }}
-        .proxy-row {{
-            display: flex;
-            padding: 10px 0;
-            border-bottom: 1px solid #2e4053;
-        }}
-        .proxy-row:last-child {{
-            border-bottom: none;
-        }}
-        .proxy-label {{
-            width: 80px;
-            color: #8e9eae;
-        }}
-        .proxy-value {{
-            flex: 1;
+        .telegram-post a {{
             color: #2ea6ff;
-            font-family: monospace;
-            word-break: break-all;
+            text-decoration: none;
         }}
-        .connect-btn {{
-            background: #2ea6ff;
-            color: white;
-            border: none;
-            padding: 15px 25px;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            transition: background 0.2s;
-            margin: 10px 0;
-        }}
-        .connect-btn:hover {{
-            background: #1e8ad3;
+        .telegram-post a:hover {{
+            text-decoration: underline;
         }}
         .meta {{
             color: #8e9eae;
@@ -214,86 +145,54 @@ def generate_html(data):
         .views {{
             display: inline-block;
             background: #1e2a36;
-            padding: 5px 10px;
+            padding: 5px 12px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: 13px;
         }}
         .refresh-info {{
             margin-top: 10px;
             font-size: 12px;
             color: #6a7a8a;
         }}
+        /* Стили для кнопок Telegram */
+        .tgme_widget_message_button {{
+            margin-top: 10px;
+        }}
+        .tgme_widget_message_button a {{
+            display: inline-block;
+            padding: 8px 15px;
+            background: #2ea6ff;
+            color: white !important;
+            border-radius: 20px;
+            font-weight: 500;
+            text-decoration: none !important;
+        }}
+        .tgme_widget_message_button a:hover {{
+            background: #1e8ad3;
+        }}
     </style>
 </head>
 <body>
-    <div class="post">
+    <div class="container">
         <div class="header">
             <span class="channel-name">📢 @ProxyMTProto</span>
-            <span style="margin-left: auto;">{data['date'][:10]}</span>
+            <span style="margin-left: auto;">📅 {data['date'][:10]}</span>
         </div>
         
-        <div class="original-text">
-            {data['text'].replace(chr(10), '<br>')}
+        <div class="telegram-post">
+            {data['post_html']}
         </div>
-        
-        <div class="proxy-card">
-            <div class="proxy-row">
-                <span class="proxy-label">🌍 Server:</span>
-                <span class="proxy-value" id="server">{p['server'] or '—'}</span>
-            </div>
-            <div class="proxy-row">
-                <span class="proxy-label">🔌 Port:</span>
-                <span class="proxy-value" id="port">{p['port'] or '—'}</span>
-            </div>
-            <div class="proxy-row">
-                <span class="proxy-label">🔑 Secret:</span>
-                <span class="proxy-value" id="secret">{p['secret'][:30] + '...' if p['secret'] else '—'}</span>
-            </div>
-        </div>
-        
-        <button class="connect-btn" onclick="connectToProxy()">
-            📲 Подключиться в Telegram
-        </button>
         
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <span class="views">👁 {data['views']} просмотров</span>
-            <a href="{data['url']}" target="_blank" style="color: #2ea6ff; text-decoration: none;">🔗 Оригинал</a>
+            <a href="{data['url']}" target="_blank" style="color: #2ea6ff; text-decoration: none;">🔗 Открыть в Telegram</a>
         </div>
         
         <div class="meta">
             <div>Обновлено: {data['parsed_at'][:19].replace('T', ' ')}</div>
-            <div class="refresh-info">🔄 Автообновление каждые 15 минут</div>
+            <div class="refresh-info">🔄 Обновляется раз в сутки</div>
         </div>
     </div>
-    
-    <script>
-    function connectToProxy() {{
-        const server = document.getElementById('server').textContent;
-        const port = document.getElementById('port').textContent;
-        const secret = document.getElementById('secret').textContent.replace('...', '');
-        
-        if (server && port && server !== '—' && port !== '—') {{
-            const tgLink = `tg://proxy?server=${{encodeURIComponent(server)}}&port=${{encodeURIComponent(port)}}&secret=${{encodeURIComponent(secret)}}`;
-            
-            // Пробуем открыть Telegram
-            window.location.href = tgLink;
-            
-            // Если не открылось, показываем данные для ручного ввода
-            setTimeout(() => {{
-                if (!document.hidden) {{
-                    const proxyText = `Сервер: ${{server}}\nПорт: ${{port}}\nSecret: ${{secret}}`;
-                    if (confirm('Telegram не открылся?\\n\\nСкопировать данные прокси?')) {{
-                        navigator.clipboard.writeText(proxyText).then(() => {{
-                            alert('✅ Данные скопированы!\\n\\nВставьте их вручную в Telegram:\\n\\n' + proxyText);
-                        }});
-                    }}
-                }}
-            }}, 500);
-        }} else {{
-            alert('❌ В этом посте нет данных прокси');
-        }}
-    }}
-    </script>
 </body>
 </html>"""
     
@@ -306,6 +205,13 @@ def main():
     
     # Получаем последний пост
     post_data = get_last_post(channel)
+    
+    if post_data and post_data.get('success'):
+        print(f"✅ Пост получен от {post_data['date']}")
+        print(f"📊 Просмотров: {post_data['views']}")
+        print(f"📝 Размер HTML: {len(post_data['post_html'])} символов")
+    else:
+        print(f"❌ Ошибка: {post_data.get('error', 'Неизвестная ошибка')}")
     
     # Сохраняем JSON
     with open('latest_post.json', 'w', encoding='utf-8') as f:
