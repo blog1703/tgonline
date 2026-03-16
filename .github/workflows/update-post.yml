@@ -2,8 +2,8 @@ name: Update Latest Telegram Post
 
 on:
   schedule:
-    - cron: '*/15 * * * *'  # Каждые 15 минут
-  workflow_dispatch:  # Ручной запуск
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
   push:
     branches: [ main ]
 
@@ -33,5 +33,5 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add index.html latest_post.json
-          git diff --quiet && git diff --staged --quiet || git commit -m "Автообновление поста от $(date +'%Y-%m-%d %H:%M')"
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto update post"
           git push
