@@ -77,16 +77,18 @@
             color: #fff;
         }
         
-        /* Стили для реферального баннера Proxy Market */
+        /* Стили для реферального баннера Proxy Market - полная ширина */
         .proxy-banner {
             background: linear-gradient(135deg, #1e3c5a 0%, #2b4f72 100%);
             border-radius: 20px;
-            padding: 16px;
+            padding: 0;
             margin-bottom: 24px;
             border: 1px solid #3a6d99;
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
+            overflow: hidden;
+            width: 100%;
         }
         
         .proxy-banner:hover {
@@ -102,19 +104,21 @@
             display: flex;
             align-items: center;
             gap: 16px;
+            padding: 20px 20px 10px 20px;
             flex-wrap: wrap;
         }
         
         .banner-image {
             flex-shrink: 0;
-            width: 80px;
-            height: 80px;
-            border-radius: 12px;
+            width: 100px;
+            height: 100px;
+            border-radius: 16px;
             overflow: hidden;
             background: #1e2a36;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
         
         .banner-image img {
@@ -125,44 +129,50 @@
         
         .banner-text {
             flex: 1;
-            min-width: 180px;
+            min-width: 200px;
         }
         
         .banner-slogan {
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 20px;
+            font-weight: 700;
             color: #fff;
-            margin-bottom: 10px;
             line-height: 1.4;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
         
         .banner-button-container {
-            display: inline-block;
+            padding: 0 20px 20px 20px;
+            display: flex;
+            justify-content: center;
         }
         
         .banner-button {
             display: inline-block;
             background: rgb(0, 0, 255); /* RGB (0,0,255) */
             color: white;
-            padding: 10px 24px;
-            border-radius: 40px;
+            padding: 14px 32px;
+            border-radius: 50px;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 18px;
             text-decoration: none;
-            transition: background 0.2s, transform 0.1s;
-            box-shadow: 0 4px 12px rgba(0, 0, 255, 0.3);
+            transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+            box-shadow: 0 6px 16px rgba(0, 0, 255, 0.4);
             border: none;
             cursor: pointer;
-            white-space: nowrap;
+            width: 100%;
+            text-align: center;
+            letter-spacing: 0.5px;
         }
         
         .banner-button:hover {
             background: rgb(0, 0, 200);
-            transform: scale(1.02);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 255, 0.5);
         }
         
         .banner-button:active {
-            transform: scale(0.98);
+            transform: translateY(0);
+            box-shadow: 0 4px 12px rgba(0, 0, 255, 0.4);
         }
         
         /* Лента постов */
@@ -355,22 +365,27 @@
             .banner-content {
                 flex-direction: column;
                 text-align: center;
+                padding: 16px 16px 8px 16px;
             }
             
             .banner-image {
-                margin-bottom: 8px;
+                width: 120px;
+                height: 120px;
+                margin-bottom: 4px;
             }
             
             .banner-slogan {
-                font-size: 15px;
-                margin-bottom: 12px;
+                font-size: 18px;
+            }
+            
+            .banner-button-container {
+                padding: 0 16px 16px 16px;
             }
             
             .banner-button {
-                padding: 10px 28px;
-                font-size: 16px;
+                padding: 14px 24px;
+                font-size: 18px;
                 width: 100%;
-                box-sizing: border-box;
             }
         }
     </style>
@@ -388,7 +403,7 @@
             <span class="info-compact-text">🔒 Нажми Connect → Открой в Telegram → Проверь статус прокси → Подключить прокси</span>
         </div>
         
-        <!-- Баннер для реферальной ссылки (Proxy Market) -->
+        <!-- Баннер для реферальной ссылки (Proxy Market) - полная ширина -->
         <div class="proxy-banner" onclick="window.open('https://ru.dashboard.proxy.market/?ref=E000143973', '_blank')">
             <div class="banner-content">
                 <div class="banner-image">
@@ -398,15 +413,15 @@
                 </div>
                 <div class="banner-text">
                     <div class="banner-slogan">Надёжные прокси для любых задач</div>
-                    <div class="banner-button-container">
-                        <a href="https://ru.dashboard.proxy.market/?ref=E000143973" 
-                           class="banner-button" 
-                           target="_blank" 
-                           rel="noopener noreferrer">
-                            Попробовать за 49 ₽
-                        </a>
-                    </div>
                 </div>
+            </div>
+            <div class="banner-button-container">
+                <a href="https://ru.dashboard.proxy.market/?ref=E000143973" 
+                   class="banner-button" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                    Попробовать за 49 ₽
+                </a>
             </div>
         </div>
         
@@ -432,7 +447,7 @@
                 
                 <!-- КНОПКИ CONNECT (в ряд) -->
                 <div class="telegram-buttons">
-                    <div class="tgme_widget_message text_not_supported_wrap js-widget_message" data-post="ProxyMTProto/46222" data-view="eyJjIjotMTM5NTM2Mzg2MSwicCI6NDYyMjIsInQiOjE3NzM3NzYwNzUsImgiOiJlYjFmYzY4NmExOTM0YzYzNDkifQ">
+                    <div class="tgme_widget_message text_not_supported_wrap js-widget_message" data-post="ProxyMTProto/46222" data-view="eyJjIjotMTM5NTM2Mzg2MSwicCI6NDYyMjIsInQiOjE3NzM3NzY5ODksImgiOiJkYzNjNmRhMzlmN2EyOTU2YzAifQ">
 <div class="tgme_widget_message_user"><a href="https://t.me/ProxyMTProto"><i class="tgme_widget_message_user_photo bgcolor3" data-content="P"><img src="https://cdn1.telesco.pe/file/NpSFbthpqPNjFYlbGsowEqHDPCRZXK1N7qlcAuSLcg36nB0ga32RJYU7XIxf8IWHd5c21Qlu1EcHenJ-8_KQDuJKFBaLmR3M7zUp4SQQJ-BlD5XO2SPsVrL4zZ7DJ2jKZSRJ1Prhlmv5oG-26db6LLyqoNjS1xkEZw-jYwp7l6vvkJuijUPjLVrcRvW39j957-77tXuC9nBNd__wc4KznLQFHiSn57-WRzHk4fRDTmIACDqBtP8Uw7o9l4Zi97bU9Z1hKVZPcyXyGGo7O4zth2lNHRapI5aRee05FKcWQs6H0tCxuI85Rq8fAnxfeFkVGH7Kt3HXnLcpUUL5hhZtWA.jpg"/></i></a></div>
 <div class="tgme_widget_message_bubble">
 <i class="tgme_widget_message_bubble_tail">
@@ -452,7 +467,7 @@
 </a><div class="tgme_widget_message_text js-message_text" dir="auto"><i class="emoji" style="background-image:url('//telegram.org/img/emoji/40/E29AA0.png')"><b>⚠️</b></i> Update: <a href="?q=%23Iran">#Iran</a>'s internet blackout has entered day 16 as the measure continues in its third week, with the public cut off from international networks for 360 hours. Chosen influencers enjoy whitelisting while state media report a new wave of arrests targeting Starlink users.</div>
 <div class="tgme_widget_message_reactions js-message_reactions"><span class="tgme_reaction tgme_reaction_paid"><i class="icon icon-telegram-stars"></i>13</span></div><div class="tgme_widget_message_footer compact js-message_footer">
 <div class="tgme_widget_message_info short js-message_info">
-<span class="tgme_widget_message_views">425K</span><span class="copyonly"> views</span><span class="tgme_widget_message_meta"><a class="tgme_widget_message_date" href="https://t.me/ProxyMTProto/46222"><time class="time" datetime="2026-03-15T10:18:04+00:00">10:18</time></a></span>
+<span class="tgme_widget_message_views">427K</span><span class="copyonly"> views</span><span class="tgme_widget_message_meta"><a class="tgme_widget_message_date" href="https://t.me/ProxyMTProto/46222"><time class="time" datetime="2026-03-15T10:18:04+00:00">10:18</time></a></span>
 </div>
 </div>
 </div>
@@ -462,7 +477,7 @@
                 <div class="post-stats">
                     <div class="views">
                         <span class="views-icon">👁</span>
-                        <span>425K</span>
+                        <span>427K</span>
                     </div>
                     <a href="https://t.me/ProxyMTProto/46222" target="_blank" class="original-link" rel="noopener noreferrer">
                         <span>🔗</span>
@@ -524,7 +539,7 @@
                 
                 <!-- КНОПКИ CONNECT (в ряд) -->
                 <div class="telegram-buttons">
-                    <div class="tgme_widget_message text_not_supported_wrap js-widget_message" data-post="ProxyMTProto/46224" data-view="eyJjIjotMTM5NTM2Mzg2MSwicCI6NDYyMjQsInQiOjE3NzM3NzYwNzUsImgiOiI2M2Q4NjhkOGU1YWUzZGUwMTUifQ">
+                    <div class="tgme_widget_message text_not_supported_wrap js-widget_message" data-post="ProxyMTProto/46224" data-view="eyJjIjotMTM5NTM2Mzg2MSwicCI6NDYyMjQsInQiOjE3NzM3NzY5ODksImgiOiI0NGVlOWJmMTk0NjYzMGIwZTAifQ">
 <div class="tgme_widget_message_user"><a href="https://t.me/ProxyMTProto"><i class="tgme_widget_message_user_photo bgcolor3" data-content="P"><img src="https://cdn1.telesco.pe/file/NpSFbthpqPNjFYlbGsowEqHDPCRZXK1N7qlcAuSLcg36nB0ga32RJYU7XIxf8IWHd5c21Qlu1EcHenJ-8_KQDuJKFBaLmR3M7zUp4SQQJ-BlD5XO2SPsVrL4zZ7DJ2jKZSRJ1Prhlmv5oG-26db6LLyqoNjS1xkEZw-jYwp7l6vvkJuijUPjLVrcRvW39j957-77tXuC9nBNd__wc4KznLQFHiSn57-WRzHk4fRDTmIACDqBtP8Uw7o9l4Zi97bU9Z1hKVZPcyXyGGo7O4zth2lNHRapI5aRee05FKcWQs6H0tCxuI85Rq8fAnxfeFkVGH7Kt3HXnLcpUUL5hhZtWA.jpg"/></i></a></div>
 <div class="tgme_widget_message_bubble">
 <i class="tgme_widget_message_bubble_tail">
@@ -585,7 +600,7 @@
                 <div class="post-stats">
                     <div class="views">
                         <span class="views-icon">👁</span>
-                        <span>460K</span>
+                        <span>462K</span>
                     </div>
                     <a href="https://t.me/ProxyMTProto/46225" target="_blank" class="original-link" rel="noopener noreferrer">
                         <span>🔗</span>
@@ -598,7 +613,7 @@
         
         <!-- Подвал -->
         <div class="footer">
-            <div>Обновлено: 17.03.2026 19:34</div>
+            <div>Обновлено: 17.03.2026 19:49</div>
             <div style="margin-top: 4px;">🔄 Автообновление раз в сутки</div>
         </div>
     </div>
