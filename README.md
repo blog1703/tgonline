@@ -21,7 +21,7 @@
 
 1. Форкните этот репозиторий
 2. Включите GitHub Pages в Settings → Pages
-3. Готово! Сайт доступен по адресу: `https://[username].github.io/ProxyMTProto-Parser`
+3. Готово! Сайт доступен по адресу: `https://blog1703.github.io/tgonline/`
 
 ## 📱 Использование
 
