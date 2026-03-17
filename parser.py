@@ -562,7 +562,7 @@ def generate_html(data):
         
         <!-- Компактный информационный блок -->
         <div class="info-compact">
-            <span class="info-compact-text">🔒 Нажми Connect → Открой в Telegram → Подключи</span>
+            <span class="info-compact-text">🔒 Нажми Connect → Открой в Telegram → Проверь статус прокси → Подключить прокси</span>
         </div>
         
         <!-- Баннер для реферальной ссылки -->
