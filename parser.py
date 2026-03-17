@@ -227,9 +227,7 @@ def generate_html(data):
     <meta name="theme-color" content="#17212b">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <!-- РЕДИРЕКТ НА НОВЫЙ САЙТ VERCEL -->
-    <meta http-equiv="refresh" content="0; url=https://telegaonline.vercel.app">
-    <link rel="canonical" href="https://telegaonline.vercel.app/">
+    
     <title>MTProto Proxy | Рабочие прокси для Telegram</title>
     
     <link rel="icon" type="image/x-icon" href="favicon.ico">
