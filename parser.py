@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import os
+import re
 from datetime import datetime
 
 def get_last_posts(channel_name, limit=4):
@@ -45,17 +46,21 @@ def get_last_posts(channel_name, limit=4):
             views_element = msg.find('span', class_='tgme_widget_message_views')
             views = views_element.text if views_element else '0'
             
-            # Извлекаем ТЕКСТ поста (информацию о сервере, порте, секрете)
+            # Извлекаем ТЕКСТ поста и форматируем его красиво
             text_element = msg.find('div', class_='tgme_widget_message_text')
-            post_text = text_element.get_text() if text_element else ''
+            raw_text = text_element.get_text() if text_element else ''
             
-            # Сохраняем HTML поста
+            # Форматируем текст с переносами строк
+            formatted_text = format_post_text(raw_text)
+            
+            # Сохраняем HTML поста для кнопок
             post_html = str(msg)
             
             posts.append({
                 'id': i,
                 'post_html': post_html,
-                'post_text': post_text,
+                'post_text': formatted_text,  # Уже отформатированный текст
+                'raw_text': raw_text,
                 'date': date,
                 'url': post_url,
                 'views': views
@@ -71,6 +76,45 @@ def get_last_posts(channel_name, limit=4):
     except Exception as e:
         print(f"Ошибка: {e}")
         return {'success': False, 'error': str(e)}
+
+def format_post_text(text):
+    """Форматирует текст поста с правильными переносами строк"""
+    
+    # Если текст уже содержит переносы, оставляем как есть
+    if '\n' in text:
+        return text
+    
+    # Добавляем переносы после Server:, Port:, Secret:
+    text = re.sub(r'(Server:)', r'\n\1', text)
+    text = re.sub(r'(Port:)', r'\n\1', text)
+    text = re.sub(r'(Secret:)', r'\n\1', text)
+    
+    # Убираем лишний перенос в начале, если он есть
+    text = text.lstrip('\n')
+    
+    # Добавляем перенос перед @ProxyMTProto
+    text = re.sub(r'(@ProxyMTProto)', r'\n\1', text)
+    
+    return text
+
+def extract_connect_buttons(post_html):
+    """Извлекает только кнопки Connect из HTML поста"""
+    try:
+        soup = BeautifulSoup(post_html, 'html.parser')
+        # Находим все inline кнопки
+        buttons = soup.find_all('a', class_='tgme_widget_message_inline_button')
+        
+        if not buttons:
+            return post_html
+        
+        # Создаем HTML только для кнопок
+        buttons_html = ""
+        for btn in buttons:
+            buttons_html += str(btn)
+        
+        return buttons_html
+    except:
+        return post_html
 
 def generate_html(data):
     """Создает HTML страницу с лентой постов"""
@@ -146,8 +190,17 @@ def generate_html(data):
         date_obj = datetime.fromisoformat(post['date'].replace('Z', '+00:00'))
         formatted_date = date_obj.strftime('%d.%m.%Y %H:%M')
         
-        # Форматируем текст поста для отображения (заменяем переносы строк на <br>)
-        formatted_text = post['post_text'].replace('\n', '<br>')
+        # Текст уже отформатирован с переносами
+        post_text = post['post_text']
+        
+        # Создаем ссылку на Telegram канал
+        channel_link = f'<a href="https://t.me/ProxyMTProto" target="_blank" class="channel-link">@ProxyMTProto</a>'
+        
+        # Заменяем @ProxyMTProto в тексте на ссылку
+        post_text = post_text.replace('@ProxyMTProto', channel_link)
+        
+        # Заменяем переносы строк на <br> для HTML
+        post_text_html = post_text.replace('\n', '<br>')
         
         posts_html += f"""
             <div class="post-card">
@@ -162,12 +215,12 @@ def generate_html(data):
                     <div class="post-date">{formatted_date}</div>
                 </div>
                 
-                <!-- ТЕКСТ ПОСТА (сервер, порт, секрет) -->
+                <!-- ТЕКСТ ПОСТА с правильными переносами -->
                 <div class="post-text">
-                    {formatted_text}
+                    {post_text_html}
                 </div>
                 
-                <!-- КНОПКИ CONNECT (оригинальные из Telegram) -->
+                <!-- КНОПКИ CONNECT (в ряд) -->
                 <div class="telegram-buttons">
                     {extract_connect_buttons(post['post_html'])}
                 </div>
@@ -373,31 +426,42 @@ def generate_html(data):
             border-radius: 12px;
         }}
         
-        /* Текст поста (сервер, порт, секрет) */
+        /* Текст поста с правильными переносами */
         .post-text {{
             background: #1e2a36;
             border-radius: 8px;
-            padding: 12px;
+            padding: 16px;
             margin: 12px 0;
             font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
-            font-size: 13px;
-            line-height: 1.6;
+            font-size: 14px;
+            line-height: 1.8;
             color: #e0e0e0;
-            white-space: pre-wrap;
+            white-space: pre-line;
             word-break: break-word;
             border-left: 3px solid #2ea6ff;
         }}
         
-        /* Контейнер для кнопок Connect */
+        /* Ссылка на канал в тексте */
+        .channel-link {{
+            color: #2ea6ff;
+            text-decoration: none;
+            font-weight: 500;
+        }}
+        
+        .channel-link:hover {{
+            text-decoration: underline;
+        }}
+        
+        /* Контейнер для кнопок Connect - в ряд */
         .telegram-buttons {{
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             margin: 16px 0 8px;
         }}
         
-        /* Стили для кнопок Connect - в ряд */
+        /* Стили для кнопок Connect */
         .telegram-buttons .tgme_widget_message_inline_button {{
             display: inline-block !important;
             padding: 8px 24px !important;
@@ -417,13 +481,7 @@ def generate_html(data):
         .telegram-buttons .tgme_widget_message_inline_button:hover {{
             background: #1e8ad3 !important;
             box-shadow: 0 4px 10px rgba(46, 166, 255, 0.3) !important;
-        }}
-        
-        /* Скрываем лишние элементы из оригинального HTML */
-        .telegram-buttons .tgme_widget_message_user,
-        .telegram-buttons .tgme_widget_message_bubble,
-        .telegram-buttons .tgme_widget_message > div:empty {{
-            display: none !important;
+            transform: translateY(-1px);
         }}
         
         /* Статистика поста */
@@ -456,6 +514,10 @@ def generate_html(data):
             border-radius: 16px;
         }}
         
+        .original-link:hover {{
+            background: #2b3945;
+        }}
+        
         /* Подвал */
         .footer {{
             margin-top: 16px;
@@ -469,6 +531,15 @@ def generate_html(data):
         
         /* Адаптация для мобильных */
         @media (max-width: 480px) {{
+            .post-card {{
+                padding: 12px;
+            }}
+            
+            .post-text {{
+                font-size: 13px;
+                padding: 12px;
+            }}
+            
             .telegram-buttons {{
                 gap: 8px;
             }}
@@ -517,25 +588,6 @@ def generate_html(data):
     
     with open('index.html', 'w', encoding='utf-8') as f:
         f.write(html)
-
-def extract_connect_buttons(post_html):
-    """Извлекает только кнопки Connect из HTML поста"""
-    try:
-        soup = BeautifulSoup(post_html, 'html.parser')
-        # Находим все inline кнопки
-        buttons = soup.find_all('a', class_='tgme_widget_message_inline_button')
-        
-        if not buttons:
-            return post_html
-        
-        # Создаем HTML только для кнопок
-        buttons_html = ""
-        for btn in buttons:
-            buttons_html += str(btn)
-        
-        return buttons_html
-    except:
-        return post_html
 
 def main():
     channel = os.environ.get('CHANNEL_NAME', 'ProxyMTProto')
