@@ -304,12 +304,12 @@ def generate_html(data):
             margin-bottom: 20px;
         }}
         
-        /* Карточка поста */
+        /* Карточка поста - ПРЕЖНИЙ СТИЛЬ */
         .post-card {{
             background: #17212b;
-            border-radius: 16px;
-            padding: 14px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
             border: 1px solid #2b3945;
         }}
         
@@ -319,10 +319,8 @@ def generate_html(data):
             align-items: center;
             justify-content: space-between;
             margin-bottom: 12px;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
             border-bottom: 1px solid #2b3945;
-            flex-wrap: wrap;
-            gap: 8px;
         }}
         
         .channel-info {{
@@ -339,135 +337,105 @@ def generate_html(data):
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
-            flex-shrink: 0;
+            font-size: 16px;
         }}
         
         .channel-name {{
-            font-weight: 600;
+            font-weight: 500;
             font-size: 15px;
             color: #fff;
         }}
         
         .channel-handle {{
-            font-size: 13px;
-            color: #2ea6ff;
+            font-size: 12px;
+            color: #8e9eae;
         }}
         
         .post-date {{
-            font-size: 12px;
+            font-size: 11px;
             color: #8e9eae;
-            background: #232e3c;
+            background: #1e2a36;
             padding: 4px 8px;
-            border-radius: 20px;
-            white-space: nowrap;
+            border-radius: 12px;
         }}
         
-        /* Контент поста (оригинальный Telegram) */
+        /* Контент поста - ПРЕЖНИЙ СТИЛЬ */
         .telegram-content {{
             background: #1e2a36;
-            border-radius: 10px;
+            border-radius: 8px;
             padding: 12px;
             margin: 12px 0;
-            border: 1px solid #2b3945;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #e0e0e0;
         }}
         
-        /* Стили для оригинальных элементов Telegram */
-        .telegram-content .tgme_widget_message {{
-            background: transparent !important;
-            padding: 0 !important;
-        }}
-        
+        /* Стили для текста поста */
         .telegram-content .tgme_widget_message_text {{
-            font-size: 14px !important;
+            font-size: 13px !important;
             line-height: 1.5 !important;
             color: #e0e0e0 !important;
             margin-bottom: 12px !important;
-            word-wrap: break-word !important;
-            overflow-wrap: break-word !important;
-            white-space: pre-wrap !important;
-            word-break: break-word !important;
         }}
         
-        .telegram-content .tgme_widget_message_text a {{
-            color: #2ea6ff !important;
-            text-decoration: none !important;
-            word-break: break-all !important;
-        }}
-        
-        /* ===== ИСПРАВЛЕНИЕ ДЛЯ INLINE КНОПОК CONNECT ===== */
-        /* Превращаем горизонтальный ряд в вертикальный */
+        /* ===== ЭЛЕГАНТНЫЕ КНОПКИ CONNECT ===== */
+        /* Вертикальное расположение */
         .telegram-content .tgme_widget_message_inline_row {{
             display: flex !important;
             flex-direction: column !important;
-            gap: 10px !important;
+            gap: 8px !important;
             width: 100% !important;
-            margin: 10px 0 !important;
+            margin: 8px 0 !important;
         }}
         
-        /* Стили для каждой кнопки Connect */
+        /* Стиль кнопок - МЕНЬШЕ И ЭЛЕГАНТНЕЕ */
         .telegram-content .tgme_widget_message_inline_row .tgme_widget_message_inline_button {{
-            display: block !important;
-            width: 100% !important;
-            margin: 0 !important;
-            padding: 14px 20px !important;
-            background: #ff8c00 !important;  /* ОРАНЖЕВЫЙ ЦВЕТ */
+            display: inline-block !important;
+            width: auto !important;
+            min-width: 120px !important;
+            max-width: 200px !important;
+            margin: 0 auto !important;
+            padding: 8px 20px !important;
+            background: #2ea6ff !important;
             color: white !important;
-            border-radius: 40px !important;
-            font-weight: 700 !important;  /* ЖИРНЫЙ */
-            font-size: 16px !important;
+            border-radius: 30px !important;
+            font-weight: 500 !important;
+            font-size: 14px !important;
             text-decoration: none !important;
             text-align: center !important;
-            box-sizing: border-box !important;
             border: none !important;
-            box-shadow: 0 4px 10px rgba(255, 140, 0, 0.3) !important;
+            box-shadow: 0 2px 6px rgba(46, 166, 255, 0.2) !important;
             transition: all 0.2s ease !important;
+            letter-spacing: 0.3px !important;
         }}
         
         /* Эффект при наведении */
         .telegram-content .tgme_widget_message_inline_row .tgme_widget_message_inline_button:hover {{
-            background: #ff7000 !important;  /* Темнее при наведении */
-            transform: translateY(-2px) !important;
-            box-shadow: 0 6px 15px rgba(255, 140, 0, 0.4) !important;
+            background: #1e8ad3 !important;
+            box-shadow: 0 4px 10px rgba(46, 166, 255, 0.3) !important;
         }}
         
-        /* Эффект при нажатии */
-        .telegram-content .tgme_widget_message_inline_row .tgme_widget_message_inline_button:active {{
-            transform: translateY(0) !important;
-        }}
-        
-        /* Стили для текста внутри кнопки */
+        /* Стиль для текста кнопки */
         .telegram-content .tgme_widget_message_inline_button .tgme_widget_message_inline_button_text {{
-            display: block !important;
-            width: 100% !important;
             color: white !important;
-            font-weight: 700 !important;
+            font-weight: 500 !important;
         }}
         
-        /* Скрываем ненужные символы (▸ и ▾) */
-        .telegram-content .tgme_widget_message_inline_row .url_button:before,
-        .telegram-content .tgme_widget_message_inline_row .url_button:after,
-        .telegram-content .tgme_widget_message > :first-child:not(.tgme_widget_message_text):not(.tgme_widget_message_inline_row) {{
-            display: none !important;
-        }}
-        
-        /* Скрываем лишние div с @ */
+        /* Скрываем лишние символы */
         .telegram-content .tgme_widget_message_user,
         .telegram-content .tgme_widget_message_bubble,
         .telegram-content .tgme_widget_message > div:empty {{
             display: none !important;
         }}
-        /* ===== КОНЕЦ ИСПРАВЛЕНИЙ ===== */
+        /* ===== КОНЕЦ СТИЛЕЙ КНОПОК ===== */
         
         /* Статистика поста */
         .post-stats {{
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-top: 10px;
-            padding-top: 10px;
+            margin-top: 12px;
+            padding-top: 8px;
             border-top: 1px solid #2b3945;
         }}
         
@@ -476,11 +444,7 @@ def generate_html(data):
             align-items: center;
             gap: 4px;
             color: #8e9eae;
-            font-size: 13px;
-        }}
-        
-        .views-icon {{
-            font-size: 14px;
+            font-size: 12px;
         }}
         
         .original-link {{
@@ -488,12 +452,11 @@ def generate_html(data):
             align-items: center;
             gap: 4px;
             color: #2ea6ff;
-            font-size: 13px;
+            font-size: 12px;
             text-decoration: none;
             padding: 4px 10px;
-            background: #232e3c;
-            border-radius: 20px;
-            transition: background 0.2s;
+            background: #1e2a36;
+            border-radius: 16px;
         }}
         
         /* Подвал */
@@ -501,61 +464,22 @@ def generate_html(data):
             margin-top: 16px;
             padding: 12px;
             background: #1e2a36;
-            border-radius: 12px;
+            border-radius: 8px;
             text-align: center;
-        }}
-        
-        .update-time {{
-            font-size: 12px;
-            color: #8e9eae;
-            margin-bottom: 4px;
-        }}
-        
-        .refresh-info {{
             font-size: 11px;
-            color: #6a7a8a;
+            color: #8e9eae;
         }}
         
         /* Адаптация для мобильных */
         @media (max-width: 480px) {{
-            body {{
-                padding: 8px;
-            }}
-            
             .post-card {{
-                padding: 10px;
-            }}
-            
-            .post-header {{
-                flex-direction: column;
-                align-items: flex-start;
-            }}
-            
-            .channel-avatar {{
-                width: 32px;
-                height: 32px;
-                font-size: 16px;
-            }}
-            
-            .channel-name {{
-                font-size: 14px;
-            }}
-            
-            .channel-handle {{
-                font-size: 12px;
-            }}
-            
-            .telegram-content .tgme_widget_message_text {{
-                font-size: 13px !important;
+                padding: 12px;
             }}
             
             .telegram-content .tgme_widget_message_inline_row .tgme_widget_message_inline_button {{
-                padding: 12px 16px !important;
-                font-size: 15px !important;
-            }}
-            
-            .banner {{
-                padding: 12px;
+                min-width: 100px !important;
+                padding: 6px 16px !important;
+                font-size: 13px !important;
             }}
         }}
     </style>
@@ -568,12 +492,12 @@ def generate_html(data):
             <div class="site-description">@ProxyMTProto • рабочие прокси для Telegram</div>
         </div>
         
-        <!-- Компактный информационный блок (без иконки "?") -->
+        <!-- Компактный информационный блок -->
         <div class="info-compact">
-            <span class="info-compact-text">🔒 Нажми на оранжевую кнопку Connect → Открой в Telegram → Подключи</span>
+            <span class="info-compact-text">🔒 Нажми Connect → Открой в Telegram → Подключи</span>
         </div>
         
-        <!-- Баннер для реферальной ссылки (ЗАГЛУШКА) -->
+        <!-- Баннер для реферальной ссылки -->
         <div class="banner" onclick="window.open('https://telegram.org', '_blank')">
             <div class="banner-title">✨ Место для вашей рекламы ✨</div>
             <div class="banner-text">Здесь может быть ваша реферальная ссылка</div>
@@ -587,12 +511,8 @@ def generate_html(data):
         
         <!-- Подвал -->
         <div class="footer">
-            <div class="update-time">
-                Обновлено: {datetime.fromisoformat(data['parsed_at'].replace('Z', '+00:00')).strftime('%d.%m.%Y %H:%M')}
-            </div>
-            <div class="refresh-info">
-                🔄 Автообновление раз в сутки
-            </div>
+            <div>Обновлено: {datetime.fromisoformat(data['parsed_at'].replace('Z', '+00:00')).strftime('%d.%m.%Y %H:%M')}</div>
+            <div style="margin-top: 4px;">🔄 Автообновление раз в сутки</div>
         </div>
     </div>
 </body>
