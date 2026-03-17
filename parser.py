@@ -45,12 +45,17 @@ def get_last_posts(channel_name, limit=4):
             views_element = msg.find('span', class_='tgme_widget_message_views')
             views = views_element.text if views_element else '0'
             
+            # Извлекаем ТЕКСТ поста (информацию о сервере, порте, секрете)
+            text_element = msg.find('div', class_='tgme_widget_message_text')
+            post_text = text_element.get_text() if text_element else ''
+            
             # Сохраняем HTML поста
             post_html = str(msg)
             
             posts.append({
                 'id': i,
                 'post_html': post_html,
+                'post_text': post_text,
                 'date': date,
                 'url': post_url,
                 'views': views
@@ -141,6 +146,9 @@ def generate_html(data):
         date_obj = datetime.fromisoformat(post['date'].replace('Z', '+00:00'))
         formatted_date = date_obj.strftime('%d.%m.%Y %H:%M')
         
+        # Форматируем текст поста для отображения (заменяем переносы строк на <br>)
+        formatted_text = post['post_text'].replace('\n', '<br>')
+        
         posts_html += f"""
             <div class="post-card">
                 <div class="post-header">
@@ -154,8 +162,14 @@ def generate_html(data):
                     <div class="post-date">{formatted_date}</div>
                 </div>
                 
-                <div class="telegram-content">
-                    {post['post_html']}
+                <!-- ТЕКСТ ПОСТА (сервер, порт, секрет) -->
+                <div class="post-text">
+                    {formatted_text}
+                </div>
+                
+                <!-- КНОПКИ CONNECT (оригинальные из Telegram) -->
+                <div class="telegram-buttons">
+                    {extract_connect_buttons(post['post_html'])}
                 </div>
                 
                 <div class="post-stats">
@@ -304,7 +318,7 @@ def generate_html(data):
             margin-bottom: 20px;
         }}
         
-        /* Карточка поста - ПРЕЖНИЙ СТИЛЬ */
+        /* Карточка поста */
         .post-card {{
             background: #17212b;
             border-radius: 12px;
@@ -359,43 +373,34 @@ def generate_html(data):
             border-radius: 12px;
         }}
         
-        /* Контент поста - ПРЕЖНИЙ СТИЛЬ */
-        .telegram-content {{
+        /* Текст поста (сервер, порт, секрет) */
+        .post-text {{
             background: #1e2a36;
             border-radius: 8px;
             padding: 12px;
             margin: 12px 0;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
             font-size: 13px;
-            line-height: 1.5;
+            line-height: 1.6;
             color: #e0e0e0;
+            white-space: pre-wrap;
+            word-break: break-word;
+            border-left: 3px solid #2ea6ff;
         }}
         
-        /* Стили для текста поста */
-        .telegram-content .tgme_widget_message_text {{
-            font-size: 13px !important;
-            line-height: 1.5 !important;
-            color: #e0e0e0 !important;
-            margin-bottom: 12px !important;
+        /* Контейнер для кнопок Connect */
+        .telegram-buttons {{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 16px 0 8px;
         }}
         
-        /* ===== ЭЛЕГАНТНЫЕ КНОПКИ CONNECT ===== */
-        /* Вертикальное расположение */
-        .telegram-content .tgme_widget_message_inline_row {{
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 8px !important;
-            width: 100% !important;
-            margin: 8px 0 !important;
-        }}
-        
-        /* Стиль кнопок - МЕНЬШЕ И ЭЛЕГАНТНЕЕ */
-        .telegram-content .tgme_widget_message_inline_row .tgme_widget_message_inline_button {{
+        /* Стили для кнопок Connect - в ряд */
+        .telegram-buttons .tgme_widget_message_inline_button {{
             display: inline-block !important;
-            width: auto !important;
-            min-width: 120px !important;
-            max-width: 200px !important;
-            margin: 0 auto !important;
-            padding: 8px 20px !important;
+            padding: 8px 24px !important;
             background: #2ea6ff !important;
             color: white !important;
             border-radius: 30px !important;
@@ -406,28 +411,20 @@ def generate_html(data):
             border: none !important;
             box-shadow: 0 2px 6px rgba(46, 166, 255, 0.2) !important;
             transition: all 0.2s ease !important;
-            letter-spacing: 0.3px !important;
+            min-width: 100px !important;
         }}
         
-        /* Эффект при наведении */
-        .telegram-content .tgme_widget_message_inline_row .tgme_widget_message_inline_button:hover {{
+        .telegram-buttons .tgme_widget_message_inline_button:hover {{
             background: #1e8ad3 !important;
             box-shadow: 0 4px 10px rgba(46, 166, 255, 0.3) !important;
         }}
         
-        /* Стиль для текста кнопки */
-        .telegram-content .tgme_widget_message_inline_button .tgme_widget_message_inline_button_text {{
-            color: white !important;
-            font-weight: 500 !important;
-        }}
-        
-        /* Скрываем лишние символы */
-        .telegram-content .tgme_widget_message_user,
-        .telegram-content .tgme_widget_message_bubble,
-        .telegram-content .tgme_widget_message > div:empty {{
+        /* Скрываем лишние элементы из оригинального HTML */
+        .telegram-buttons .tgme_widget_message_user,
+        .telegram-buttons .tgme_widget_message_bubble,
+        .telegram-buttons .tgme_widget_message > div:empty {{
             display: none !important;
         }}
-        /* ===== КОНЕЦ СТИЛЕЙ КНОПОК ===== */
         
         /* Статистика поста */
         .post-stats {{
@@ -472,14 +469,14 @@ def generate_html(data):
         
         /* Адаптация для мобильных */
         @media (max-width: 480px) {{
-            .post-card {{
-                padding: 12px;
+            .telegram-buttons {{
+                gap: 8px;
             }}
             
-            .telegram-content .tgme_widget_message_inline_row .tgme_widget_message_inline_button {{
-                min-width: 100px !important;
+            .telegram-buttons .tgme_widget_message_inline_button {{
                 padding: 6px 16px !important;
                 font-size: 13px !important;
+                min-width: 80px !important;
             }}
         }}
     </style>
@@ -521,6 +518,25 @@ def generate_html(data):
     with open('index.html', 'w', encoding='utf-8') as f:
         f.write(html)
 
+def extract_connect_buttons(post_html):
+    """Извлекает только кнопки Connect из HTML поста"""
+    try:
+        soup = BeautifulSoup(post_html, 'html.parser')
+        # Находим все inline кнопки
+        buttons = soup.find_all('a', class_='tgme_widget_message_inline_button')
+        
+        if not buttons:
+            return post_html
+        
+        # Создаем HTML только для кнопок
+        buttons_html = ""
+        for btn in buttons:
+            buttons_html += str(btn)
+        
+        return buttons_html
+    except:
+        return post_html
+
 def main():
     channel = os.environ.get('CHANNEL_NAME', 'ProxyMTProto')
     print(f"🚀 Начинаем парсинг канала @{channel}")
@@ -532,6 +548,7 @@ def main():
         print(f"✅ Получено {len(post_data['posts'])} постов")
         for i, post in enumerate(post_data['posts']):
             print(f"   Пост {i+1}: {post['date']}, просмотров: {post['views']}")
+            print(f"      Текст: {post['post_text'][:50]}...")
     else:
         print(f"❌ Ошибка: {post_data.get('error', 'Неизвестная ошибка')}")
     
