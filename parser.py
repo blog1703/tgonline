@@ -317,50 +317,92 @@ def generate_html(data):
             color: #fff;
         }}
         
-        /* Баннер для реферальной ссылки (ЗАГЛУШКА) */
-        .banner {{
+        /* Стили для реферального баннера Proxy Market */
+        .proxy-banner {{
             background: linear-gradient(135deg, #1e3c5a 0%, #2b4f72 100%);
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 16px;
-            margin-bottom: 20px;
-            text-align: center;
+            margin-bottom: 24px;
             border: 1px solid #3a6d99;
-            box-shadow: 0 4px 12px rgba(46, 166, 255, 0.2);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
         }}
         
-        .banner:hover {{
-            transform: translateY(-2px);
+        .proxy-banner:hover {{
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 115, 230, 0.4);
         }}
         
-        .banner:active {{
+        .proxy-banner:active {{
             transform: translateY(0);
         }}
         
-        .banner-title {{
-            font-size: 16px;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 4px;
+        .banner-content {{
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }}
+        
+        .banner-image {{
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #1e2a36;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }}
+        
+        .banner-image img {{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }}
         
         .banner-text {{
-            font-size: 13px;
-            color: #c9e1f2;
-            margin-bottom: 8px;
+            flex: 1;
+            min-width: 180px;
+        }}
+        
+        .banner-slogan {{
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }}
+        
+        .banner-button-container {{
+            display: inline-block;
         }}
         
         .banner-button {{
             display: inline-block;
-            background: #ffd700;
-            color: #1e3c5a;
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 14px;
+            background: rgb(0, 0, 255); /* RGB (0,0,255) */
+            color: white;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 15px;
             text-decoration: none;
-            transition: background 0.2s;
+            transition: background 0.2s, transform 0.1s;
+            box-shadow: 0 4px 12px rgba(0, 0, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+        }}
+        
+        .banner-button:hover {{
+            background: rgb(0, 0, 200);
+            transform: scale(1.02);
+        }}
+        
+        .banner-button:active {{
+            transform: scale(0.98);
         }}
         
         /* Лента постов */
@@ -549,6 +591,27 @@ def generate_html(data):
                 font-size: 13px !important;
                 min-width: 80px !important;
             }}
+            
+            .banner-content {{
+                flex-direction: column;
+                text-align: center;
+            }}
+            
+            .banner-image {{
+                margin-bottom: 8px;
+            }}
+            
+            .banner-slogan {{
+                font-size: 15px;
+                margin-bottom: 12px;
+            }}
+            
+            .banner-button {{
+                padding: 10px 28px;
+                font-size: 16px;
+                width: 100%;
+                box-sizing: border-box;
+            }}
         }}
     </style>
 </head>
@@ -565,11 +628,26 @@ def generate_html(data):
             <span class="info-compact-text">🔒 Нажми Connect → Открой в Telegram → Проверь статус прокси → Подключить прокси</span>
         </div>
         
-        <!-- Баннер для реферальной ссылки -->
-        <div class="banner" onclick="window.open('https://telegram.org', '_blank')">
-            <div class="banner-title">✨ Место для вашей рекламы ✨</div>
-            <div class="banner-text">Здесь может быть ваша реферальная ссылка</div>
-            <div class="banner-button">Перейти</div>
+        <!-- Баннер для реферальной ссылки (Proxy Market) -->
+        <div class="proxy-banner" onclick="window.open('https://ru.dashboard.proxy.market/?ref=E000143973', '_blank')">
+            <div class="banner-content">
+                <div class="banner-image">
+                    <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/banner_pm.webp" 
+                         alt="Proxy Market" 
+                         onerror="this.style.display='none'">
+                </div>
+                <div class="banner-text">
+                    <div class="banner-slogan">Надёжные прокси для любых задач</div>
+                    <div class="banner-button-container">
+                        <a href="https://ru.dashboard.proxy.market/?ref=E000143973" 
+                           class="banner-button" 
+                           target="_blank" 
+                           rel="noopener noreferrer">
+                            Попробовать за 49 ₽
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <!-- Лента последних постов -->
