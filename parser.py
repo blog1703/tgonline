@@ -59,7 +59,7 @@ def get_last_posts(channel_name, limit=4):
             posts.append({
                 'id': i,
                 'post_html': post_html,
-                'post_text': formatted_text,  # Уже отформатированный текст
+                'post_text': formatted_text,
                 'raw_text': raw_text,
                 'date': date,
                 'url': post_url,
@@ -79,20 +79,13 @@ def get_last_posts(channel_name, limit=4):
 
 def format_post_text(text):
     """Форматирует текст поста с правильными переносами строк"""
-    
-    # Если текст уже содержит переносы, оставляем как есть
     if '\n' in text:
         return text
     
-    # Добавляем переносы после Server:, Port:, Secret:
     text = re.sub(r'(Server:)', r'\n\1', text)
     text = re.sub(r'(Port:)', r'\n\1', text)
     text = re.sub(r'(Secret:)', r'\n\1', text)
-    
-    # Убираем лишний перенос в начале, если он есть
     text = text.lstrip('\n')
-    
-    # Добавляем перенос перед @ProxyMTProto
     text = re.sub(r'(@ProxyMTProto)', r'\n\1', text)
     
     return text
@@ -101,13 +94,11 @@ def extract_connect_buttons(post_html):
     """Извлекает только кнопки Connect из HTML поста"""
     try:
         soup = BeautifulSoup(post_html, 'html.parser')
-        # Находим все inline кнопки
         buttons = soup.find_all('a', class_='tgme_widget_message_inline_button')
         
         if not buttons:
             return post_html
         
-        # Создаем HTML только для кнопок
         buttons_html = ""
         for btn in buttons:
             buttons_html += str(btn)
@@ -186,20 +177,12 @@ def generate_html(data):
     
     posts_html = ""
     for post in data['posts']:
-        # Форматируем дату для отображения
         date_obj = datetime.fromisoformat(post['date'].replace('Z', '+00:00'))
         formatted_date = date_obj.strftime('%d.%m.%Y %H:%M')
         
-        # Текст уже отформатирован с переносами
         post_text = post['post_text']
-        
-        # Создаем ссылку на Telegram канал
         channel_link = f'<a href="https://t.me/ProxyMTProto" target="_blank" class="channel-link">@ProxyMTProto</a>'
-        
-        # Заменяем @ProxyMTProto в тексте на ссылку
         post_text = post_text.replace('@ProxyMTProto', channel_link)
-        
-        # Заменяем переносы строк на <br> для HTML
         post_text_html = post_text.replace('\n', '<br>')
         
         posts_html += f"""
@@ -215,12 +198,10 @@ def generate_html(data):
                     <div class="post-date">{formatted_date}</div>
                 </div>
                 
-                <!-- ТЕКСТ ПОСТА с правильными переносами -->
                 <div class="post-text">
                     {post_text_html}
                 </div>
                 
-                <!-- КНОПКИ CONNECT (в ряд) -->
                 <div class="telegram-buttons">
                     {extract_connect_buttons(post['post_html'])}
                 </div>
@@ -248,13 +229,11 @@ def generate_html(data):
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title>MTProto Proxy | Рабочие прокси для Telegram</title>
     
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="favicon.ico">
     
     <style>
-        /* Сброс стилей и базовые настройки */
         * {{
             box-sizing: border-box;
             margin: 0;
@@ -274,14 +253,12 @@ def generate_html(data):
             -moz-osx-font-smoothing: grayscale;
         }}
         
-        /* Основной контейнер */
         .container {{
             width: 100%;
             max-width: 600px;
             margin: 0 auto;
         }}
         
-        /* Шапка сайта */
         .site-header {{
             margin-bottom: 16px;
             text-align: center;
@@ -299,7 +276,6 @@ def generate_html(data):
             color: #8e9eae;
         }}
         
-        /* Компактный информационный блок */
         .info-compact {{
             background: linear-gradient(135deg, #1e3c5a 0%, #2b4f72 100%);
             border-radius: 50px;
@@ -317,105 +293,79 @@ def generate_html(data):
             color: #fff;
         }}
         
-        /* Стили для реферального баннера Proxy Market - полная ширина */
-        .proxy-banner {{
-            background: linear-gradient(135deg, #1e3c5a 0%, #2b4f72 100%);
-            border-radius: 20px;
-            padding: 0;
+        /* Полноразмерный баннер */
+        .full-banner {{
+            width: 100%;
             margin-bottom: 24px;
-            border: 1px solid #3a6d99;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+            border-radius: 16px;
+            overflow: hidden;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
-            overflow: hidden;
-            width: 100%;
+            background: linear-gradient(135deg, #1e3c5a 0%, #2b4f72 100%);
+            border: 1px solid #3a6d99;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
         }}
         
-        .proxy-banner:hover {{
+        .full-banner:hover {{
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(0, 115, 230, 0.4);
         }}
         
-        .proxy-banner:active {{
+        .full-banner:active {{
             transform: translateY(0);
         }}
         
-        .banner-content {{
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 20px 20px 10px 20px;
-            flex-wrap: wrap;
-        }}
-        
-        .banner-image {{
-            flex-shrink: 0;
-            width: 100px;
-            height: 100px;
-            border-radius: 16px;
-            overflow: hidden;
-            background: #1e2a36;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }}
-        
-        .banner-image img {{
+        .banner-image-container {{
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 20px 10px 20px;
         }}
         
-        .banner-text {{
-            flex: 1;
-            min-width: 200px;
+        .full-banner img {{
+            max-width: 100%;
+            height: auto;
+            max-height: 150px;
+            object-fit: contain;
+            border-radius: 12px;
         }}
         
-        .banner-slogan {{
-            font-size: 20px;
-            font-weight: 700;
-            color: #fff;
-            line-height: 1.4;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }}
-        
-        .banner-button-container {{
+        .banner-button-wrapper {{
             padding: 0 20px 20px 20px;
             display: flex;
             justify-content: center;
         }}
         
-        .banner-button {{
+        .compact-button {{
             display: inline-block;
-            background: rgb(0, 0, 255); /* RGB (0,0,255) */
+            background: rgb(0, 0, 255);
             color: white;
-            padding: 14px 32px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 18px;
+            padding: 10px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 15px;
             text-decoration: none;
             transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
-            box-shadow: 0 6px 16px rgba(0, 0, 255, 0.4);
+            box-shadow: 0 4px 12px rgba(0, 0, 255, 0.3);
             border: none;
             cursor: pointer;
-            width: 100%;
+            letter-spacing: 0.3px;
+            width: auto;
+            min-width: 200px;
             text-align: center;
-            letter-spacing: 0.5px;
         }}
         
-        .banner-button:hover {{
+        .compact-button:hover {{
             background: rgb(0, 0, 200);
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 0, 255, 0.5);
+            box-shadow: 0 6px 16px rgba(0, 0, 255, 0.4);
         }}
         
-        .banner-button:active {{
+        .compact-button:active {{
             transform: translateY(0);
-            box-shadow: 0 4px 12px rgba(0, 0, 255, 0.4);
         }}
         
-        /* Лента постов */
         .posts-feed {{
             display: flex;
             flex-direction: column;
@@ -423,7 +373,6 @@ def generate_html(data):
             margin-bottom: 20px;
         }}
         
-        /* Карточка поста */
         .post-card {{
             background: #17212b;
             border-radius: 12px;
@@ -432,7 +381,6 @@ def generate_html(data):
             border: 1px solid #2b3945;
         }}
         
-        /* Шапка поста */
         .post-header {{
             display: flex;
             align-items: center;
@@ -478,7 +426,6 @@ def generate_html(data):
             border-radius: 12px;
         }}
         
-        /* Текст поста с правильными переносами */
         .post-text {{
             background: #1e2a36;
             border-radius: 8px;
@@ -493,7 +440,6 @@ def generate_html(data):
             border-left: 3px solid #2ea6ff;
         }}
         
-        /* Ссылка на канал в тексте */
         .channel-link {{
             color: #2ea6ff;
             text-decoration: none;
@@ -504,7 +450,6 @@ def generate_html(data):
             text-decoration: underline;
         }}
         
-        /* Контейнер для кнопок Connect - в ряд */
         .telegram-buttons {{
             display: flex;
             flex-wrap: wrap;
@@ -513,7 +458,6 @@ def generate_html(data):
             margin: 16px 0 8px;
         }}
         
-        /* Стили для кнопок Connect */
         .telegram-buttons .tgme_widget_message_inline_button {{
             display: inline-block !important;
             padding: 8px 24px !important;
@@ -536,7 +480,6 @@ def generate_html(data):
             transform: translateY(-1px);
         }}
         
-        /* Статистика поста */
         .post-stats {{
             display: flex;
             align-items: center;
@@ -570,7 +513,6 @@ def generate_html(data):
             background: #2b3945;
         }}
         
-        /* Подвал */
         .footer {{
             margin-top: 16px;
             padding: 12px;
@@ -581,7 +523,6 @@ def generate_html(data):
             color: #8e9eae;
         }}
         
-        /* Адаптация для мобильных */
         @media (max-width: 480px) {{
             .post-card {{
                 padding: 12px;
@@ -602,82 +543,56 @@ def generate_html(data):
                 min-width: 80px !important;
             }}
             
-            .banner-content {{
-                flex-direction: column;
-                text-align: center;
-                padding: 16px 16px 8px 16px;
+            .full-banner img {{
+                max-height: 120px;
             }}
             
-            .banner-image {{
-                width: 120px;
-                height: 120px;
-                margin-bottom: 4px;
-            }}
-            
-            .banner-slogan {{
-                font-size: 18px;
-            }}
-            
-            .banner-button-container {{
-                padding: 0 16px 16px 16px;
-            }}
-            
-            .banner-button {{
-                padding: 14px 24px;
-                font-size: 18px;
-                width: 100%;
+            .compact-button {{
+                min-width: 160px;
+                padding: 8px 20px;
+                font-size: 14px;
             }}
         }}
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Шапка сайта -->
         <div class="site-header">
             <div class="site-title">MTProto Proxy</div>
             <div class="site-description">@ProxyMTProto • рабочие прокси для Telegram</div>
         </div>
         
-        <!-- Компактный информационный блок -->
         <div class="info-compact">
             <span class="info-compact-text">🔒 Нажми Connect → Открой в Telegram → Проверь статус прокси → Подключить прокси</span>
         </div>
         
-        <!-- Баннер для реферальной ссылки (Proxy Market) - полная ширина -->
-        <div class="proxy-banner" onclick="window.open('https://ru.dashboard.proxy.market/?ref=E000143973', '_blank')">
-            <div class="banner-content">
-                <div class="banner-image">
-                    <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/banner_pm.webp" 
-                         alt="Proxy Market" 
-                         onerror="this.style.display='none'">
-                </div>
-                <div class="banner-text">
-                    <div class="banner-slogan">Надёжные прокси для любых задач</div>
-                </div>
+        <!-- Полноразмерный баннер с компактной кнопкой -->
+        <div class="full-banner" onclick="window.open('https://ru.dashboard.proxy.market/?ref=E000143973', '_blank')">
+            <div class="banner-image-container">
+                <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/banner_pm.webp" 
+                     alt="Proxy Market"
+                     onerror="this.style.display='none'">
             </div>
-            <div class="banner-button-container">
+            <div class="banner-button-wrapper">
                 <a href="https://ru.dashboard.proxy.market/?ref=E000143973" 
-                   class="banner-button" 
+                   class="compact-button" 
                    target="_blank" 
                    rel="noopener noreferrer">
-                    Попробовать за 49 ₽
+                    Надёжные прокси за 49 ₽
                 </a>
             </div>
         </div>
         
-        <!-- Лента последних постов -->
         <div class="posts-feed">
             {posts_html}
         </div>
         
-        <!-- Подвал -->
         <div class="footer">
             <div>Обновлено: {datetime.fromisoformat(data['parsed_at'].replace('Z', '+00:00')).strftime('%d.%m.%Y %H:%M')}</div>
             <div style="margin-top: 4px;">🔄 Автообновление раз в сутки</div>
         </div>
     </div>
     
-    <!-- Default Statcounter code -->
     <script type="text/javascript">
     var sc_project=13211177; 
     var sc_invisible=0; 
@@ -691,7 +606,6 @@ def generate_html(data):
     class="statcounter" src="https://c.statcounter.com/13211177/0/0e9bf5ce/0/"
     alt="Web Analytics Made Easy - Statcounter"
     referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
-    <!-- End of Statcounter Code -->
     
 </body>
 </html>"""
@@ -703,7 +617,6 @@ def main():
     channel = os.environ.get('CHANNEL_NAME', 'ProxyMTProto')
     print(f"🚀 Начинаем парсинг канала @{channel}")
     
-    # Получаем последние 4 поста
     post_data = get_last_posts(channel, limit=4)
     
     if post_data and post_data.get('success'):
@@ -714,11 +627,9 @@ def main():
     else:
         print(f"❌ Ошибка: {post_data.get('error', 'Неизвестная ошибка')}")
     
-    # Сохраняем JSON
     with open('latest_post.json', 'w', encoding='utf-8') as f:
         json.dump(post_data, f, ensure_ascii=False, indent=2)
     
-    # Генерируем HTML
     generate_html(post_data)
     
     print("✅ Готово! Файлы обновлены:")
