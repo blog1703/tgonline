@@ -67,26 +67,17 @@
             margin-bottom: 20px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             border: 1px solid #3a6d99;
             font-size: 13px;
+            color: #fff;
         }
         
         .info-compact-text {
             color: #fff;
         }
         
-        .info-compact-link {
-            color: #ffd700;
-            text-decoration: none;
-            font-weight: 600;
-            padding: 4px 12px;
-            background: rgba(0,0,0,0.2);
-            border-radius: 30px;
-            white-space: nowrap;
-        }
-        
-        /* Баннер для рекламы */
+        /* Баннер для реферальной ссылки (ЗАГЛУШКА) */
         .banner {
             background: linear-gradient(135deg, #1e3c5a 0%, #2b4f72 100%);
             border-radius: 16px;
@@ -233,36 +224,69 @@
             word-break: break-all !important;
         }
         
-        /* Стили для кнопок Connect - ИСПРАВЛЕНЫ ОТСТУПЫ */
-        .telegram-content .tgme_widget_message_button {
-            margin-top: 8px !important;
-            margin-bottom: 8px !important;
+        /* ===== ИСПРАВЛЕНИЕ ДЛЯ INLINE КНОПОК CONNECT ===== */
+        /* Превращаем горизонтальный ряд в вертикальный */
+        .telegram-content .tgme_widget_message_inline_row {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 10px !important;
             width: 100% !important;
+            margin: 10px 0 !important;
         }
         
-        .telegram-content .tgme_widget_message_button a {
+        /* Стили для каждой кнопки Connect */
+        .telegram-content .tgme_widget_message_inline_row .tgme_widget_message_inline_button {
             display: block !important;
-            padding: 12px 16px !important;
-            background: #2ea6ff !important;
-            color: white !important;
-            border-radius: 30px !important;
-            font-weight: 600 !important;
-            font-size: 15px !important;
-            text-decoration: none !important;
             width: 100% !important;
+            margin: 0 !important;
+            padding: 14px 20px !important;
+            background: #ff8c00 !important;  /* ОРАНЖЕВЫЙ ЦВЕТ */
+            color: white !important;
+            border-radius: 40px !important;
+            font-weight: 700 !important;  /* ЖИРНЫЙ */
+            font-size: 16px !important;
+            text-decoration: none !important;
             text-align: center !important;
-            transition: all 0.2s !important;
-            -webkit-tap-highlight-color: transparent !important;
-            box-shadow: 0 2px 8px rgba(46, 166, 255, 0.2) !important;
+            box-sizing: border-box !important;
             border: none !important;
-            word-break: break-word !important;
-            margin: 4px 0 !important;
+            box-shadow: 0 4px 10px rgba(255, 140, 0, 0.3) !important;
+            transition: all 0.2s ease !important;
         }
         
-        /* Добавляем отступ между кнопками если их несколько */
-        .telegram-content .tgme_widget_message_button + .tgme_widget_message_button {
-            margin-top: 10px !important;
+        /* Эффект при наведении */
+        .telegram-content .tgme_widget_message_inline_row .tgme_widget_message_inline_button:hover {
+            background: #ff7000 !important;  /* Темнее при наведении */
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 15px rgba(255, 140, 0, 0.4) !important;
         }
+        
+        /* Эффект при нажатии */
+        .telegram-content .tgme_widget_message_inline_row .tgme_widget_message_inline_button:active {
+            transform: translateY(0) !important;
+        }
+        
+        /* Стили для текста внутри кнопки */
+        .telegram-content .tgme_widget_message_inline_button .tgme_widget_message_inline_button_text {
+            display: block !important;
+            width: 100% !important;
+            color: white !important;
+            font-weight: 700 !important;
+        }
+        
+        /* Скрываем ненужные символы (▸ и ▾) */
+        .telegram-content .tgme_widget_message_inline_row .url_button:before,
+        .telegram-content .tgme_widget_message_inline_row .url_button:after,
+        .telegram-content .tgme_widget_message > :first-child:not(.tgme_widget_message_text):not(.tgme_widget_message_inline_row) {
+            display: none !important;
+        }
+        
+        /* Скрываем лишние div с @ */
+        .telegram-content .tgme_widget_message_user,
+        .telegram-content .tgme_widget_message_bubble,
+        .telegram-content .tgme_widget_message > div:empty {
+            display: none !important;
+        }
+        /* ===== КОНЕЦ ИСПРАВЛЕНИЙ ===== */
         
         /* Статистика поста */
         .post-stats {
@@ -352,18 +376,13 @@
                 font-size: 13px !important;
             }
             
-            .telegram-content .tgme_widget_message_button a {
-                padding: 10px 14px !important;
-                font-size: 14px !important;
+            .telegram-content .tgme_widget_message_inline_row .tgme_widget_message_inline_button {
+                padding: 12px 16px !important;
+                font-size: 15px !important;
             }
             
             .banner {
                 padding: 12px;
-            }
-            
-            .info-compact {
-                font-size: 12px;
-                padding: 8px 12px;
             }
         }
     </style>
@@ -376,10 +395,9 @@
             <div class="site-description">@ProxyMTProto • рабочие прокси для Telegram</div>
         </div>
         
-        <!-- Компактный информационный блок (вместо большого) -->
+        <!-- Компактный информационный блок (без иконки "?") -->
         <div class="info-compact">
-            <span class="info-compact-text">🔒 Нажми Connect → Открой в Telegram → Подключи</span>
-            <a href="#" class="info-compact-link" onclick="alert('Connect — кнопка в посте, открывает настройки прокси в Telegram')">?</a>
+            <span class="info-compact-text">🔒 Нажми на оранжевую кнопку Connect → Открой в Telegram → Подключи</span>
         </div>
         
         <!-- Баннер для реферальной ссылки (ЗАГЛУШКА) -->
@@ -405,7 +423,7 @@
                 </div>
                 
                 <div class="telegram-content">
-                    <div class="tgme_widget_message text_not_supported_wrap js-widget_message" data-post="ProxyMTProto/46219" data-view="eyJjIjotMTM5NTM2Mzg2MSwicCI6NDYyMTksInQiOjE3NzM3NDk5NjUsImgiOiJlOWMwZjhkODkyMWUwMTdkZmIifQ">
+                    <div class="tgme_widget_message text_not_supported_wrap js-widget_message" data-post="ProxyMTProto/46219" data-view="eyJjIjotMTM5NTM2Mzg2MSwicCI6NDYyMTksInQiOjE3NzM3NTEzMzUsImgiOiI2MmYzNWI5NWZhYmM1YjMzNjYifQ">
 <div class="tgme_widget_message_user"><a href="https://t.me/ProxyMTProto"><i class="tgme_widget_message_user_photo bgcolor3" data-content="P"><img src="https://cdn1.telesco.pe/file/NpSFbthpqPNjFYlbGsowEqHDPCRZXK1N7qlcAuSLcg36nB0ga32RJYU7XIxf8IWHd5c21Qlu1EcHenJ-8_KQDuJKFBaLmR3M7zUp4SQQJ-BlD5XO2SPsVrL4zZ7DJ2jKZSRJ1Prhlmv5oG-26db6LLyqoNjS1xkEZw-jYwp7l6vvkJuijUPjLVrcRvW39j957-77tXuC9nBNd__wc4KznLQFHiSn57-WRzHk4fRDTmIACDqBtP8Uw7o9l4Zi97bU9Z1hKVZPcyXyGGo7O4zth2lNHRapI5aRee05FKcWQs6H0tCxuI85Rq8fAnxfeFkVGH7Kt3HXnLcpUUL5hhZtWA.jpg"/></i></a></div>
 <div class="tgme_widget_message_bubble">
 <i class="tgme_widget_message_bubble_tail">
@@ -422,7 +440,7 @@
 <div class="tgme_widget_message_text js-message_text" dir="auto">Server: <code>Unknown</code> <br/>Port: <code>4515</code><br/>Secret: <code>eee9a4f23b1d768c04a8d7f39120ca5b6e626973636f7474692e79656b74616e65742e636f6d</code><br/><a href="https://t.me/ProxyMTProto" target="_blank">@ProxyMTProto</a></div>
 <div class="tgme_widget_message_reactions js-message_reactions"><span class="tgme_reaction tgme_reaction_paid"><i class="icon icon-telegram-stars"></i>94</span></div><div class="tgme_widget_message_footer compact js-message_footer">
 <div class="tgme_widget_message_info short js-message_info">
-<span class="tgme_widget_message_views">480K</span><span class="copyonly"> views</span><span class="tgme_widget_message_meta"><a class="tgme_widget_message_date" href="https://t.me/ProxyMTProto/46219"><time class="time" datetime="2026-03-14T12:30:02+00:00">12:30</time></a></span>
+<span class="tgme_widget_message_views">481K</span><span class="copyonly"> views</span><span class="tgme_widget_message_meta"><a class="tgme_widget_message_date" href="https://t.me/ProxyMTProto/46219"><time class="time" datetime="2026-03-14T12:30:02+00:00">12:30</time></a></span>
 </div>
 </div>
 </div>
@@ -433,7 +451,7 @@
                 <div class="post-stats">
                     <div class="views">
                         <span class="views-icon">👁</span>
-                        <span>480K</span>
+                        <span>481K</span>
                     </div>
                     <a href="https://t.me/ProxyMTProto/46219" target="_blank" class="original-link" rel="noopener noreferrer">
                         <span>🔗</span>
@@ -455,7 +473,7 @@
                 </div>
                 
                 <div class="telegram-content">
-                    <div class="tgme_widget_message text_not_supported_wrap js-widget_message" data-post="ProxyMTProto/46220" data-view="eyJjIjotMTM5NTM2Mzg2MSwicCI6NDYyMjAsInQiOjE3NzM3NDk5NjUsImgiOiJmMjJjNmFhZDZjZjI1YjRhN2YifQ">
+                    <div class="tgme_widget_message text_not_supported_wrap js-widget_message" data-post="ProxyMTProto/46220" data-view="eyJjIjotMTM5NTM2Mzg2MSwicCI6NDYyMjAsInQiOjE3NzM3NTEzMzUsImgiOiJlMTY4ZTgxYzJhYTJmMjBjODAifQ">
 <div class="tgme_widget_message_user"><a href="https://t.me/ProxyMTProto"><i class="tgme_widget_message_user_photo bgcolor3" data-content="P"><img src="https://cdn1.telesco.pe/file/NpSFbthpqPNjFYlbGsowEqHDPCRZXK1N7qlcAuSLcg36nB0ga32RJYU7XIxf8IWHd5c21Qlu1EcHenJ-8_KQDuJKFBaLmR3M7zUp4SQQJ-BlD5XO2SPsVrL4zZ7DJ2jKZSRJ1Prhlmv5oG-26db6LLyqoNjS1xkEZw-jYwp7l6vvkJuijUPjLVrcRvW39j957-77tXuC9nBNd__wc4KznLQFHiSn57-WRzHk4fRDTmIACDqBtP8Uw7o9l4Zi97bU9Z1hKVZPcyXyGGo7O4zth2lNHRapI5aRee05FKcWQs6H0tCxuI85Rq8fAnxfeFkVGH7Kt3HXnLcpUUL5hhZtWA.jpg"/></i></a></div>
 <div class="tgme_widget_message_bubble">
 <i class="tgme_widget_message_bubble_tail">
@@ -472,7 +490,7 @@
 <div class="tgme_widget_message_text js-message_text" dir="auto">Server: <code>Unknown</code> <br/>Port: <code>2083</code><br/>Secret: <code>ee1603010200010001fc030386e24c3add68656c702e737465616d706f77657265642e636f6d</code><br/><a href="https://t.me/ProxyMTProto" target="_blank">@ProxyMTProto</a></div>
 <div class="tgme_widget_message_reactions js-message_reactions"><span class="tgme_reaction tgme_reaction_paid"><i class="icon icon-telegram-stars"></i>19</span></div><div class="tgme_widget_message_footer compact js-message_footer">
 <div class="tgme_widget_message_info short js-message_info">
-<span class="tgme_widget_message_views">428K</span><span class="copyonly"> views</span><span class="tgme_widget_message_meta"><a class="tgme_widget_message_date" href="https://t.me/ProxyMTProto/46220"><time class="time" datetime="2026-03-14T19:40:21+00:00">19:40</time></a></span>
+<span class="tgme_widget_message_views">429K</span><span class="copyonly"> views</span><span class="tgme_widget_message_meta"><a class="tgme_widget_message_date" href="https://t.me/ProxyMTProto/46220"><time class="time" datetime="2026-03-14T19:40:21+00:00">19:40</time></a></span>
 </div>
 </div>
 </div>
@@ -483,7 +501,7 @@
                 <div class="post-stats">
                     <div class="views">
                         <span class="views-icon">👁</span>
-                        <span>428K</span>
+                        <span>429K</span>
                     </div>
                     <a href="https://t.me/ProxyMTProto/46220" target="_blank" class="original-link" rel="noopener noreferrer">
                         <span>🔗</span>
@@ -505,7 +523,7 @@
                 </div>
                 
                 <div class="telegram-content">
-                    <div class="tgme_widget_message text_not_supported_wrap js-widget_message" data-post="ProxyMTProto/46221" data-view="eyJjIjotMTM5NTM2Mzg2MSwicCI6NDYyMjEsInQiOjE3NzM3NDk5NjUsImgiOiJmZWU4Njk4OGU2ZWFlN2IyZDkifQ">
+                    <div class="tgme_widget_message text_not_supported_wrap js-widget_message" data-post="ProxyMTProto/46221" data-view="eyJjIjotMTM5NTM2Mzg2MSwicCI6NDYyMjEsInQiOjE3NzM3NTEzMzUsImgiOiI2NTU3NzllNmViNDNkNjMxOTQifQ">
 <div class="tgme_widget_message_user"><a href="https://t.me/ProxyMTProto"><i class="tgme_widget_message_user_photo bgcolor3" data-content="P"><img src="https://cdn1.telesco.pe/file/NpSFbthpqPNjFYlbGsowEqHDPCRZXK1N7qlcAuSLcg36nB0ga32RJYU7XIxf8IWHd5c21Qlu1EcHenJ-8_KQDuJKFBaLmR3M7zUp4SQQJ-BlD5XO2SPsVrL4zZ7DJ2jKZSRJ1Prhlmv5oG-26db6LLyqoNjS1xkEZw-jYwp7l6vvkJuijUPjLVrcRvW39j957-77tXuC9nBNd__wc4KznLQFHiSn57-WRzHk4fRDTmIACDqBtP8Uw7o9l4Zi97bU9Z1hKVZPcyXyGGo7O4zth2lNHRapI5aRee05FKcWQs6H0tCxuI85Rq8fAnxfeFkVGH7Kt3HXnLcpUUL5hhZtWA.jpg"/></i></a></div>
 <div class="tgme_widget_message_bubble">
 <i class="tgme_widget_message_bubble_tail">
@@ -520,9 +538,9 @@
 </i>
 <div class="tgme_widget_message_author accent_color"><a class="tgme_widget_message_owner_name" href="https://t.me/ProxyMTProto"><span dir="auto">Proxy MTProto</span></a></div>
 <div class="tgme_widget_message_text js-message_text" dir="auto">Server: <code>Unknown</code> <br/>Port: <code>4515</code><br/>Secret: <code>eee9a4f23b1d768c04a8d7f39120ca5b6e626973636f7474692e79656b74616e65742e636f6d</code><br/><a href="https://t.me/ProxyMTProto" target="_blank">@ProxyMTProto</a></div>
-<div class="tgme_widget_message_reactions js-message_reactions"><span class="tgme_reaction tgme_reaction_paid"><i class="icon icon-telegram-stars"></i>14</span></div><div class="tgme_widget_message_footer compact js-message_footer">
+<div class="tgme_widget_message_reactions js-message_reactions"><span class="tgme_reaction tgme_reaction_paid"><i class="icon icon-telegram-stars"></i>15</span></div><div class="tgme_widget_message_footer compact js-message_footer">
 <div class="tgme_widget_message_info short js-message_info">
-<span class="tgme_widget_message_views">371K</span><span class="copyonly"> views</span><span class="tgme_widget_message_meta"><a class="tgme_widget_message_date" href="https://t.me/ProxyMTProto/46221"><time class="time" datetime="2026-03-15T09:30:02+00:00">09:30</time></a></span>
+<span class="tgme_widget_message_views">372K</span><span class="copyonly"> views</span><span class="tgme_widget_message_meta"><a class="tgme_widget_message_date" href="https://t.me/ProxyMTProto/46221"><time class="time" datetime="2026-03-15T09:30:02+00:00">09:30</time></a></span>
 </div>
 </div>
 </div>
@@ -533,7 +551,7 @@
                 <div class="post-stats">
                     <div class="views">
                         <span class="views-icon">👁</span>
-                        <span>371K</span>
+                        <span>372K</span>
                     </div>
                     <a href="https://t.me/ProxyMTProto/46221" target="_blank" class="original-link" rel="noopener noreferrer">
                         <span>🔗</span>
@@ -555,7 +573,7 @@
                 </div>
                 
                 <div class="telegram-content">
-                    <div class="tgme_widget_message text_not_supported_wrap js-widget_message" data-post="ProxyMTProto/46222" data-view="eyJjIjotMTM5NTM2Mzg2MSwicCI6NDYyMjIsInQiOjE3NzM3NDk5NjUsImgiOiJkNzY0YzUxMDNjYzQ1N2FiZjMifQ">
+                    <div class="tgme_widget_message text_not_supported_wrap js-widget_message" data-post="ProxyMTProto/46222" data-view="eyJjIjotMTM5NTM2Mzg2MSwicCI6NDYyMjIsInQiOjE3NzM3NTEzMzUsImgiOiJiZGY5MzA3ZTk0ZTQwZDYwNjIifQ">
 <div class="tgme_widget_message_user"><a href="https://t.me/ProxyMTProto"><i class="tgme_widget_message_user_photo bgcolor3" data-content="P"><img src="https://cdn1.telesco.pe/file/NpSFbthpqPNjFYlbGsowEqHDPCRZXK1N7qlcAuSLcg36nB0ga32RJYU7XIxf8IWHd5c21Qlu1EcHenJ-8_KQDuJKFBaLmR3M7zUp4SQQJ-BlD5XO2SPsVrL4zZ7DJ2jKZSRJ1Prhlmv5oG-26db6LLyqoNjS1xkEZw-jYwp7l6vvkJuijUPjLVrcRvW39j957-77tXuC9nBNd__wc4KznLQFHiSn57-WRzHk4fRDTmIACDqBtP8Uw7o9l4Zi97bU9Z1hKVZPcyXyGGo7O4zth2lNHRapI5aRee05FKcWQs6H0tCxuI85Rq8fAnxfeFkVGH7Kt3HXnLcpUUL5hhZtWA.jpg"/></i></a></div>
 <div class="tgme_widget_message_bubble">
 <i class="tgme_widget_message_bubble_tail">
@@ -573,9 +591,9 @@
 <a class="tgme_widget_message_photo_wrap 5886545952879873511 1370568283_460000743" href="https://t.me/ProxyMTProto/46222" style="width:800px;background-image:url('https://cdn4.telesco.pe/file/b2mLfXTocxUfPhSOFeKwlUHFRonIzVayX903AcJ9cF7kbxkcPn31qG88awqJuIi_q3vyi2MZFkIr5lLKKXr2e_f9CCP_P-n5ev-2F7WPrvSxQk-fPHiHm5sGmdAWoONhFz5L05pZiEFbERgkP5b3lJTmtqav2TBbpq-yy5XKpLU-gPQovbDanpeYNZMsi554EeckXDvltmRJHY8LhfEKqrPGlODN4HsAuYXqHjAMXWiHtNhSyr144OrDBC6vCvZ--eL9ILPHrb-yO0UtLDEh5f-bdfXsws8UllfQtFAmgaI55zJOqQaEOQBQ2mG0y1-lk_ssLoy-xG5CIvWzNRjiGg.jpg')">
 <div class="tgme_widget_message_photo" style="padding-top:56.25%"></div>
 </a><div class="tgme_widget_message_text js-message_text" dir="auto"><i class="emoji" style="background-image:url('//telegram.org/img/emoji/40/E29AA0.png')"><b>⚠️</b></i> Update: <a href="?q=%23Iran">#Iran</a>'s internet blackout has entered day 16 as the measure continues in its third week, with the public cut off from international networks for 360 hours. Chosen influencers enjoy whitelisting while state media report a new wave of arrests targeting Starlink users.</div>
-<div class="tgme_widget_message_reactions js-message_reactions"><span class="tgme_reaction tgme_reaction_paid"><i class="icon icon-telegram-stars"></i>11</span></div><div class="tgme_widget_message_footer compact js-message_footer">
+<div class="tgme_widget_message_reactions js-message_reactions"><span class="tgme_reaction tgme_reaction_paid"><i class="icon icon-telegram-stars"></i>12</span></div><div class="tgme_widget_message_footer compact js-message_footer">
 <div class="tgme_widget_message_info short js-message_info">
-<span class="tgme_widget_message_views">389K</span><span class="copyonly"> views</span><span class="tgme_widget_message_meta"><a class="tgme_widget_message_date" href="https://t.me/ProxyMTProto/46222"><time class="time" datetime="2026-03-15T10:18:04+00:00">10:18</time></a></span>
+<span class="tgme_widget_message_views">391K</span><span class="copyonly"> views</span><span class="tgme_widget_message_meta"><a class="tgme_widget_message_date" href="https://t.me/ProxyMTProto/46222"><time class="time" datetime="2026-03-15T10:18:04+00:00">10:18</time></a></span>
 </div>
 </div>
 </div>
@@ -585,7 +603,7 @@
                 <div class="post-stats">
                     <div class="views">
                         <span class="views-icon">👁</span>
-                        <span>389K</span>
+                        <span>391K</span>
                     </div>
                     <a href="https://t.me/ProxyMTProto/46222" target="_blank" class="original-link" rel="noopener noreferrer">
                         <span>🔗</span>
@@ -599,7 +617,7 @@
         <!-- Подвал -->
         <div class="footer">
             <div class="update-time">
-                Обновлено: 17.03.2026 12:19
+                Обновлено: 17.03.2026 12:42
             </div>
             <div class="refresh-info">
                 🔄 Автообновление раз в сутки
