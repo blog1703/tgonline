@@ -45,8 +45,10 @@ def get_last_posts(channel_name, limit=4):
             views_element = msg.find('span', class_='tgme_widget_message_views')
             views = views_element.text if views_element else '0'
             
-            # Сохраняем HTML поста
+            # Сохраняем HTML поста и добавляем отступы между кнопками
             post_html = str(msg)
+            # Добавляем CSS для исправления отступов между кнопками Connect
+            post_html = post_html.replace('tgme_widget_message_button', 'tgme_widget_message_button custom-connect-btn')
             
             posts.append({
                 'id': i,
@@ -77,6 +79,8 @@ def generate_html(data):
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>MTProto Proxy | Telegram прокси</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <style>
         * {{
             box-sizing: border-box;
@@ -178,6 +182,12 @@ def generate_html(data):
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title>MTProto Proxy | Рабочие прокси для Telegram</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="favicon.ico">
+    
     <style>
         /* Сброс стилей и базовые настройки */
         * {{
@@ -208,7 +218,7 @@ def generate_html(data):
         
         /* Шапка сайта */
         .site-header {{
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             text-align: center;
         }}
         
@@ -216,23 +226,47 @@ def generate_html(data):
             font-size: 24px;
             font-weight: 700;
             color: #2ea6ff;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }}
         
         .site-description {{
-            font-size: 14px;
+            font-size: 13px;
             color: #8e9eae;
-            line-height: 1.5;
-            max-width: 500px;
-            margin: 0 auto;
+        }}
+        
+        /* Компактный информационный блок */
+        .info-compact {{
+            background: linear-gradient(135deg, #1e3c5a 0%, #2b4f72 100%);
+            border-radius: 50px;
+            padding: 10px 16px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #3a6d99;
+            font-size: 13px;
+        }}
+        
+        .info-compact-text {{
+            color: #fff;
+        }}
+        
+        .info-compact-link {{
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 4px 12px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 30px;
+            white-space: nowrap;
         }}
         
         /* Баннер для рекламы */
         .banner {{
             background: linear-gradient(135deg, #1e3c5a 0%, #2b4f72 100%);
             border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 24px;
+            padding: 16px;
+            margin-bottom: 20px;
             text-align: center;
             border: 1px solid #3a6d99;
             box-shadow: 0 4px 12px rgba(46, 166, 255, 0.2);
@@ -249,115 +283,43 @@ def generate_html(data):
         }}
         
         .banner-title {{
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
             color: #fff;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }}
         
         .banner-text {{
-            font-size: 14px;
+            font-size: 13px;
             color: #c9e1f2;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }}
         
         .banner-button {{
             display: inline-block;
             background: #ffd700;
             color: #1e3c5a;
-            padding: 10px 24px;
+            padding: 8px 20px;
             border-radius: 30px;
             font-weight: 600;
-            font-size: 15px;
+            font-size: 14px;
             text-decoration: none;
             transition: background 0.2s;
-        }}
-        
-        .banner-button:hover {{
-            background: #ffed4a;
-        }}
-        
-        /* Информационный блок о прокси */
-        .info-block {{
-            background: #1e2a36;
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 24px;
-            border-left: 4px solid #2ea6ff;
-        }}
-        
-        .info-title {{
-            font-size: 18px;
-            font-weight: 600;
-            color: #2ea6ff;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }}
-        
-        .info-text {{
-            font-size: 15px;
-            line-height: 1.6;
-            color: #d1dbe8;
-            margin-bottom: 16px;
-        }}
-        
-        .info-steps {{
-            background: #17212b;
-            border-radius: 12px;
-            padding: 16px;
-        }}
-        
-        .step {{
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 0;
-            border-bottom: 1px solid #2b3945;
-        }}
-        
-        .step:last-child {{
-            border-bottom: none;
-        }}
-        
-        .step-number {{
-            width: 28px;
-            height: 28px;
-            background: #2ea6ff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 14px;
-            color: #fff;
-            flex-shrink: 0;
-        }}
-        
-        .step-text {{
-            font-size: 14px;
-            color: #e0e0e0;
-            line-height: 1.5;
-        }}
-        
-        .step-text strong {{
-            color: #2ea6ff;
         }}
         
         /* Лента постов */
         .posts-feed {{
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            margin-bottom: 24px;
+            gap: 16px;
+            margin-bottom: 20px;
         }}
         
         /* Карточка поста */
         .post-card {{
             background: #17212b;
-            border-radius: 18px;
-            padding: 16px;
+            border-radius: 16px;
+            padding: 14px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
             border: 1px solid #2b3945;
         }}
@@ -367,11 +329,11 @@ def generate_html(data):
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
             border-bottom: 1px solid #2b3945;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
         }}
         
         .channel-info {{
@@ -381,33 +343,33 @@ def generate_html(data):
         }}
         
         .channel-avatar {{
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             background: #2b5278;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 18px;
             flex-shrink: 0;
         }}
         
         .channel-name {{
             font-weight: 600;
-            font-size: 16px;
+            font-size: 15px;
             color: #fff;
         }}
         
         .channel-handle {{
-            font-size: 14px;
+            font-size: 13px;
             color: #2ea6ff;
         }}
         
         .post-date {{
-            font-size: 13px;
+            font-size: 12px;
             color: #8e9eae;
             background: #232e3c;
-            padding: 4px 10px;
+            padding: 4px 8px;
             border-radius: 20px;
             white-space: nowrap;
         }}
@@ -415,9 +377,9 @@ def generate_html(data):
         /* Контент поста (оригинальный Telegram) */
         .telegram-content {{
             background: #1e2a36;
-            border-radius: 12px;
-            padding: 16px;
-            margin: 16px 0;
+            border-radius: 10px;
+            padding: 12px;
+            margin: 12px 0;
             border: 1px solid #2b3945;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
@@ -430,10 +392,10 @@ def generate_html(data):
         }}
         
         .telegram-content .tgme_widget_message_text {{
-            font-size: 15px !important;
-            line-height: 1.6 !important;
+            font-size: 14px !important;
+            line-height: 1.5 !important;
             color: #e0e0e0 !important;
-            margin-bottom: 16px !important;
+            margin-bottom: 12px !important;
             word-wrap: break-word !important;
             overflow-wrap: break-word !important;
             white-space: pre-wrap !important;
@@ -446,38 +408,35 @@ def generate_html(data):
             word-break: break-all !important;
         }}
         
-        /* Стили для кнопки прокси (оригинальная) */
+        /* Стили для кнопок Connect - ИСПРАВЛЕНЫ ОТСТУПЫ */
         .telegram-content .tgme_widget_message_button {{
-            margin-top: 12px !important;
+            margin-top: 8px !important;
+            margin-bottom: 8px !important;
             width: 100% !important;
         }}
         
         .telegram-content .tgme_widget_message_button a {{
             display: block !important;
-            padding: 14px 20px !important;
+            padding: 12px 16px !important;
             background: #2ea6ff !important;
             color: white !important;
             border-radius: 30px !important;
             font-weight: 600 !important;
-            font-size: 16px !important;
+            font-size: 15px !important;
             text-decoration: none !important;
             width: 100% !important;
             text-align: center !important;
             transition: all 0.2s !important;
             -webkit-tap-highlight-color: transparent !important;
-            box-shadow: 0 4px 10px rgba(46, 166, 255, 0.3) !important;
+            box-shadow: 0 2px 8px rgba(46, 166, 255, 0.2) !important;
             border: none !important;
             word-break: break-word !important;
+            margin: 4px 0 !important;
         }}
         
-        .telegram-content .tgme_widget_message_button a:hover {{
-            background: #1e8ad3 !important;
-            transform: translateY(-2px) !important;
-            box-shadow: 0 6px 15px rgba(46, 166, 255, 0.4) !important;
-        }}
-        
-        .telegram-content .tgme_widget_message_button a:active {{
-            transform: translateY(0) !important;
+        /* Добавляем отступ между кнопками если их несколько */
+        .telegram-content .tgme_widget_message_button + .tgme_widget_message_button {{
+            margin-top: 10px !important;
         }}
         
         /* Статистика поста */
@@ -485,21 +444,21 @@ def generate_html(data):
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-top: 12px;
-            padding-top: 12px;
+            margin-top: 10px;
+            padding-top: 10px;
             border-top: 1px solid #2b3945;
         }}
         
         .views {{
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
             color: #8e9eae;
-            font-size: 14px;
+            font-size: 13px;
         }}
         
         .views-icon {{
-            font-size: 16px;
+            font-size: 14px;
         }}
         
         .original-link {{
@@ -507,46 +466,42 @@ def generate_html(data):
             align-items: center;
             gap: 4px;
             color: #2ea6ff;
-            font-size: 14px;
+            font-size: 13px;
             text-decoration: none;
-            padding: 6px 12px;
+            padding: 4px 10px;
             background: #232e3c;
             border-radius: 20px;
             transition: background 0.2s;
         }}
         
-        .original-link:active {{
-            background: #2b3945;
-        }}
-        
         /* Подвал */
         .footer {{
-            margin-top: 24px;
-            padding: 16px;
+            margin-top: 16px;
+            padding: 12px;
             background: #1e2a36;
-            border-radius: 16px;
+            border-radius: 12px;
             text-align: center;
         }}
         
         .update-time {{
-            font-size: 13px;
+            font-size: 12px;
             color: #8e9eae;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }}
         
         .refresh-info {{
-            font-size: 12px;
+            font-size: 11px;
             color: #6a7a8a;
         }}
         
-        /* Адаптация для очень маленьких экранов */
+        /* Адаптация для мобильных */
         @media (max-width: 480px) {{
             body {{
                 padding: 8px;
             }}
             
             .post-card {{
-                padding: 12px;
+                padding: 10px;
             }}
             
             .post-header {{
@@ -554,53 +509,37 @@ def generate_html(data):
                 align-items: flex-start;
             }}
             
-            .post-date {{
-                align-self: flex-start;
-            }}
-            
             .channel-avatar {{
-                width: 36px;
-                height: 36px;
-                font-size: 18px;
+                width: 32px;
+                height: 32px;
+                font-size: 16px;
             }}
             
             .channel-name {{
-                font-size: 15px;
+                font-size: 14px;
             }}
             
             .channel-handle {{
-                font-size: 13px;
+                font-size: 12px;
             }}
             
             .telegram-content .tgme_widget_message_text {{
-                font-size: 14px !important;
+                font-size: 13px !important;
             }}
             
             .telegram-content .tgme_widget_message_button a {{
-                padding: 12px 16px !important;
-                font-size: 15px !important;
+                padding: 10px 14px !important;
+                font-size: 14px !important;
             }}
             
-            .info-block {{
-                padding: 16px;
+            .banner {{
+                padding: 12px;
             }}
             
-            .step {{
-                gap: 8px;
+            .info-compact {{
+                font-size: 12px;
+                padding: 8px 12px;
             }}
-        }}
-        
-        @media (max-width: 360px) {{
-            .post-stats {{
-                flex-direction: column;
-                gap: 10px;
-                align-items: flex-start;
-            }}
-        }}
-        
-        /* Убираем выделение при тапе */
-        .no-tap-highlight {{
-            -webkit-tap-highlight-color: transparent;
         }}
     </style>
 </head>
@@ -609,44 +548,20 @@ def generate_html(data):
         <!-- Шапка сайта -->
         <div class="site-header">
             <div class="site-title">MTProto Proxy</div>
-            <div class="site-description">Рабочие прокси для Telegram от @ProxyMTProto</div>
+            <div class="site-description">@ProxyMTProto • рабочие прокси для Telegram</div>
+        </div>
+        
+        <!-- Компактный информационный блок (вместо большого) -->
+        <div class="info-compact">
+            <span class="info-compact-text">🔒 Нажми Connect → Открой в Telegram → Подключи</span>
+            <a href="#" class="info-compact-link" onclick="alert('Connect — кнопка в посте, открывает настройки прокси в Telegram')">?</a>
         </div>
         
         <!-- Баннер для реферальной ссылки (ЗАГЛУШКА) -->
         <div class="banner" onclick="window.open('https://telegram.org', '_blank')">
             <div class="banner-title">✨ Место для вашей рекламы ✨</div>
-            <div class="banner-text">Здесь может быть ваша реферальная ссылка на прокси-сервис</div>
-            <div class="banner-button">Перейти к партнеру</div>
-        </div>
-        
-        <!-- Информационный блок -->
-        <div class="info-block">
-            <div class="info-title">
-                <span>🔒</span>
-                <span>Зачем нужны MTProto прокси?</span>
-            </div>
-            <div class="info-text">
-                MTProto Proxy позволяет не потерять доступ к Telegram даже при блокировках. 
-                Прокси автоматически подключаются и работают без дополнительных настроек.
-            </div>
-            <div class="info-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-text"><strong>Нажми на кнопку CONNECT</strong> в любом посте с прокси</div>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-text"><strong>Открой с помощью Telegram</strong> (выбери приложение Telegram)</div>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-text"><strong>Проверь статус</strong> и нажми "Подключить прокси"</div>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <div class="step-text"><strong>Готово!</strong> Telegram работает через прокси</div>
-                </div>
-            </div>
+            <div class="banner-text">Здесь может быть ваша реферальная ссылка</div>
+            <div class="banner-button">Перейти</div>
         </div>
         
         <!-- Лента последних постов -->
@@ -657,10 +572,10 @@ def generate_html(data):
         <!-- Подвал -->
         <div class="footer">
             <div class="update-time">
-                Последнее обновление: {datetime.fromisoformat(data['parsed_at'].replace('Z', '+00:00')).strftime('%d.%m.%Y в %H:%M')}
+                Обновлено: {datetime.fromisoformat(data['parsed_at'].replace('Z', '+00:00')).strftime('%d.%m.%Y %H:%M')}
             </div>
             <div class="refresh-info">
-                🔄 Автообновление раз в сутки • Данные из @ProxyMTProto
+                🔄 Автообновление раз в сутки
             </div>
         </div>
     </div>
