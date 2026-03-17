@@ -4,8 +4,8 @@ import json
 import os
 from datetime import datetime
 
-def get_last_post(channel_name):
-    """Получает последний пост из Telegram канала"""
+def get_last_posts(channel_name, limit=4):
+    """Получает несколько последних постов из Telegram канала"""
     try:
         url = f"https://t.me/s/{channel_name}"
         print(f"Парсинг {url}...")
@@ -30,31 +30,36 @@ def get_last_post(channel_name):
             print("Сообщения не найдены")
             return None
         
-        # Берем последнее (первое) сообщение
-        latest = messages[0]
-        
-        # Извлекаем дату
-        date_element = latest.find('time', class_='time')
-        date = date_element['datetime'] if date_element else datetime.now().isoformat()
-        
-        # Извлекаем ссылку на пост
-        link_element = latest.find('a', class_='tgme_widget_message_date')
-        post_url = link_element['href'] if link_element else f"https://t.me/s/{channel_name}"
-        
-        # Извлекаем просмотры
-        views_element = latest.find('span', class_='tgme_widget_message_views')
-        views = views_element.text if views_element else '0'
-        
-        # Сохраняем ВЕСЬ HTML поста целиком
-        post_html = str(latest)
+        # Берем нужное количество последних постов
+        posts = []
+        for i, msg in enumerate(messages[:limit]):
+            # Извлекаем дату
+            date_element = msg.find('time', class_='time')
+            date = date_element['datetime'] if date_element else datetime.now().isoformat()
+            
+            # Извлекаем ссылку на пост
+            link_element = msg.find('a', class_='tgme_widget_message_date')
+            post_url = link_element['href'] if link_element else f"https://t.me/s/{channel_name}"
+            
+            # Извлекаем просмотры
+            views_element = msg.find('span', class_='tgme_widget_message_views')
+            views = views_element.text if views_element else '0'
+            
+            # Сохраняем HTML поста
+            post_html = str(msg)
+            
+            posts.append({
+                'id': i,
+                'post_html': post_html,
+                'date': date,
+                'url': post_url,
+                'views': views
+            })
         
         return {
             'success': True,
             'channel': channel_name,
-            'post_html': post_html,
-            'date': date,
-            'url': post_url,
-            'views': views,
+            'posts': posts,
             'parsed_at': datetime.now().isoformat()
         }
         
@@ -63,7 +68,7 @@ def get_last_post(channel_name):
         return {'success': False, 'error': str(e)}
 
 def generate_html(data):
-    """Создает HTML страницу с оригинальным постом из Telegram (адаптировано под мобильные)"""
+    """Создает HTML страницу с лентой постов"""
     
     if not data or not data.get('success'):
         html = f"""<!DOCTYPE html>
@@ -71,7 +76,7 @@ def generate_html(data):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Ошибка загрузки | MTProto Proxy</title>
+    <title>MTProto Proxy | Telegram прокси</title>
     <style>
         * {{
             box-sizing: border-box;
@@ -128,6 +133,42 @@ def generate_html(data):
             f.write(html)
         return
     
+    posts_html = ""
+    for post in data['posts']:
+        # Форматируем дату для отображения
+        date_obj = datetime.fromisoformat(post['date'].replace('Z', '+00:00'))
+        formatted_date = date_obj.strftime('%d.%m.%Y %H:%M')
+        
+        posts_html += f"""
+            <div class="post-card">
+                <div class="post-header">
+                    <div class="channel-info">
+                        <div class="channel-avatar">📢</div>
+                        <div>
+                            <div class="channel-name">Proxy MTProto</div>
+                            <div class="channel-handle">@ProxyMTProto</div>
+                        </div>
+                    </div>
+                    <div class="post-date">{formatted_date}</div>
+                </div>
+                
+                <div class="telegram-content">
+                    {post['post_html']}
+                </div>
+                
+                <div class="post-stats">
+                    <div class="views">
+                        <span class="views-icon">👁</span>
+                        <span>{post['views']}</span>
+                    </div>
+                    <a href="{post['url']}" target="_blank" class="original-link" rel="noopener noreferrer">
+                        <span>🔗</span>
+                        <span>Оригинал</span>
+                    </a>
+                </div>
+            </div>
+        """
+    
     html = f"""<!DOCTYPE html>
 <html>
 <head>
@@ -136,7 +177,7 @@ def generate_html(data):
     <meta name="theme-color" content="#17212b">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>MTProto Proxy | @ProxyMTProto</title>
+    <title>MTProto Proxy | Рабочие прокси для Telegram</title>
     <style>
         /* Сброс стилей и базовые настройки */
         * {{
@@ -152,7 +193,6 @@ def generate_html(data):
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
             padding: 12px;
             color: #fff;
             -webkit-font-smoothing: antialiased;
@@ -160,10 +200,157 @@ def generate_html(data):
         }}
         
         /* Основной контейнер */
-        .post-container {{
+        .container {{
             width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }}
+        
+        /* Шапка сайта */
+        .site-header {{
+            margin-bottom: 20px;
+            text-align: center;
+        }}
+        
+        .site-title {{
+            font-size: 24px;
+            font-weight: 700;
+            color: #2ea6ff;
+            margin-bottom: 8px;
+        }}
+        
+        .site-description {{
+            font-size: 14px;
+            color: #8e9eae;
+            line-height: 1.5;
             max-width: 500px;
             margin: 0 auto;
+        }}
+        
+        /* Баннер для рекламы */
+        .banner {{
+            background: linear-gradient(135deg, #1e3c5a 0%, #2b4f72 100%);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 24px;
+            text-align: center;
+            border: 1px solid #3a6d99;
+            box-shadow: 0 4px 12px rgba(46, 166, 255, 0.2);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }}
+        
+        .banner:hover {{
+            transform: translateY(-2px);
+        }}
+        
+        .banner:active {{
+            transform: translateY(0);
+        }}
+        
+        .banner-title {{
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px;
+        }}
+        
+        .banner-text {{
+            font-size: 14px;
+            color: #c9e1f2;
+            margin-bottom: 12px;
+        }}
+        
+        .banner-button {{
+            display: inline-block;
+            background: #ffd700;
+            color: #1e3c5a;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: background 0.2s;
+        }}
+        
+        .banner-button:hover {{
+            background: #ffed4a;
+        }}
+        
+        /* Информационный блок о прокси */
+        .info-block {{
+            background: #1e2a36;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 24px;
+            border-left: 4px solid #2ea6ff;
+        }}
+        
+        .info-title {{
+            font-size: 18px;
+            font-weight: 600;
+            color: #2ea6ff;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }}
+        
+        .info-text {{
+            font-size: 15px;
+            line-height: 1.6;
+            color: #d1dbe8;
+            margin-bottom: 16px;
+        }}
+        
+        .info-steps {{
+            background: #17212b;
+            border-radius: 12px;
+            padding: 16px;
+        }}
+        
+        .step {{
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #2b3945;
+        }}
+        
+        .step:last-child {{
+            border-bottom: none;
+        }}
+        
+        .step-number {{
+            width: 28px;
+            height: 28px;
+            background: #2ea6ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            color: #fff;
+            flex-shrink: 0;
+        }}
+        
+        .step-text {{
+            font-size: 14px;
+            color: #e0e0e0;
+            line-height: 1.5;
+        }}
+        
+        .step-text strong {{
+            color: #2ea6ff;
+        }}
+        
+        /* Лента постов */
+        .posts-feed {{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 24px;
         }}
         
         /* Карточка поста */
@@ -175,7 +362,7 @@ def generate_html(data):
             border: 1px solid #2b3945;
         }}
         
-        /* Шапка с каналом */
+        /* Шапка поста */
         .post-header {{
             display: flex;
             align-items: center;
@@ -183,6 +370,8 @@ def generate_html(data):
             margin-bottom: 16px;
             padding-bottom: 12px;
             border-bottom: 1px solid #2b3945;
+            flex-wrap: wrap;
+            gap: 10px;
         }}
         
         .channel-info {{
@@ -200,6 +389,7 @@ def generate_html(data):
             align-items: center;
             justify-content: center;
             font-size: 20px;
+            flex-shrink: 0;
         }}
         
         .channel-name {{
@@ -229,6 +419,8 @@ def generate_html(data):
             padding: 16px;
             margin: 16px 0;
             border: 1px solid #2b3945;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }}
         
         /* Стили для оригинальных элементов Telegram */
@@ -239,53 +431,63 @@ def generate_html(data):
         
         .telegram-content .tgme_widget_message_text {{
             font-size: 15px !important;
-            line-height: 1.5 !important;
+            line-height: 1.6 !important;
             color: #e0e0e0 !important;
             margin-bottom: 16px !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+            white-space: pre-wrap !important;
+            word-break: break-word !important;
         }}
         
         .telegram-content .tgme_widget_message_text a {{
             color: #2ea6ff !important;
             text-decoration: none !important;
+            word-break: break-all !important;
         }}
         
         /* Стили для кнопки прокси (оригинальная) */
         .telegram-content .tgme_widget_message_button {{
             margin-top: 12px !important;
+            width: 100% !important;
         }}
         
         .telegram-content .tgme_widget_message_button a {{
-            display: inline-block !important;
-            padding: 12px 20px !important;
+            display: block !important;
+            padding: 14px 20px !important;
             background: #2ea6ff !important;
             color: white !important;
             border-radius: 30px !important;
-            font-weight: 500 !important;
-            font-size: 15px !important;
+            font-weight: 600 !important;
+            font-size: 16px !important;
             text-decoration: none !important;
             width: 100% !important;
             text-align: center !important;
-            transition: background 0.2s !important;
+            transition: all 0.2s !important;
             -webkit-tap-highlight-color: transparent !important;
+            box-shadow: 0 4px 10px rgba(46, 166, 255, 0.3) !important;
+            border: none !important;
+            word-break: break-word !important;
         }}
         
         .telegram-content .tgme_widget_message_button a:hover {{
             background: #1e8ad3 !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 15px rgba(46, 166, 255, 0.4) !important;
         }}
         
         .telegram-content .tgme_widget_message_button a:active {{
-            transform: scale(0.98) !important;
+            transform: translateY(0) !important;
         }}
         
-        /* Статистика */
+        /* Статистика поста */
         .post-stats {{
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin: 16px 0 12px;
-            padding: 12px 0;
+            margin-top: 12px;
+            padding-top: 12px;
             border-top: 1px solid #2b3945;
-            border-bottom: 1px solid #2b3945;
         }}
         
         .views {{
@@ -317,19 +519,19 @@ def generate_html(data):
             background: #2b3945;
         }}
         
-        /* Информация об обновлении */
-        .footer-info {{
-            margin-top: 16px;
-            padding: 12px;
+        /* Подвал */
+        .footer {{
+            margin-top: 24px;
+            padding: 16px;
             background: #1e2a36;
-            border-radius: 12px;
+            border-radius: 16px;
             text-align: center;
         }}
         
         .update-time {{
             font-size: 13px;
             color: #8e9eae;
-            margin-bottom: 4px;
+            margin-bottom: 8px;
         }}
         
         .refresh-info {{
@@ -338,13 +540,22 @@ def generate_html(data):
         }}
         
         /* Адаптация для очень маленьких экранов */
-        @media (max-width: 380px) {{
+        @media (max-width: 480px) {{
             body {{
                 padding: 8px;
             }}
             
             .post-card {{
                 padding: 12px;
+            }}
+            
+            .post-header {{
+                flex-direction: column;
+                align-items: flex-start;
+            }}
+            
+            .post-date {{
+                align-self: flex-start;
             }}
             
             .channel-avatar {{
@@ -361,74 +572,95 @@ def generate_html(data):
                 font-size: 13px;
             }}
             
-            .post-date {{
-                font-size: 12px;
-                padding: 3px 8px;
-            }}
-            
             .telegram-content .tgme_widget_message_text {{
                 font-size: 14px !important;
             }}
             
             .telegram-content .tgme_widget_message_button a {{
-                padding: 10px 16px !important;
-                font-size: 14px !important;
+                padding: 12px 16px !important;
+                font-size: 15px !important;
+            }}
+            
+            .info-block {{
+                padding: 16px;
+            }}
+            
+            .step {{
+                gap: 8px;
             }}
         }}
         
-        /* Для устройств с большим экраном центрируем */
-        @media (min-width: 600px) {{
-            body {{
-                padding: 20px;
+        @media (max-width: 360px) {{
+            .post-stats {{
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
             }}
         }}
         
-        /* Убираем выделение при тапе на мобильных */
+        /* Убираем выделение при тапе */
         .no-tap-highlight {{
             -webkit-tap-highlight-color: transparent;
         }}
     </style>
 </head>
 <body>
-    <div class="post-container">
-        <div class="post-card">
-            <!-- Шапка с информацией о канале -->
-            <div class="post-header">
-                <div class="channel-info">
-                    <div class="channel-avatar">📢</div>
-                    <div>
-                        <div class="channel-name">Proxy MTProto</div>
-                        <div class="channel-handle">@ProxyMTProto</div>
-                    </div>
-                </div>
-                <div class="post-date">{data['date'][8:10]}.{data['date'][5:7]}.{data['date'][0:4]}</div>
+    <div class="container">
+        <!-- Шапка сайта -->
+        <div class="site-header">
+            <div class="site-title">MTProto Proxy</div>
+            <div class="site-description">Рабочие прокси для Telegram от @ProxyMTProto</div>
+        </div>
+        
+        <!-- Баннер для реферальной ссылки (ЗАГЛУШКА) -->
+        <div class="banner" onclick="window.open('https://telegram.org', '_blank')">
+            <div class="banner-title">✨ Место для вашей рекламы ✨</div>
+            <div class="banner-text">Здесь может быть ваша реферальная ссылка на прокси-сервис</div>
+            <div class="banner-button">Перейти к партнеру</div>
+        </div>
+        
+        <!-- Информационный блок -->
+        <div class="info-block">
+            <div class="info-title">
+                <span>🔒</span>
+                <span>Зачем нужны MTProto прокси?</span>
             </div>
-            
-            <!-- Оригинальный пост из Telegram -->
-            <div class="telegram-content">
-                {data['post_html']}
+            <div class="info-text">
+                MTProto Proxy позволяет не потерять доступ к Telegram даже при блокировках. 
+                Прокси автоматически подключаются и работают без дополнительных настроек.
             </div>
-            
-            <!-- Статистика и ссылки -->
-            <div class="post-stats">
-                <div class="views">
-                    <span class="views-icon">👁</span>
-                    <span>{data['views']}</span>
+            <div class="info-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-text"><strong>Нажми на кнопку CONNECT</strong> в любом посте с прокси</div>
                 </div>
-                <a href="{data['url']}" target="_blank" class="original-link" rel="noopener noreferrer">
-                    <span>🔗</span>
-                    <span>Оригинал</span>
-                </a>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-text"><strong>Открой с помощью Telegram</strong> (выбери приложение Telegram)</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-text"><strong>Проверь статус</strong> и нажми "Подключить прокси"</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-text"><strong>Готово!</strong> Telegram работает через прокси</div>
+                </div>
             </div>
-            
-            <!-- Информация об обновлении -->
-            <div class="footer-info">
-                <div class="update-time">
-                    Обновлено: {data['parsed_at'][8:10]}.{data['parsed_at'][5:7]}.{data['parsed_at'][0:4]} в {data['parsed_at'][11:16]}
-                </div>
-                <div class="refresh-info">
-                    🔄 Автообновление раз в сутки
-                </div>
+        </div>
+        
+        <!-- Лента последних постов -->
+        <div class="posts-feed">
+            {posts_html}
+        </div>
+        
+        <!-- Подвал -->
+        <div class="footer">
+            <div class="update-time">
+                Последнее обновление: {datetime.fromisoformat(data['parsed_at'].replace('Z', '+00:00')).strftime('%d.%m.%Y в %H:%M')}
+            </div>
+            <div class="refresh-info">
+                🔄 Автообновление раз в сутки • Данные из @ProxyMTProto
             </div>
         </div>
     </div>
@@ -442,13 +674,13 @@ def main():
     channel = os.environ.get('CHANNEL_NAME', 'ProxyMTProto')
     print(f"🚀 Начинаем парсинг канала @{channel}")
     
-    # Получаем последний пост
-    post_data = get_last_post(channel)
+    # Получаем последние 4 поста
+    post_data = get_last_posts(channel, limit=4)
     
     if post_data and post_data.get('success'):
-        print(f"✅ Пост получен от {post_data['date']}")
-        print(f"📊 Просмотров: {post_data['views']}")
-        print(f"📝 Размер HTML: {len(post_data['post_html'])} символов")
+        print(f"✅ Получено {len(post_data['posts'])} постов")
+        for i, post in enumerate(post_data['posts']):
+            print(f"   Пост {i+1}: {post['date']}, просмотров: {post['views']}")
     else:
         print(f"❌ Ошибка: {post_data.get('error', 'Неизвестная ошибка')}")
     
