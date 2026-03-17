@@ -45,10 +45,8 @@ def get_last_posts(channel_name, limit=4):
             views_element = msg.find('span', class_='tgme_widget_message_views')
             views = views_element.text if views_element else '0'
             
-            # Сохраняем HTML поста и добавляем отступы между кнопками
+            # Сохраняем HTML поста
             post_html = str(msg)
-            # Добавляем CSS для исправления отступов между кнопками Connect
-            post_html = post_html.replace('tgme_widget_message_button', 'tgme_widget_message_button custom-connect-btn')
             
             posts.append({
                 'id': i,
@@ -242,26 +240,17 @@ def generate_html(data):
             margin-bottom: 20px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             border: 1px solid #3a6d99;
             font-size: 13px;
+            color: #fff;
         }}
         
         .info-compact-text {{
             color: #fff;
         }}
         
-        .info-compact-link {{
-            color: #ffd700;
-            text-decoration: none;
-            font-weight: 600;
-            padding: 4px 12px;
-            background: rgba(0,0,0,0.2);
-            border-radius: 30px;
-            white-space: nowrap;
-        }}
-        
-        /* Баннер для рекламы */
+        /* Баннер для реферальной ссылки (ЗАГЛУШКА) */
         .banner {{
             background: linear-gradient(135deg, #1e3c5a 0%, #2b4f72 100%);
             border-radius: 16px;
@@ -408,36 +397,69 @@ def generate_html(data):
             word-break: break-all !important;
         }}
         
-        /* Стили для кнопок Connect - ИСПРАВЛЕНЫ ОТСТУПЫ */
-        .telegram-content .tgme_widget_message_button {{
-            margin-top: 8px !important;
-            margin-bottom: 8px !important;
+        /* ===== ИСПРАВЛЕНИЕ ДЛЯ INLINE КНОПОК CONNECT ===== */
+        /* Превращаем горизонтальный ряд в вертикальный */
+        .telegram-content .tgme_widget_message_inline_row {{
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 10px !important;
             width: 100% !important;
+            margin: 10px 0 !important;
         }}
         
-        .telegram-content .tgme_widget_message_button a {{
+        /* Стили для каждой кнопки Connect */
+        .telegram-content .tgme_widget_message_inline_row .tgme_widget_message_inline_button {{
             display: block !important;
-            padding: 12px 16px !important;
-            background: #2ea6ff !important;
-            color: white !important;
-            border-radius: 30px !important;
-            font-weight: 600 !important;
-            font-size: 15px !important;
-            text-decoration: none !important;
             width: 100% !important;
+            margin: 0 !important;
+            padding: 14px 20px !important;
+            background: #ff8c00 !important;  /* ОРАНЖЕВЫЙ ЦВЕТ */
+            color: white !important;
+            border-radius: 40px !important;
+            font-weight: 700 !important;  /* ЖИРНЫЙ */
+            font-size: 16px !important;
+            text-decoration: none !important;
             text-align: center !important;
-            transition: all 0.2s !important;
-            -webkit-tap-highlight-color: transparent !important;
-            box-shadow: 0 2px 8px rgba(46, 166, 255, 0.2) !important;
+            box-sizing: border-box !important;
             border: none !important;
-            word-break: break-word !important;
-            margin: 4px 0 !important;
+            box-shadow: 0 4px 10px rgba(255, 140, 0, 0.3) !important;
+            transition: all 0.2s ease !important;
         }}
         
-        /* Добавляем отступ между кнопками если их несколько */
-        .telegram-content .tgme_widget_message_button + .tgme_widget_message_button {{
-            margin-top: 10px !important;
+        /* Эффект при наведении */
+        .telegram-content .tgme_widget_message_inline_row .tgme_widget_message_inline_button:hover {{
+            background: #ff7000 !important;  /* Темнее при наведении */
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 15px rgba(255, 140, 0, 0.4) !important;
         }}
+        
+        /* Эффект при нажатии */
+        .telegram-content .tgme_widget_message_inline_row .tgme_widget_message_inline_button:active {{
+            transform: translateY(0) !important;
+        }}
+        
+        /* Стили для текста внутри кнопки */
+        .telegram-content .tgme_widget_message_inline_button .tgme_widget_message_inline_button_text {{
+            display: block !important;
+            width: 100% !important;
+            color: white !important;
+            font-weight: 700 !important;
+        }}
+        
+        /* Скрываем ненужные символы (▸ и ▾) */
+        .telegram-content .tgme_widget_message_inline_row .url_button:before,
+        .telegram-content .tgme_widget_message_inline_row .url_button:after,
+        .telegram-content .tgme_widget_message > :first-child:not(.tgme_widget_message_text):not(.tgme_widget_message_inline_row) {{
+            display: none !important;
+        }}
+        
+        /* Скрываем лишние div с @ */
+        .telegram-content .tgme_widget_message_user,
+        .telegram-content .tgme_widget_message_bubble,
+        .telegram-content .tgme_widget_message > div:empty {{
+            display: none !important;
+        }}
+        /* ===== КОНЕЦ ИСПРАВЛЕНИЙ ===== */
         
         /* Статистика поста */
         .post-stats {{
@@ -527,18 +549,13 @@ def generate_html(data):
                 font-size: 13px !important;
             }}
             
-            .telegram-content .tgme_widget_message_button a {{
-                padding: 10px 14px !important;
-                font-size: 14px !important;
+            .telegram-content .tgme_widget_message_inline_row .tgme_widget_message_inline_button {{
+                padding: 12px 16px !important;
+                font-size: 15px !important;
             }}
             
             .banner {{
                 padding: 12px;
-            }}
-            
-            .info-compact {{
-                font-size: 12px;
-                padding: 8px 12px;
             }}
         }}
     </style>
@@ -551,10 +568,9 @@ def generate_html(data):
             <div class="site-description">@ProxyMTProto • рабочие прокси для Telegram</div>
         </div>
         
-        <!-- Компактный информационный блок (вместо большого) -->
+        <!-- Компактный информационный блок (без иконки "?") -->
         <div class="info-compact">
-            <span class="info-compact-text">🔒 Нажми Connect → Открой в Telegram → Подключи</span>
-            <a href="#" class="info-compact-link" onclick="alert('Connect — кнопка в посте, открывает настройки прокси в Telegram')">?</a>
+            <span class="info-compact-text">🔒 Нажми на оранжевую кнопку Connect → Открой в Telegram → Подключи</span>
         </div>
         
         <!-- Баннер для реферальной ссылки (ЗАГЛУШКА) -->
