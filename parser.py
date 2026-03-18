@@ -3,18 +3,24 @@ from bs4 import BeautifulSoup
 import json
 import os
 import re
-import time  # Добавлен импорт time для параметра before
-from datetime import datetime
+import time
+import random
+from datetime import datetime, timezone, timedelta  # Добавлен timedelta для сдвига часов
 
 def get_last_posts(channel_name, limit=6):
     """Получает несколько последних постов из Telegram канала с обходом кэша"""
     try:
-        # Добавляем параметр before с текущим timestamp, чтобы получить свежую версию
-        url = f"https://t.me/s/{channel_name}?before={int(time.time())}"
+        # Добавляем случайный параметр для обхода кэша
+        url = f"https://t.me/s/{channel_name}?r={random.randint(1, 1000000)}&before={int(time.time())}"
         print(f"Парсинг {url}...")
         
         headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'Accept-Language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache',
+            'Expires': '0'
         }
         
         response = requests.get(url, headers=headers, timeout=15)
@@ -38,7 +44,7 @@ def get_last_posts(channel_name, limit=6):
         for i, msg in enumerate(messages[:limit]):
             # Извлекаем дату
             date_element = msg.find('time', class_='time')
-            date = date_element['datetime'] if date_element else datetime.now().isoformat()
+            date = date_element['datetime'] if date_element else datetime.now(timezone.utc).isoformat()
             
             # Извлекаем ссылку на пост
             link_element = msg.find('a', class_='tgme_widget_message_date')
@@ -72,7 +78,7 @@ def get_last_posts(channel_name, limit=6):
             'success': True,
             'channel': channel_name,
             'posts': posts,
-            'parsed_at': datetime.now().isoformat()
+            'parsed_at': datetime.now(timezone.utc).isoformat()
         }
         
     except Exception as e:
@@ -179,8 +185,15 @@ def generate_html(data):
     
     posts_html = ""
     for i, post in enumerate(data['posts']):
+        # Преобразуем дату из UTC в московское время (GMT+3)
         date_obj = datetime.fromisoformat(post['date'].replace('Z', '+00:00'))
-        formatted_date = date_obj.strftime('%d.%m.%Y %H:%M')
+        # Убеждаемся, что у объекта есть информация о часовом поясе (UTC)
+        if date_obj.tzinfo is None:
+            date_obj = date_obj.replace(tzinfo=timezone.utc)
+        # Прибавляем 3 часа для получения московского времени
+        moscow_time = date_obj + timedelta(hours=3)
+        # Форматируем для отображения
+        formatted_date = moscow_time.strftime('%d.%m.%Y %H:%M')
         
         post_text = post['post_text']
         channel_link = f'<a href="https://t.me/ProxyMTProto" target="_blank" class="channel-link">@ProxyMTProto</a>'
@@ -245,6 +258,13 @@ def generate_html(data):
                 </div>
             </div>
             """
+    
+    # Преобразуем время последнего обновления в московское
+    parsed_at = datetime.fromisoformat(data['parsed_at'].replace('Z', '+00:00'))
+    if parsed_at.tzinfo is None:
+        parsed_at = parsed_at.replace(tzinfo=timezone.utc)
+    moscow_parsed = parsed_at + timedelta(hours=3)
+    formatted_parsed = moscow_parsed.strftime('%d.%m.%Y %H:%M')
     
     html = f"""<!DOCTYPE html>
 <html>
@@ -728,7 +748,7 @@ def generate_html(data):
         </div>
         
         <div class="footer">
-            <div>Обновлено: {datetime.fromisoformat(data['parsed_at'].replace('Z', '+00:00')).strftime('%d.%m.%Y %H:%M')}</div>
+            <div>Обновлено: {formatted_parsed} (МСК)</div>
             <div style="margin-top: 4px;">🔄 Автообновление каждые 30 минут</div>
         </div>
     </div>
