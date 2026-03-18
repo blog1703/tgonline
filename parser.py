@@ -176,7 +176,7 @@ def generate_html(data):
         return
     
     posts_html = ""
-    for post in data['posts']:
+    for i, post in enumerate(data['posts']):
         date_obj = datetime.fromisoformat(post['date'].replace('Z', '+00:00'))
         formatted_date = date_obj.strftime('%d.%m.%Y %H:%M')
         
@@ -218,6 +218,33 @@ def generate_html(data):
                 </div>
             </div>
         """
+        
+        # Добавляем второй баннер после каждого 3-го поста (индекс 2, 5, 8...)
+        if (i + 1) % 3 == 0:
+            posts_html += f"""
+            <!-- Баннер Astroproxy -->
+            <div class="astro-banner" onclick="window.open('https://astroproxy.com/r/6b1442a44cbc36a3c277b86bb1f19e9b?lang=ru', '_blank')">
+                <div class="astro-content">
+                    <div class="astro-image">
+                        <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/astro.webp" 
+                             alt="Astroproxy"
+                             onerror="this.style.display='none'">
+                    </div>
+                    <div class="astro-text">
+                        <div class="astro-slogan">Astroproxy: Твой билет в мир PlayStation</div>
+                        <div class="astro-description">С помощью прокси оплачивай подписки в Турции, США и других регионах без границ!</div>
+                        <div class="astro-button-wrapper">
+                            <a href="https://astroproxy.com/r/6b1442a44cbc36a3c277b86bb1f19e9b?lang=ru" 
+                               class="astro-button" 
+                               target="_blank" 
+                               rel="noopener noreferrer">
+                                Попробовать
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            """
     
     html = f"""<!DOCTYPE html>
 <html>
@@ -294,7 +321,7 @@ def generate_html(data):
             color: #fff;
         }}
         
-        /* Полноразмерный баннер */
+        /* Полноразмерный баннер (Proxy Market) */
         .full-banner {{
             width: 100%;
             margin-bottom: 24px;
@@ -364,6 +391,106 @@ def generate_html(data):
         }}
         
         .compact-button:active {{
+            transform: translateY(0);
+        }}
+        
+        /* Баннер Astroproxy */
+        .astro-banner {{
+            width: 100%;
+            margin: 16px 0;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            background: linear-gradient(135deg, #2a1e3a 0%, #4a2e5a 100%);
+            border: 1px solid #6a4e7a;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }}
+        
+        .astro-banner:hover {{
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(156, 39, 176, 0.4);
+        }}
+        
+        .astro-banner:active {{
+            transform: translateY(0);
+        }}
+        
+        .astro-content {{
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            flex-wrap: wrap;
+        }}
+        
+        .astro-image {{
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }}
+        
+        .astro-image img {{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }}
+        
+        .astro-text {{
+            flex: 1;
+            min-width: 200px;
+        }}
+        
+        .astro-slogan {{
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffd700;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }}
+        
+        .astro-description {{
+            font-size: 14px;
+            color: #e0e0e0;
+            margin-bottom: 12px;
+            line-height: 1.5;
+            font-weight: 400;
+            opacity: 0.9;
+        }}
+        
+        .astro-button-wrapper {{
+            display: inline-block;
+        }}
+        
+        .astro-button {{
+            display: inline-block;
+            background: #ffd700;
+            color: #2a1e3a;
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+            border: none;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+        }}
+        
+        .astro-button:hover {{
+            background: #ffed4a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 215, 0, 0.4);
+        }}
+        
+        .astro-button:active {{
             transform: translateY(0);
         }}
         
@@ -552,6 +679,24 @@ def generate_html(data):
                 min-width: 160px;
                 padding: 8px 20px;
                 font-size: 14px;
+            }}
+            
+            .astro-content {{
+                flex-direction: column;
+                text-align: center;
+            }}
+            
+            .astro-slogan {{
+                font-size: 16px;
+            }}
+            
+            .astro-description {{
+                font-size: 13px;
+            }}
+            
+            .astro-button {{
+                width: 100%;
+                padding: 10px 24px;
             }}
         }}
     </style>
