@@ -3,12 +3,14 @@ from bs4 import BeautifulSoup
 import json
 import os
 import re
+import time  # Добавлен импорт time для параметра before
 from datetime import datetime
 
-def get_last_posts(channel_name, limit=4):
-    """Получает несколько последних постов из Telegram канала"""
+def get_last_posts(channel_name, limit=6):
+    """Получает несколько последних постов из Telegram канала с обходом кэша"""
     try:
-        url = f"https://t.me/s/{channel_name}"
+        # Добавляем параметр before с текущим timestamp, чтобы получить свежую версию
+        url = f"https://t.me/s/{channel_name}?before={int(time.time())}"
         print(f"Парсинг {url}...")
         
         headers = {
