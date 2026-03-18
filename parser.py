@@ -590,7 +590,7 @@ def generate_html(data):
         
         <div class="footer">
             <div>Обновлено: {datetime.fromisoformat(data['parsed_at'].replace('Z', '+00:00')).strftime('%d.%m.%Y %H:%M')}</div>
-            <div style="margin-top: 4px;">🔄 Автообновление раз в сутки</div>
+            <div style="margin-top: 4px;">🔄 Автообновление каждые 30 минут</div>
         </div>
     </div>
     
