@@ -28,7 +28,7 @@
 3. Введите данные, полученные на сайте
 4. Нажмите кнопку **«Тест»**, затем **«Сохранить параметры»**
 
-![Настройки прокси в SmartTube](https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/ytboz.jpg)
+![Настройки прокси в SmartTube](https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/yt154.jpg)
 
 ## Где взять прокси
 Я покупаю прокси на сайте [proxys.io](https://proxys.io/?refid=355935) 
