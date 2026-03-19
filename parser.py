@@ -5,12 +5,11 @@ import os
 import re
 import time
 import random
-from datetime import datetime, timezone, timedelta  # Добавлен timedelta для сдвига часов
+from datetime import datetime, timezone, timedelta
 
 def get_last_posts(channel_name, limit=6):
     """Получает несколько последних постов из Telegram канала с обходом кэша"""
     try:
-        # Добавляем случайный параметр для обхода кэша
         url = f"https://t.me/s/{channel_name}?r={random.randint(1, 1000000)}&before={int(time.time())}"
         print(f"Парсинг {url}...")
         
@@ -32,36 +31,28 @@ def get_last_posts(channel_name, limit=6):
         
         soup = BeautifulSoup(response.text, 'html.parser')
         
-        # Находим все сообщения
         messages = soup.find_all('div', class_='tgme_widget_message')
         
         if not messages:
             print("Сообщения не найдены")
             return None
         
-        # Берем нужное количество последних постов
         posts = []
         for i, msg in enumerate(messages[:limit]):
-            # Извлекаем дату
             date_element = msg.find('time', class_='time')
             date = date_element['datetime'] if date_element else datetime.now(timezone.utc).isoformat()
             
-            # Извлекаем ссылку на пост
             link_element = msg.find('a', class_='tgme_widget_message_date')
             post_url = link_element['href'] if link_element else f"https://t.me/s/{channel_name}"
             
-            # Извлекаем просмотры
             views_element = msg.find('span', class_='tgme_widget_message_views')
             views = views_element.text if views_element else '0'
             
-            # Извлекаем ТЕКСТ поста и форматируем его красиво
             text_element = msg.find('div', class_='tgme_widget_message_text')
             raw_text = text_element.get_text() if text_element else ''
             
-            # Форматируем текст с переносами строк
             formatted_text = format_post_text(raw_text)
             
-            # Сохраняем HTML поста для кнопок
             post_html = str(msg)
             
             posts.append({
@@ -187,12 +178,9 @@ def generate_html(data):
     for i, post in enumerate(data['posts']):
         # Преобразуем дату из UTC в московское время (GMT+3)
         date_obj = datetime.fromisoformat(post['date'].replace('Z', '+00:00'))
-        # Убеждаемся, что у объекта есть информация о часовом поясе (UTC)
         if date_obj.tzinfo is None:
             date_obj = date_obj.replace(tzinfo=timezone.utc)
-        # Прибавляем 3 часа для получения московского времени
         moscow_time = date_obj + timedelta(hours=3)
-        # Форматируем для отображения
         formatted_date = moscow_time.strftime('%d.%m.%Y %H:%M')
         
         post_text = post['post_text']
@@ -234,10 +222,10 @@ def generate_html(data):
             </div>
         """
         
-        # Добавляем второй баннер после каждого 3-го поста (индекс 2, 5, 8...)
+        # Добавляем второй баннер после каждого 3-го поста
         if (i + 1) % 3 == 0:
             posts_html += f"""
-            <!-- Баннер Astroproxy (на всю ширину) -->
+            <!-- Баннер Astroproxy -->
             <div class="astro-banner" onclick="window.open('https://astroproxy.com/r/6b1442a44cbc36a3c277b86bb1f19e9b?lang=ru', '_blank')">
                 <div class="astro-image-container">
                     <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/astro.webp" 
@@ -414,7 +402,7 @@ def generate_html(data):
             transform: translateY(0);
         }}
         
-        /* Баннер Astroproxy (полная ширина, текст под картинкой) */
+        /* Баннер Astroproxy */
         .astro-banner {{
             width: 100%;
             margin: 16px 0;
@@ -655,14 +643,120 @@ def generate_html(data):
             background: #2b3945;
         }}
         
+        /* Блок со статьями (внизу, перед футером) */
+        .articles-section {{
+            margin: 30px 0 20px 0;
+        }}
+        
+        .articles-title {{
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffd700;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-left: 4px solid #ffd700;
+            padding-left: 10px;
+        }}
+        
+        .articles-grid {{
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }}
+        
+        /* Когда будет две статьи, они автоматически встанут в два столбца */
+        @media (min-width: 500px) and (max-width: 768px) {{
+            .articles-grid:has(.article-card:first-child:nth-last-child(2)) {{
+                grid-template-columns: 1fr 1fr;
+            }}
+        }}
+        
+        @media (min-width: 769px) {{
+            .articles-grid:has(.article-card:first-child:nth-last-child(2)) {{
+                grid-template-columns: 1fr 1fr;
+            }}
+        }}
+        
+        .article-card {{
+            background: linear-gradient(135deg, #1e2a36 0%, #1a2530 100%);
+            border-radius: 16px;
+            padding: 16px;
+            border: 1px solid #2b3945;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }}
+        
+        .article-card:hover {{
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            border-color: #2ea6ff;
+        }}
+        
+        .article-icon {{
+            font-size: 32px;
+            margin-bottom: 12px;
+        }}
+        
+        .article-title {{
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }}
+        
+        .article-excerpt {{
+            font-size: 13px;
+            color: #8e9eae;
+            margin-bottom: 16px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }}
+        
+        .article-link {{
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #2ea6ff;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            padding: 8px 0;
+            border-top: 1px solid #2b3945;
+            margin-top: 8px;
+        }}
+        
+        .article-link:hover {{
+            color: #ffd700;
+        }}
+        
+        .article-link span {{
+            font-size: 18px;
+        }}
+        
+        /* Футер */
         .footer {{
-            margin-top: 16px;
-            padding: 12px;
+            margin-top: 20px;
+            padding: 16px;
             background: #1e2a36;
-            border-radius: 8px;
+            border-radius: 12px;
             text-align: center;
             font-size: 11px;
             color: #8e9eae;
+        }}
+        
+        .github-link {{
+            color: #8e9eae;
+            text-decoration: none;
+            border-bottom: 1px dotted #4a5a6a;
+            transition: all 0.2s;
+        }}
+        
+        .github-link:hover {{
+            color: #2ea6ff;
+            border-bottom-color: #2ea6ff;
         }}
         
         @media (max-width: 480px) {{
@@ -712,6 +806,10 @@ def generate_html(data):
                 font-size: 15px;
                 width: 100%;
             }}
+            
+            .article-title {{
+                font-size: 16px;
+            }}
         }}
     </style>
 </head>
@@ -747,9 +845,43 @@ def generate_html(data):
             {posts_html}
         </div>
         
+        <!-- БЛОК СО СТАТЬЯМИ (ДОБАВЛЯЙ НОВЫЕ КАРТОЧКИ ЗДЕСЬ) -->
+        <div class="articles-section">
+            <div class="articles-title">📚 Полезные материалы</div>
+            <div class="articles-grid">
+                <!-- Карточка статьи 1 -->
+                <div class="article-card">
+                    <div class="article-icon">📖</div>
+                    <div class="article-title">Как использовать прокси вместо технологии из "трёх букв"</div>
+                    <div class="article-excerpt">Настройка SOCKS5 на Android, SmartTube для Android TV и где купить прокси за 50₽ в месяц.</div>
+                    <a href="/articles/kak-ispolzovat-proksi.html" class="article-link">
+                        <span>→</span> Читать статью
+                    </a>
+                </div>
+                
+                <!-- 
+                ⭐ КОГДА БУДЕТ ВТОРАЯ СТАТЬЯ, ПРОСТО РАСКОММЕНТИРУЙ ЭТОТ БЛОК:
+                
+                <div class="article-card">
+                    <div class="article-icon">📺</div>
+                    <div class="article-title">Название второй статьи</div>
+                    <div class="article-excerpt">Краткое описание второй статьи на две строки...</div>
+                    <a href="/articles/vtoraya-statya.html" class="article-link">
+                        <span>→</span> Читать статью
+                    </a>
+                </div>
+                -->
+            </div>
+        </div>
+        
+        <!-- ФУТЕР С АККУРАТНОЙ ССЫЛКОЙ НА GITHUB -->
         <div class="footer">
             <div>Обновлено: {formatted_parsed} (МСК)</div>
-            <div style="margin-top: 4px;">🔄 Автообновление каждые 30 минут</div>
+            <div style="margin-top: 4px;">
+                <a href="https://github.com/blog1703/tgonline" class="github-link" target="_blank" rel="noopener noreferrer">
+                    🐙 Исходный код на GitHub
+                </a>
+            </div>
         </div>
     </div>
     
