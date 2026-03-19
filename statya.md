@@ -19,6 +19,7 @@
 Теперь расскажу, как настроить просмотр YouTube на Android TV через прокси.
 
 ![YouTube на Android TV](https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/yu2.jpeg)
+
 Для этого нужно установить приложение **SmartTube**:
 - Скачать можно на [4PDA](https://4pda.to/forum/index.php?showtopic=1031453&st=18860)
 - Свежую версию также публикуют в Telegram-канале разработчика (ссылка есть в описании)
