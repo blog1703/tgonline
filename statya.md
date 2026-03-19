@@ -12,7 +12,7 @@
 
 4. Введите данные, которые вы купили на сайте [proxys.io](https://proxys.io/?refid=355935). Вот так будет выглядеть готовая конфигурация:
 
-``![Пример заполненной конфигурации](https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/2ray.jpg)
+![Пример заполненной конфигурации](https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/2ray.jpg)
 
 5. Нажмите кнопку **«Подключиться»**. После этого приложение будет работать как та самая технология из "трёх букв", и вы сможете заходить на любые сайты.
 ## Как смотреть YouTube на Android TV
