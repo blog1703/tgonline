@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta name="theme-color" content="#17212b">
+    <title>Как использовать прокси вместо VPN в 2026 | TGOnline</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #0b141a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px;
+            color: #fff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .article-card {
+            background: #17212b;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border: 1px solid #2b3945;
+        }
+        
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2ea6ff;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        h2 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #ffd700;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #2b3945;
+        }
+        
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2ea6ff;
+            margin: 20px 0 10px 0;
+        }
+        
+        p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #e0e0e0;
+            margin-bottom: 16px;
+        }
+        
+        .note-box {
+            background: #1e3c5a;
+            border-left: 4px solid #2ea6ff;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .note-box p {
+            margin-bottom: 0;
+            color: #fff;
+        }
+        
+        .image-container {
+            margin: 25px 0;
+            text-align: center;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            border-radius: 12px;
+            border: 1px solid #2b3945;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .image-caption {
+            font-size: 13px;
+            color: #8e9eae;
+            margin-top: 8px;
+        }
+        
+        ul, ol {
+            color: #e0e0e0;
+            margin: 15px 0 15px 25px;
+            line-height: 1.7;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        a {
+            color: #2ea6ff;
+            text-decoration: none;
+            border-bottom: 1px dotted #2ea6ff;
+        }
+        
+        a:hover {
+            color: #ffd700;
+            border-bottom-color: #ffd700;
+        }
+        
+        .button {
+            display: inline-block;
+            background: linear-gradient(135deg, #1e3c5a 0%, #2b4f72 100%);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            border: 1px solid #3a6d99;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            margin: 15px 0;
+            transition: all 0.2s;
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(46, 166, 255, 0.4);
+            border-bottom: 1px solid #3a6d99;
+        }
+        
+        .ref-link {
+            background: #1e2a36;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: monospace;
+            word-break: break-all;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #2b3945;
+            text-align: center;
+            color: #8e9eae;
+            font-size: 14px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #8e9eae;
+            text-decoration: none;
+        }
+        
+        .back-link:hover {
+            color: #2ea6ff;
+        }
+        
+        hr {
+            border: none;
+            height: 1px;
+            background: #2b3945;
+            margin: 30px 0;
+        }
+        
+        @media (max-width: 480px) {
+            .article-card {
+                padding: 16px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            h2 {
+                font-size: 20px;
+            }
+            
+            p {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="https://telegaonline.vercel.app" class="back-link">← На главную</a>
+        
+        <div class="article-card">
+            <h1>Как использовать прокси вместо технологии из "трёх букв"</h1>
+            
+            <p>В России многие технологии из "трёх букв" стали недоступны, но есть рабочие альтернативы. В этой статье расскажу, как я использую протокол SOCKS5 — да, его тоже пытаются блокировать, но у меня лично он работает на домашнем интернете и 50 на 50 — на мобильном.</p>
+            
+            <h2>Настройка прокси на телефоне (Android)</h2>
+            
+            <ol>
+                <li>Скачайте в Google Play приложение <strong>V2BOX</strong> от компании HexaSoftware.</li>
+                <li>После установки откройте приложение и перейдите в раздел <strong>Конфигурации</strong>.</li>
+                <li>Вверху нажмите <strong>«+»</strong> и выберите <strong>«Добавить ручную конфигурацию»</strong>.</li>
+            </ol>
+            
+            <p>Там можно выбрать разные протоколы — VLESS, Trojan, SSH, WireGuard и многие другие. Но нас интересует <strong>SOCKS5</strong>.</p>
+            
+            <p>4. Введите данные, которые вы купили на сайте <a href="https://proxys.io/?refid=355935" target="_blank">proxys.io</a>. Вот так будет выглядеть готовая конфигурация:</p>
+            
+            <div class="image-container">
+                <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/2ray.jpg" alt="Пример заполненной конфигурации">
+                <div class="image-caption">Пример настройки SOCKS5 в V2BOX</div>
+            </div>
+            
+            <p>5. Нажмите кнопку <strong>«Подключиться»</strong>. После этого приложение будет работать как та самая технология из "трёх букв", и вы сможете заходить на любые сайты.</p>
+            
+            <h2>Как смотреть YouTube на Android TV</h2>
+            
+            <p>Теперь расскажу, как настроить просмотр YouTube на Android TV через прокси.</p>
+            
+            <div class="image-container">
+                <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/yu2.jpeg" alt="YouTube на Android TV">
+                <div class="image-caption">SmartTube на Android TV</div>
+            </div>
+            
+            <p>Нужно установить приложение <strong>SmartTube</strong>:</p>
+            <ul>
+                <li>Скачать можно на <a href="https://4pda.to/forum/index.php?showtopic=1031453&st=18860" target="_blank">4PDA</a></li>
+                <li>Свежую версию также публикуют в Telegram-канале разработчика (ссылка есть в описании)</li>
+            </ul>
+            
+            <p><strong>Настройка прокси в SmartTube:</strong></p>
+            <ol>
+                <li>Зайдите в <strong>Настройки</strong> → <strong>Общие</strong> → <strong>Интернет-цензура</strong></li>
+                <li>Поставьте галочку <strong>«Использовать веб-прокси»</strong></li>
+                <li>Введите данные, полученные на сайте</li>
+                <li>Нажмите кнопку <strong>«Тест»</strong>, затем <strong>«Сохранить параметры»</strong></li>
+            </ol>
+            
+            <div class="image-container">
+                <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/yt154.jpg" alt="Настройки прокси в SmartTube">
+                <div class="image-caption">Настройка прокси в SmartTube</div>
+            </div>
+            
+            <h2>Где взять прокси</h2>
+            
+            <p>Я покупаю прокси на сайте <a href="https://proxys.io/?refid=355935" target="_blank">proxys.io</a>
+            
+            
+            <p>Выбираю раздел <strong>Серверные прокси</strong> → <strong>Расшаренные IPv4 (3 пользователя)</strong>. Цена — всего <strong>ниже 50 рублей в месяц</strong>.</p>
+            
+            <p>При этом дают доступ к протоколам HTTP и SOCKS5, а пользы от прокси очень много.</p>
+            
+            <hr>
+            
+            <div class="note-box">
+                <p><strong>⚠️ Важное примечание:</strong> Статья и методы не являются 100% рабочими. Всё зависит от вашего провайдера и региона. Но пока что лично у меня работает — можно пользоваться.</p>
+                <p style="margin-top: 10px;">Рассказал, чем пользуюсь сам. Надеюсь, статья будет кому-то полезна.</p>
+            </div>
+            
+            <p style="text-align: center; font-size: 18px; margin-top: 30px;"><strong>Спасибо за внимание!</strong></p>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://telegaonline.vercel.app" class="button">🏠 На главную с прокси</a>
+            </div>
+            
+            <div class="footer">
+                TGOnline — рабочие прокси для Telegram | <a href="https://telegaonline.vercel.app">telegaonline.vercel.app</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
