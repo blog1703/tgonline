@@ -258,7 +258,7 @@ def generate_html(data):
     <!-- Open Graph / Социальные превью -->
     <meta property="og:title" content="MTProto Proxy — рабочие прокси для Telegram">
     <meta property="og:description" content="Свежие MTProto прокси из канала @ProxyMTProto. Обновление каждые 30 минут. Работает в РФ без VPN.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/preview.jpg">
+    <meta property="og:image" content="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/preview.png">
     <meta property="og:url" content="https://telegaonline.vercel.app">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="TGOnline">
