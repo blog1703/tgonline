@@ -854,7 +854,7 @@ def generate_html(data):
                     <div class="article-icon">📖</div>
                     <div class="article-title">Как использовать прокси вместо технологии из "трёх букв"</div>
                     <div class="article-excerpt">Настройка SOCKS5 на Android, SmartTube для Android TV и где купить прокси за 50₽ в месяц.</div>
-                    <a href="/articles/kak-ispolzovat-proksi.html" class="article-link">
+                    <a href="/tgonline/articles/kak-ispolzovat-proksi.html" class="article-link">
                         <span>→</span> Читать статью
                     </a>
                 </div>
