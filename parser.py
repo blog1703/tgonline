@@ -8,7 +8,6 @@ import random
 from datetime import datetime, timezone, timedelta
 
 def get_last_posts(channel_name, limit=6):
-    """Получает несколько последних постов из Telegram канала с обходом кэша"""
     try:
         url = f"https://t.me/s/{channel_name}?r={random.randint(1, 1000000)}&before={int(time.time())}"
         print(f"Парсинг {url}...")
@@ -77,7 +76,6 @@ def get_last_posts(channel_name, limit=6):
         return {'success': False, 'error': str(e)}
 
 def format_post_text(text):
-    """Форматирует текст поста с правильными переносами строк"""
     if '\n' in text:
         return text
     
@@ -90,7 +88,6 @@ def format_post_text(text):
     return text
 
 def extract_connect_buttons(post_html):
-    """Извлекает только кнопки Connect из HTML поста"""
     try:
         soup = BeautifulSoup(post_html, 'html.parser')
         buttons = soup.find_all('a', class_='tgme_widget_message_inline_button')
@@ -107,7 +104,6 @@ def extract_connect_buttons(post_html):
         return post_html
 
 def generate_html(data):
-    """Создает HTML страницу с лентой постов"""
     
     if not data or not data.get('success'):
         html = f"""<!DOCTYPE html>
@@ -176,7 +172,6 @@ def generate_html(data):
     
     posts_html = ""
     for i, post in enumerate(data['posts']):
-        # Преобразуем дату из UTC в московское время (GMT+3)
         date_obj = datetime.fromisoformat(post['date'].replace('Z', '+00:00'))
         if date_obj.tzinfo is None:
             date_obj = date_obj.replace(tzinfo=timezone.utc)
@@ -222,10 +217,8 @@ def generate_html(data):
             </div>
         """
         
-        # Добавляем второй баннер после каждого 3-го поста
         if (i + 1) % 3 == 0:
             posts_html += f"""
-            <!-- Баннер Astroproxy -->
             <div class="astro-banner" onclick="window.open('https://astroproxy.com/r/6b1442a44cbc36a3c277b86bb1f19e9b?lang=ru', '_blank')">
                 <div class="astro-image-container">
                     <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/astro.webp" 
@@ -247,7 +240,6 @@ def generate_html(data):
             </div>
             """
     
-    # Преобразуем время последнего обновления в московское
     parsed_at = datetime.fromisoformat(data['parsed_at'].replace('Z', '+00:00'))
     if parsed_at.tzinfo is None:
         parsed_at = parsed_at.replace(tzinfo=timezone.utc)
@@ -263,6 +255,20 @@ def generate_html(data):
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-capable" content="yes">
     
+    <!-- Open Graph / Социальные превью -->
+    <meta property="og:title" content="MTProto Proxy — рабочие прокси для Telegram">
+    <meta property="og:description" content="Свежие MTProto прокси из канала @ProxyMTProto. Обновление каждые 30 минут. Работает в РФ без VPN.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/preview.jpg">
+    <meta property="og:url" content="https://telegaonline.vercel.app">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TGOnline">
+    
+    <!-- Для Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MTProto Proxy — рабочие прокси для Telegram">
+    <meta name="twitter:description" content="Свежие MTProto прокси из канала @ProxyMTProto. Работает в РФ без VPN.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/preview.jpg">
+    
     <title>MTProto Proxy | Рабочие прокси для Telegram</title>
     
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -270,6 +276,7 @@ def generate_html(data):
     <link rel="apple-touch-icon" href="favicon.ico">
     
     <style>
+        /* Все твои стили остаются без изменений */
         * {{
             box-sizing: border-box;
             margin: 0;
@@ -329,7 +336,6 @@ def generate_html(data):
             color: #fff;
         }}
         
-        /* Полноразмерный баннер (Proxy Market) */
         .full-banner {{
             width: 100%;
             margin-bottom: 24px;
@@ -402,7 +408,6 @@ def generate_html(data):
             transform: translateY(0);
         }}
         
-        /* Баннер Astroproxy */
         .astro-banner {{
             width: 100%;
             margin: 16px 0;
@@ -643,7 +648,6 @@ def generate_html(data):
             background: #2b3945;
         }}
         
-        /* Блок со статьями (внизу, перед футером) */
         .articles-section {{
             margin: 30px 0 20px 0;
         }}
@@ -665,7 +669,6 @@ def generate_html(data):
             gap: 16px;
         }}
         
-        /* Когда будет две статьи, они автоматически встанут в два столбца */
         @media (min-width: 500px) and (max-width: 768px) {{
             .articles-grid:has(.article-card:first-child:nth-last-child(2)) {{
                 grid-template-columns: 1fr 1fr;
@@ -736,7 +739,6 @@ def generate_html(data):
             font-size: 18px;
         }}
         
-        /* Футер */
         .footer {{
             margin-top: 20px;
             padding: 16px;
@@ -824,7 +826,6 @@ def generate_html(data):
             <span class="info-compact-text">🔒 Нажми Connect → Открой в Telegram → Проверь статус прокси → Подключить прокси</span>
         </div>
         
-        <!-- Полноразмерный баннер с компактной кнопкой -->
         <div class="full-banner" onclick="window.open('https://ru.dashboard.proxy.market/?ref=E000143973', '_blank')">
             <div class="banner-image-container">
                 <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/banner_pm.webp" 
@@ -845,36 +846,20 @@ def generate_html(data):
             {posts_html}
         </div>
         
-        <!-- БЛОК СО СТАТЬЯМИ (ДОБАВЛЯЙ НОВЫЕ КАРТОЧКИ ЗДЕСЬ) -->
         <div class="articles-section">
             <div class="articles-title">📚 Полезные материалы</div>
             <div class="articles-grid">
-                <!-- Карточка статьи 1 -->
                 <div class="article-card">
                     <div class="article-icon">📖</div>
                     <div class="article-title">Как использовать прокси вместо технологии из "трёх букв"</div>
                     <div class="article-excerpt">Настройка SOCKS5 на Android, SmartTube для Android TV и где купить прокси за 50₽ в месяц.</div>
-                    <a href="articles/kak-ispolzovat-proksi.html" class="article-link">
+                    <a href="/articles/kak-ispolzovat-proksi.html" class="article-link">
                         <span>→</span> Читать статью
                     </a>
                 </div>
-                
-                <!-- 
-                ⭐ КОГДА БУДЕТ ВТОРАЯ СТАТЬЯ, ПРОСТО РАСКОММЕНТИРУЙ ЭТОТ БЛОК:
-                
-                <div class="article-card">
-                    <div class="article-icon">📺</div>
-                    <div class="article-title">Название второй статьи</div>
-                    <div class="article-excerpt">Краткое описание второй статьи на две строки...</div>
-                    <a href="/articles/vtoraya-statya.html" class="article-link">
-                        <span>→</span> Читать статью
-                    </a>
-                </div>
-                -->
             </div>
         </div>
         
-        <!-- ФУТЕР С АККУРАТНОЙ ССЫЛКОЙ НА GITHUB -->
         <div class="footer">
             <div>Обновлено: {formatted_parsed} (МСК)</div>
             <div style="margin-top: 4px;">
