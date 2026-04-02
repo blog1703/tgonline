@@ -871,16 +871,16 @@ def generate_html(data):
     </div>
     
     <script type="text/javascript">
-    var sc_project=13211351; 
+    var sc_project=13213961; 
     var sc_invisible=0; 
-    var sc_security="28a55aa9"; 
+    var sc_security="6a332efc"; 
     var scJsHost = "https://";
     document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
     "statcounter.com/counter/counter.js'></"+"script>");
     </script>
     <noscript><div class="statcounter"><a title="Web Analytics Made Easy -
     Statcounter" href="https://statcounter.com/" target="_blank"><img
-    class="statcounter" src="https://c.statcounter.com/13211351/0/28a55aa9/1/"
+    class="statcounter" src="https://c.statcounter.com/13213961/0/6a332efc/1/"
     alt="Web Analytics Made Easy - Statcounter"
     referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
     
