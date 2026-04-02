@@ -34,7 +34,6 @@
             padding: 20px;
         }
         
-        /* Стили капчи */
         .captcha-container {
             background: #17212b;
             border-radius: 24px;
@@ -119,7 +118,6 @@
             display: none;
         }
         
-        /* Стили основного контента */
         .main-content {
             max-width: 700px;
             margin: 0 auto;
@@ -510,6 +508,7 @@
             
             <div class="warning-box">
                 <p><strong>Важно:</strong> Не выполняйте скрипт на локальной машине в РФ — из-за блокировок DNS запросы не пройдут. Codespaces (сервера GitHub за границей) идеально подходят для этой задачи.</p>
+                <p style="margin-top: 10px;"><strong>Что даёт этот метод:</strong> Доступ к заблокированным ресурсам — Twitter, Instagram, YouTube, Facebook и другим сайтам, которые недоступны с территории РФ без обхода. Данный метод <strong>не обходит «белый список»</strong>, он работает только для уже заблокированных сайтов.</p>
             </div>
             
             <h2>GitHub Codespaces — пошаговая инструкция</h2>
@@ -546,6 +545,7 @@
             
             <div class="note-box">
                 <p><strong>Скачать AmneziaVPN:</strong> <a href="https://wiki.malw.link/network/vpns/amneziavpn" target="_blank">https://wiki.malw.link/network/vpns/amneziavpn</a><br>
+                <p><strong>Скачать AmneziaVPN c GitHub вкладка Releases:</strong> <a href="https://github.com/amnezia-vpn/amnezia-client" target="_blank">https://github.com/amnezia-vpn/amnezia-client</a><br>
                 AmneziaVPN — это клиент с открытым исходным кодом, поддерживающий различные протоколы. Конфиг, сгенерированный скриптом, работает через протокол WireGuard, который используется Cloudflare WARP.</p>
             </div>
             
@@ -565,7 +565,7 @@
                 <div class="image-caption">Нажмите на изображение, чтобы увеличить — меню удаления Codespace: три точки → Delete</div>
             </div>
             
-            <!-- НОВЫЙ БЛОК ПРО AmneziaWG (после удаления Codespace) -->
+            <!-- БЛОК ПРО AmneziaWG -->
             <h2>Альтернативный способ: AmneziaWG (нативный клиент)</h2>
             
             <p>Если вы не хотите использовать AmneziaVPN, есть ещё один вариант — <strong>AmneziaWG</strong>. Это отдельный клиент, созданный специально для протокола WireGuard с усилением (амнезия-режим). Он легче, быстрее и делает трафик ещё более незаметным для DPI.</p>
@@ -584,27 +584,32 @@
                     <th>Платформа</th>
                     <th>Ссылка</th>
                     <th>Что скачать</th>
-                </tr>
+                 </tr>
                 <tr>
                     <td><strong>Windows</strong></td>
                     <td><a href="https://github.com/amnezia-vpn/amneziawg-windows-client" target="_blank">amneziawg-windows-client</a></td>
                     <td>Releases → <strong>.msi</strong> файл</td>
-                </tr>
+                 </tr>
                 <tr>
                     <td><strong>Android</strong></td>
                     <td><a href="https://github.com/amnezia-vpn/amneziawg-android" target="_blank">amneziawg-android</a></td>
                     <td>Releases → <strong>.apk</strong> файл</td>
-                </tr>
-            </table>
+                 </tr>
+                <tr>
+                    <td><strong>Linux</strong></td>
+                    <td><a href="https://github.com/amnezia-vpn/amneziawg-linux-kernel-module" target="_blank">amneziawg-linux-kernel-module</a></td>
+                    <td>Сборка из исходников или модуль ядра</td>
+                 </tr>
+             </table>
             
-            <p><strong>Linux</strong> и <strong>macOS</strong> поддерживаются через официальные репозитории AmneziaVPN или сборку из исходников.</p>
+            <p><strong>macOS</strong> поддерживается через официальные репозитории AmneziaVPN или сборку из исходников.</p>
             
             <h3>Как получить конфиг для AmneziaWG</h3>
             
             <p>AmneziaWG использует конфигурационный файл в формате <strong>.conf</strong>. Получить его очень просто:</p>
             
             <ol>
-                <li>Откройте любой поисковик (Google, Yandex)</li>
+                <li>Откройте любой поисковик (Google, DuckDuckGo)</li>
                 <li>Введите запрос: <strong><code>warp amneziawg generator</code></strong></li>
                 <li>Перейдите по одной из первых ссылок (обычно это страницы на Vercel или GitHub Pages)</li>
                 <li>Нажмите кнопку <strong>«Генерация»</strong> или <strong>«Скачать конфиг»</strong></li>
@@ -619,15 +624,16 @@
             <p><strong>Android:</strong><br>
             Откройте приложение → нажмите на кнопку «+» → выберите «Импорт из файла» → укажите .conf файл → Подключиться</p>
             
+            <p><strong>Linux:</strong><br>
+            Установите модуль ядра и используйте утилиту <code>wg-quick</code> с файлом .conf</p>
+            
             <p>После подключения вы получите тот же защищённый канал через Cloudflare WARP, но с более лёгким и специализированным клиентом.</p>
-            <!-- КОНЕЦ НОВОГО БЛОКА -->
             
             <hr>
             
             <div class="success-box">
                 <p><strong>Готово!</strong> После импорта конфига в AmneziaVPN или AmneziaWG вы сможете пользоваться быстрым и безопасным интернетом через Cloudflare WARP. Все шаги проверены и работают.</p>
             </div>
-            
             
             <div style="text-align: center; margin-top: 30px;">
                 <a href="https://telegaonline.vercel.app" class="button">На главную</a>
