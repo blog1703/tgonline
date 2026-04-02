@@ -11,7 +11,7 @@
     <meta name="yandex" content="noindex, nofollow, noarchive">
     <meta name="bingbot" content="noindex, nofollow">
     
-    <!-- Запрет кэширования -->
+    <!-- Запрет кэширования (исправлено) -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
@@ -135,6 +135,7 @@
             border: 1px solid #2b3945;
         }
         
+        /* Исправление тёмного текста — все тексты светлые */
         h1 {
             font-size: 28px;
             font-weight: 700;
@@ -159,11 +160,16 @@
             margin: 20px 0 10px 0;
         }
         
+        p, li, .step-title, .image-caption, .footer, .back-link {
+            color: #e0e0e0;
+        }
+        
         p {
             font-size: 16px;
             line-height: 1.7;
-            color: #e0e0e0;
             margin-bottom: 16px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         
         .note-box {
@@ -200,9 +206,25 @@
             margin: 20px 0;
         }
         
+        .disclaimer-box {
+            background: #2a2a2a;
+            border-left: 4px solid #888;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 20px 0 25px 0;
+            font-size: 13px;
+        }
+        
+        .disclaimer-box p {
+            margin-bottom: 0;
+            color: #cccccc;
+            font-size: 13px;
+        }
+        
         .image-container {
             margin: 25px 0;
             text-align: center;
+            cursor: pointer;
         }
         
         .image-container img {
@@ -210,6 +232,12 @@
             border-radius: 12px;
             border: 1px solid #2b3945;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .image-container img:hover {
+            transform: scale(1.02);
         }
         
         .image-caption {
@@ -218,20 +246,16 @@
             margin-top: 8px;
         }
         
-        ul, ol {
-            color: #e0e0e0;
-            margin: 15px 0 15px 25px;
-            line-height: 1.7;
-        }
-        
-        li {
-            margin-bottom: 8px;
-        }
-        
+        /* Стили для ссылок — не выходят за экран */
         a {
             color: #2ea6ff;
             text-decoration: none;
             border-bottom: 1px dotted #2ea6ff;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-all;
+            display: inline-block;
+            max-width: 100%;
         }
         
         a:hover {
@@ -252,6 +276,16 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             margin: 15px 0;
             transition: all 0.2s;
+            word-break: normal;
+            white-space: nowrap;
+        }
+        
+        @media (max-width: 480px) {
+            .button {
+                white-space: normal;
+                padding: 10px 20px;
+                font-size: 14px;
+            }
         }
         
         .button:hover {
@@ -325,6 +359,7 @@
             margin-bottom: 20px;
             color: #8e9eae;
             text-decoration: none;
+            word-break: normal;
         }
         
         .back-link:hover {
@@ -354,6 +389,45 @@
             height: 1px;
             background: #2b3945;
             margin: 30px 0;
+        }
+        
+        /* Модальное окно для увеличенных изображений */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            z-index: 10000;
+        }
+        
+        .modal-close:hover {
+            color: #2ea6ff;
         }
         
         @media (max-width: 480px) {
@@ -397,6 +471,11 @@
         <a href="https://telegaonline.vercel.app" class="back-link">← На главную</a>
         
         <div class="article-card">
+            <!-- Дисклеймер в начале статьи -->
+            <div class="disclaimer-box">
+                <p><strong>ℹ️ Информационное сообщение:</strong> Данный материал носит исключительно ознакомительный и технический характер. Автор не несёт ответственности за использование представленной информации. Все действия вы совершаете на свой страх и риск.</p>
+            </div>
+            
             <h1>☁️ Доступный интернет всем: создаём конфиг Cloudflare WARP для AmneziaVPN бесплатно</h1>
             
             <p>Этот bash-скрипт сгенерирует конфиг Cloudflare WARP для AmneziaVPN. <strong>Не стоит выполнять его локально</strong>, так как РКН заблокировал запросы для получения конфига. Вместо этого лучше выполнять на удалённых серверах или в GitHub Codespaces.</p>
@@ -413,9 +492,9 @@
             <div class="step-title"><span class="step-number">2</span> Создаём Codespace</div>
             <p>Введите учётные данные GitHub (потребуется авторизация, если вы не вошли в аккаунт). Нажмите <span class="inline-code">Create codespace on main</span> и дождитесь загрузки среды. Обычно это занимает 10–30 секунд.</p>
             
-            <div class="image-container">
+            <div class="image-container" onclick="openModal(this.querySelector('img'))">
                 <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/consoletreminal.png" alt="Консоль терминала Codespaces" onerror="this.style.display='none'">
-                <div class="image-caption">Терминал внизу экрана после загрузки Codespaces</div>
+                <div class="image-caption">📷 Нажмите на изображение, чтобы увеличить — терминал внизу экрана после загрузки Codespaces</div>
             </div>
             
             <div class="step-title"><span class="step-number">3</span> Запускаем генератор конфига</div>
@@ -429,9 +508,9 @@
             <div class="step-title"><span class="step-number">4</span> Копируем готовый конфиг</div>
             <p>После того, как конфиг сгенерируется, скопируйте его — можно сохранить на рабочем столе в текстовом файле .txt или сразу в буфер обмена. Конфигурация будет представлена в формате, совместимом с AmneziaVPN.</p>
             
-            <div class="image-container">
+            <div class="image-container" onclick="openModal(this.querySelector('img'))">
                 <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/copykey.png" alt="Копируем ключ конфигурации" onerror="this.style.display='none'">
-                <div class="image-caption">Выделите вывод терминала и скопируйте конфиг</div>
+                <div class="image-caption">📷 Нажмите на изображение, чтобы увеличить — выделите вывод терминала и скопируйте конфиг</div>
             </div>
             
             <div class="step-title"><span class="step-number">5</span> Импортируем в AmneziaVPN</div>
@@ -453,26 +532,20 @@
                 <li>GitHub удаляет Codespaces автоматически через некоторое время бездействия, но лучше удалить сразу, чтобы не тратить бесплатные часы.</li>
             </ul>
             
-            <div class="image-container">
+            <div class="image-container" onclick="openModal(this.querySelector('img'))">
                 <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/deletewarp.png" alt="Удаление Codespace" onerror="this.style.display='none'">
-                <div class="image-caption">Меню удаления Codespace — три точки → Delete</div>
+                <div class="image-caption">📷 Нажмите на изображение, чтобы увеличить — меню удаления Codespace: три точки → Delete</div>
             </div>
             
             <hr>
             
             <div class="success-box">
-                <p><strong>✅ Готово!</strong> После импорта конфига в AmneziaVPN вы сможете пользоваться быстрым и безопасным интернетом через Cloudflare WARP. Все шаги проверены и работают на 2026 год.</p>
+                <p><strong>✅ Готово!</strong> После импорта конфига в AmneziaVPN вы сможете пользоваться быстрым и безопасным интернетом через Cloudflare WARP. Все шаги проверены и работают.</p>
             </div>
             
             <div class="note-box">
-                <p><strong>💡 Важное примечание:</strong> Сгенерированный конфиг работает именно в AmneziaVPN. Он использует протокол WireGuard (на котором построен Cloudflare WARP), но формат конфигурации оптимизирован для AmneziaVPN. Конфиг не является стандартным WireGuard-конфигом и не будет работать в обычных WireGuard-клиентах.</p>
+                <p><strong>💡 Важное примечание:</strong> Сгенерированный конфиг работает именно в AmneziaVPN. Он использует протокол WireGuard (на котором построен Cloudflare WARP), но формат конфигурации оптимизирован для AmneziaVPN.</p>
             </div>
-            
-            <div class="warning-box">
-                <p><strong>⚠️ Обратите внимание:</strong> Статья и методы не являются 100% гарантией работы. Всё зависит от вашего провайдера и региона. Но на данный момент способ рабочий и активно используется.</p>
-            </div>
-            
-            <p style="text-align: center; font-size: 18px; margin-top: 30px;"><strong>Спасибо за внимание! Интернет должен быть свободным 🌐</strong></p>
             
             <div style="text-align: center; margin-top: 30px;">
                 <a href="https://telegaonline.vercel.app" class="button">🏠 На главную</a>
@@ -482,6 +555,12 @@
                 TGOnline — рабочие прокси и VPN | <a href="https://telegaonline.vercel.app">telegaonline.vercel.app</a>
             </div>
         </div>
+    </div>
+    
+    <!-- Модальное окно для увеличенных изображений -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
     </div>
     
     <script>
@@ -567,6 +646,27 @@
                 toast.remove();
             }, 2000);
         }
+        
+        function openModal(imgElement) {
+            if (!imgElement || !imgElement.src) return;
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = 'flex';
+            modalImg.src = imgElement.src;
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
         
         window.onload = function() {
             const captchaPassed = localStorage.getItem('captcha_passed');
