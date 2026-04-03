@@ -4,7 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <meta name="theme-color" content="#17212b">
-    <title>Как использовать прокси вместо VPN в 2026 | TGOnline</title>
+    
+    <!-- Запрет индексации поисковиками -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <meta name="googlebot" content="noindex, nofollow, noarchive">
+    <meta name="yandex" content="noindex, nofollow, noarchive">
+    <meta name="bingbot" content="noindex, nofollow">
+    
+    <!-- Запрет кэширования -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
+    <title>Как использовать прокси вместо VPN | TGOnline</title>
     <style>
         * {
             box-sizing: border-box;
@@ -70,6 +82,21 @@
             margin-bottom: 16px;
         }
         
+        .disclaimer-box {
+            background: #2a2a2a;
+            border-left: 4px solid #888;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 20px 0 25px 0;
+            font-size: 13px;
+        }
+        
+        .disclaimer-box p {
+            margin-bottom: 0;
+            color: #cccccc;
+            font-size: 13px;
+        }
+        
         .note-box {
             background: #1e3c5a;
             border-left: 4px solid #2ea6ff;
@@ -83,9 +110,18 @@
             color: #fff;
         }
         
+        .warning-box {
+            background: #4a2e2e;
+            border-left: 4px solid #ff9800;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
         .image-container {
             margin: 25px 0;
             text-align: center;
+            cursor: pointer;
         }
         
         .image-container img {
@@ -93,6 +129,12 @@
             border-radius: 12px;
             border: 1px solid #2b3945;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .image-container img:hover {
+            transform: scale(1.02);
         }
         
         .image-caption {
@@ -115,6 +157,8 @@
             color: #2ea6ff;
             text-decoration: none;
             border-bottom: 1px dotted #2ea6ff;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         
         a:hover {
@@ -141,15 +185,6 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(46, 166, 255, 0.4);
             border-bottom: 1px solid #3a6d99;
-        }
-        
-        .ref-link {
-            background: #1e2a36;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 0;
-            font-family: monospace;
-            word-break: break-all;
         }
         
         .footer {
@@ -179,6 +214,43 @@
             margin: 30px 0;
         }
         
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            z-index: 10000;
+        }
+        
+        .modal-close:hover {
+            color: #2ea6ff;
+        }
+        
         @media (max-width: 480px) {
             .article-card {
                 padding: 16px;
@@ -203,9 +275,14 @@
         <a href="https://telegaonline.vercel.app" class="back-link">← На главную</a>
         
         <div class="article-card">
-            <h1>Как использовать прокси вместо технологии из "трёх букв"</h1>
+            <!-- Дисклеймер в начале статьи -->
+            <div class="disclaimer-box">
+                <p><strong>Информационное сообщение:</strong> Данный материал носит исключительно ознакомительный и технический характер. Автор не несёт ответственности за использование представленной информации. Все действия вы совершаете на свой страх и риск.</p>
+            </div>
             
-            <p>В России многие технологии из "трёх букв" стали недоступны, но есть рабочие альтернативы. В этой статье расскажу, как я использую протокол SOCKS5 — да, его тоже пытаются блокировать, но у меня лично он работает на домашнем интернете и 50 на 50 — на мобильном.</p>
+            <h1>Как использовать прокси для доступа к интернету</h1>
+            
+            <p>В этой статье расскажу, как я использую протокол SOCKS5 — да, его тоже пытаются блокировать, но у меня лично он работает на домашнем интернете и 50 на 50 — на мобильном.</p>
             
             <h2>Настройка прокси на телефоне (Android)</h2>
             
@@ -217,70 +294,93 @@
             
             <p>Там можно выбрать разные протоколы — VLESS, Trojan, SSH, WireGuard и многие другие. Но нас интересует <strong>SOCKS5</strong>.</p>
             
-            <p>4. Введите данные, которые вы купили на сайте <a href="https://proxys.io/?refid=355935" target="_blank">proxys.io</a>. Вот так будет выглядеть готовая конфигурация:</p>
+            <p>4. Введите данные прокси-сервера. Вот так будет выглядеть готовая конфигурация:</p>
             
-            <div class="image-container">
+            <div class="image-container" onclick="openModal(this.querySelector('img'))">
                 <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/2ray.jpg" alt="Пример заполненной конфигурации">
-                <div class="image-caption">Пример настройки SOCKS5 в V2BOX</div>
+                <div class="image-caption">Нажмите на изображение, чтобы увеличить — пример настройки SOCKS5 в V2BOX</div>
             </div>
             
-            <p>5. Нажмите кнопку <strong>«Подключиться»</strong>. После этого приложение будет работать как та самая технология из "трёх букв", и вы сможете заходить на любые сайты.</p>
+            <p>5. Нажмите кнопку <strong>«Подключиться»</strong>. После этого приложение будет работать как прокси-клиент, и вы сможете заходить на любые сайты.</p>
             
             <h2>Как смотреть YouTube на Android TV</h2>
             
             <p>Теперь расскажу, как настроить просмотр YouTube на Android TV через прокси.</p>
             
-            <div class="image-container">
+            <div class="image-container" onclick="openModal(this.querySelector('img'))">
                 <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/yu2.jpeg" alt="YouTube на Android TV">
-                <div class="image-caption">SmartTube на Android TV</div>
+                <div class="image-caption">Нажмите на изображение, чтобы увеличить — SmartTube на Android TV</div>
             </div>
             
             <p>Нужно установить приложение <strong>SmartTube</strong>:</p>
             <ul>
-                <li>Скачать можно на <a href="https://4pda.to/forum/index.php?showtopic=1031453&st=18860" target="_blank">4PDA</a></li>
-                <li>Свежую версию также публикуют в Telegram-канале разработчика (ссылка есть в описании)</li>
+                <li>Скачать можно на 4PDA (найдите по запросу SmartTube)</li>
+                <li>Свежую версию также публикуют в Telegram-канале разработчика</li>
             </ul>
             
             <p><strong>Настройка прокси в SmartTube:</strong></p>
             <ol>
                 <li>Зайдите в <strong>Настройки</strong> → <strong>Общие</strong> → <strong>Интернет-цензура</strong></li>
                 <li>Поставьте галочку <strong>«Использовать веб-прокси»</strong></li>
-                <li>Введите данные, полученные на сайте</li>
+                <li>Введите данные прокси-сервера</li>
                 <li>Нажмите кнопку <strong>«Тест»</strong>, затем <strong>«Сохранить параметры»</strong></li>
             </ol>
             
-            <div class="image-container">
+            <div class="image-container" onclick="openModal(this.querySelector('img'))">
                 <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/yt154.jpg" alt="Настройки прокси в SmartTube">
-                <div class="image-caption">Настройка прокси в SmartTube</div>
+                <div class="image-caption">Нажмите на изображение, чтобы увеличить — настройка прокси в SmartTube</div>
             </div>
             
             <h2>Где взять прокси</h2>
             
-            <p>Я покупаю прокси на сайте <a href="https://proxys.io/?refid=355935" target="_blank">proxys.io</a>
+            <p>Прокси можно приобрести на специализированных сайтах. Например, на proxys.io в разделе <strong>Серверные прокси</strong> → <strong>Расшаренные IPv4 (3 пользователя)</strong>. Цена — около 50 рублей в месяц.</p>
             
-            
-            <p>Выбираю раздел <strong>Серверные прокси</strong> → <strong>Расшаренные IPv4 (3 пользователя)</strong>. Цена — всего <strong>ниже 50 рублей в месяц</strong>.</p>
-            
-            <p>При этом дают доступ к протоколам HTTP и SOCKS5, а пользы от прокси очень много.</p>
+            <p>При этом дают доступ к протоколам HTTP и SOCKS5.</p>
             
             <hr>
             
-            <div class="note-box">
-                <p><strong>⚠️ Важное примечание:</strong> Статья и методы не являются 100% рабочими. Всё зависит от вашего провайдера и региона. Но пока что лично у меня работает — можно пользоваться.</p>
-                <p style="margin-top: 10px;">Рассказал, чем пользуюсь сам. Надеюсь, статья будет кому-то полезна.</p>
+            <div class="warning-box">
+                <p><strong>Важное примечание:</strong> Статья и методы не являются 100% рабочими. Всё зависит от вашего провайдера и региона.</p>
             </div>
             
-            <p style="text-align: center; font-size: 18px; margin-top: 30px;"><strong>Спасибо за внимание!</strong></p>
-            
             <div style="text-align: center; margin-top: 30px;">
-                <a href="https://telegaonline.vercel.app" class="button">🏠 На главную с прокси</a>
+                <a href="https://telegaonline.vercel.app" class="button">На главную</a>
             </div>
             
             <div class="footer">
-                TGOnline — рабочие прокси для Telegram | <a href="https://telegaonline.vercel.app">telegaonline.vercel.app</a>
+                TGOnline | <a href="https://telegaonline.vercel.app">telegaonline.vercel.app</a>
             </div>
         </div>
     </div>
+    
+    <!-- Модальное окно для увеличения изображений -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+    
+    <script>
+        function openModal(imgElement) {
+            if (!imgElement || !imgElement.src) return;
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = 'flex';
+            modalImg.src = imgElement.src;
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
 
     <!-- Default Statcounter code for Telegaonline_01_04
 https://telegaonline.vercel.app/ -->
