@@ -879,16 +879,16 @@ def generate_html(data):
     </div>
     
     <script type="text/javascript">
-    var sc_project=13213961; 
+    var sc_project=13214258; 
     var sc_invisible=0; 
-    var sc_security="6a332efc"; 
+    var sc_security="db735e93"; 
     var scJsHost = "https://";
     document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
     "statcounter.com/counter/counter.js'></"+"script>");
     </script>
     <noscript><div class="statcounter"><a title="Web Analytics Made Easy -
     Statcounter" href="https://statcounter.com/" target="_blank"><img
-    class="statcounter" src="https://c.statcounter.com/13213961/0/6a332efc/1/"
+    class="statcounter" src="https://c.statcounter.com/13214258/0/db735e93/1/"
     alt="Web Analytics Made Easy - Statcounter"
     referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
     
