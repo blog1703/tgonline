@@ -870,11 +870,13 @@ def generate_html(data):
         
         <div class="footer">
             <div>Обновлено: {formatted_parsed} (МСК)</div>
+            <!--
             <div style="margin-top: 4px;">
-                # <a href="https://github.com/blog1703/tgonline" class="github-link" target="_blank" rel="noopener noreferrer">
-                #    🐙 Исходный код на GitHub
-                # </a>
+                 <a href="https://github.com/blog1703/tgonline" class="github-link" target="_blank" rel="noopener noreferrer">
+                    🐙 Исходный код на GitHub
+                 </a>
             </div>
+            -->
         </div>
     </div>
     
