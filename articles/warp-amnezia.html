@@ -5,13 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <meta name="theme-color" content="#17212b">
     
-    <!-- Запрет индексации поисковиками -->
     <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
     <meta name="googlebot" content="noindex, nofollow, noarchive">
     <meta name="yandex" content="noindex, nofollow, noarchive">
     <meta name="bingbot" content="noindex, nofollow">
     
-    <!-- Запрет кэширования -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
@@ -476,7 +474,6 @@
     </style>
 </head>
 <body>
-    <!-- Капча -->
     <div id="captchaWrapper" class="captcha-container">
         <div class="captcha-icon">🛡️</div>
         <h2>Проверка безопасности</h2>
@@ -492,12 +489,10 @@
         <p style="font-size: 12px; margin-top: 16px;">Это защита от автоматических ботов</p>
     </div>
     
-    <!-- Основной контент -->
     <div id="mainContent" class="main-content">
         <a href="https://telegaonline.vercel.app" class="back-link">← На главную</a>
         
         <div class="article-card">
-            <!-- Дисклеймер -->
             <div class="disclaimer-box">
                 <p><strong>Информационное сообщение:</strong> Данный материал носит исключительно ознакомительный и технический характер. Автор не несёт ответственности за использование представленной информации. Все действия вы совершаете на свой страх и риск.</p>
             </div>
@@ -544,9 +539,7 @@
             <p>Скопированный конфиг импортируем в приложение <strong>AmneziaVPN</strong>. Откройте AmneziaVPN → нажмите "Добавить VPN" → выберите "Импорт из файла" или "Вставить конфигурацию". Вставьте скопированный текст и сохраните.</p>
             
             <div class="note-box">
-                <p><strong>Скачать AmneziaVPN:</strong> <a href="https://wiki.malw.link/network/vpns/amneziavpn" target="_blank">https://wiki.malw.link/network/vpns/amneziavpn</a><br>
-                <p><strong>Скачать c GitHub вкладка Releases:</strong> <a href="https://github.com/amnezia-vpn/amnezia-client" target="_blank">https://github.com/amnezia-vpn/amnezia-client</a><br>
-                AmneziaVPN — это клиент с открытым исходным кодом, поддерживающий различные протоколы. Конфиг, сгенерированный скриптом, работает через протокол WireGuard, который используется Cloudflare WARP.</p>
+                <p><strong>Где взять AmneziaVPN:</strong> Откройте любой поисковик и введите запрос <strong>AmneziaVPN github</strong>. Первая ссылка ведёт на официальный репозиторий проекта. В разделе <strong>Releases</strong> выберите файл для вашей операционной системы.</p>
             </div>
             
             <div class="step-title"><span class="step-number">6</span> Подключаемся и пользуемся</div>
@@ -565,7 +558,6 @@
                 <div class="image-caption">Нажмите на изображение, чтобы увеличить — меню удаления Codespace: три точки → Delete</div>
             </div>
             
-            <!-- БЛОК ПРО AmneziaWG -->
             <h2>Альтернативный способ: AmneziaWG (нативный клиент)</h2>
             
             <p>Если вы не хотите использовать AmneziaVPN, есть ещё один вариант — <strong>AmneziaWG</strong>. Это отдельный клиент, созданный специально для протокола WireGuard с усилением (амнезия-режим). Он легче, быстрее и делает трафик ещё более незаметным для DPI.</p>
@@ -577,30 +569,32 @@
                 <li>Работает как отдельное приложение, не требует установки AmneziaVPN</li>
             </ul>
             
-            <h3>Где скачать AmneziaWG</h3>
+            <h3>Где найти AmneziaWG</h3>
+            
+            <p>Все клиенты AmneziaWG находятся в открытом доступе на GitHub. Введите в поисковике нужный запрос — первый результат ведёт на официальный репозиторий. В разделе <strong>Releases</strong> выберите файл для вашей платформы:</p>
             
             <table>
                 <tr>
                     <th>Платформа</th>
-                    <th>Ссылка</th>
-                    <th>Что скачать</th>
-                 </tr>
+                    <th>Поисковый запрос</th>
+                    <th>Что искать в Releases</th>
+                </tr>
                 <tr>
                     <td><strong>Windows</strong></td>
-                    <td><a href="https://github.com/amnezia-vpn/amneziawg-windows-client" target="_blank">amneziawg-windows-client</a></td>
-                    <td>Releases → <strong>.msi</strong> файл</td>
-                 </tr>
+                    <td><code>amneziawg-windows-client</code></td>
+                    <td>файл .msi</td>
+                </tr>
                 <tr>
                     <td><strong>Android</strong></td>
-                    <td><a href="https://github.com/amnezia-vpn/amneziawg-android" target="_blank">amneziawg-android</a></td>
-                    <td>Releases → <strong>.apk</strong> файл</td>
-                 </tr>
+                    <td><code>amneziawg-android</code></td>
+                    <td>файл .apk</td>
+                </tr>
                 <tr>
                     <td><strong>Linux</strong></td>
-                    <td><a href="https://github.com/amnezia-vpn/amneziawg-linux-kernel-module" target="_blank">amneziawg-linux-kernel-module</a></td>
-                    <td>Сборка из исходников или модуль ядра</td>
-                 </tr>
-             </table>
+                    <td><code>amneziawg-linux-kernel-module</code></td>
+                    <td>сборка из исходников</td>
+                </tr>
+            </table>
             
             <p><strong>macOS</strong> поддерживается через официальные репозитории AmneziaVPN или сборку из исходников.</p>
             
@@ -619,7 +613,7 @@
             <h3>Импорт конфига в AmneziaWG</h3>
             
             <p><strong>Windows:</strong><br>
-            Запустите AmneziaWG → нажмите «Импорт конфигурации» → выберите скачанный .conf файл → Подключиться</p>
+            Запустите AmneziaWG → нажмите «Импорт конфигурации» → выберите .conf файл → Подключиться</p>
             
             <p><strong>Android:</strong><br>
             Откройте приложение → нажмите на кнопку «+» → выберите «Импорт из файла» → укажите .conf файл → Подключиться</p>
@@ -640,12 +634,11 @@
             </div>
             
             <div class="footer">
-                TGOnline — рабочие прокси и VPN | <a href="https://telegaonline.vercel.app">telegaonline.vercel.app</a>
+                TGOnline | <a href="https://telegaonline.vercel.app">telegaonline.vercel.app</a>
             </div>
         </div>
     </div>
     
-    <!-- Модальное окно для увеличенных изображений -->
     <div id="imageModal" class="modal" onclick="closeModal()">
         <span class="modal-close" onclick="closeModal()">&times;</span>
         <img class="modal-content" id="modalImage">
