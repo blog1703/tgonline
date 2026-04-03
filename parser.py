@@ -857,6 +857,14 @@ def generate_html(data):
                         <span>→</span> Читать статью
                     </a>
                 </div>
+                <div class="article-card">
+                    <div class="article-icon">☁️</div>
+                    <div class="article-title">Cloudflare WARP + AmneziaVPN — доступный интернет всем</div>
+                    <div class="article-excerpt">Создаём конфиг Cloudflare WARP для AmneziaVPN бесплатно через GitHub Codespaces. Обход блокировок за 2 минуты.</div>
+                    <a href="https://telegaonline.vercel.app/warp-amnezia.html" class="article-link">
+                       <span>→</span> Читать статью
+                   </a>
+                </div>
             </div>
         </div>
         
