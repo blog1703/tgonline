@@ -217,7 +217,7 @@ def generate_html(data):
             </div>
         """
         
-        if (i + 1) % 3 == 0:
+        if (i + 1) % 5 == 0:
             posts_html += f"""
             <div class="astro-banner" onclick="window.open('https://astroproxy.com/r/6b1442a44cbc36a3c277b86bb1f19e9b?lang=ru', '_blank')">
                 <div class="astro-image-container">
