@@ -10,7 +10,7 @@
     <meta name="googlebot" content="noindex, nofollow">
     <meta name="yandex" content="noindex, nofollow">
     
-    <title>Гайды и инструкции | TGOnline</title>
+    <title>Цифровое сопротивление | TGOnline</title>
     
     <style>
         * {
@@ -32,7 +32,7 @@
             margin: 0 auto;
         }
         
-        /* Шапка */
+        /* Шапка с навигацией */
         .site-header {
             margin-bottom: 30px;
             display: flex;
@@ -42,6 +42,18 @@
             gap: 15px;
             padding-bottom: 15px;
             border-bottom: 1px solid #2b3945;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
         }
         
         .logo a {
@@ -74,15 +86,34 @@
         /* Заголовок страницы */
         .page-header {
             margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
         }
         
-        .page-header h1 {
+        .page-header-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: #1e3c5a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .page-header-icon img {
+            width: 48px;
+            height: 48px;
+        }
+        
+        .page-header-text h1 {
             font-size: 28px;
             color: #2ea6ff;
             margin-bottom: 8px;
         }
         
-        .page-header p {
+        .page-header-text p {
             color: #8e9eae;
             font-size: 15px;
         }
@@ -101,6 +132,10 @@
             padding: 20px;
             border: 1px solid #2b3945;
             transition: transform 0.2s, border-color 0.2s;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            flex-wrap: wrap;
         }
         
         .article-card:hover {
@@ -109,8 +144,19 @@
         }
         
         .article-icon {
-            font-size: 28px;
-            margin-bottom: 12px;
+            width: 48px;
+            height: 48px;
+            background: #1e2a36;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .article-content {
+            flex: 1;
+            min-width: 200px;
         }
         
         .article-title {
@@ -131,7 +177,7 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             font-size: 12px;
             color: #6a7a8a;
         }
@@ -179,6 +225,17 @@
                 text-align: center;
             }
             
+            .page-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .article-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
             .article-title {
                 font-size: 18px;
             }
@@ -190,18 +247,24 @@
         <!-- Шапка с навигацией -->
         <div class="site-header">
             <div class="logo">
+                <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/dogdigital.svg" alt="Doge">
                 <a href="/">TGOnline</a>
             </div>
             <div class="nav-links">
-                <a href="/">Прокси</a>
-                <a href="/articles.html" class="active">Гайды</a>
+                <a href="/">Главная</a>
+                <a href="/articles.html" class="active">Цифровое сопротивление</a>
             </div>
         </div>
         
         <!-- Заголовок страницы -->
         <div class="page-header">
-            <h1>📚 Гайды и инструкции</h1>
-            <p>Сборник полезных материалов по настройке и обходу блокировок</p>
+            <div class="page-header-icon">
+                <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/dogdigital.svg" alt="Doge">
+            </div>
+            <div class="page-header-text">
+                <h1>Цифровое сопротивление</h1>
+                <p>Сборник инструкций, гайдов и схем для обхода блокировок</p>
+            </div>
         </div>
         
         <!-- Список статей -->
@@ -210,35 +273,39 @@
             <!-- Статья 1: Cloudflare WARP -->
             <div class="article-card">
                 <div class="article-icon">☁️</div>
-                <div class="article-title">Cloudflare WARP + AmneziaVPN</div>
-                <div class="article-excerpt">
-                    Создаём конфиг Cloudflare WARP для AmneziaVPN бесплатно через GitHub Codespaces. 
-                    Обход блокировок за 2 минуты.
+                <div class="article-content">
+                    <div class="article-title">Cloudflare WARP + AmneziaVPN</div>
+                    <div class="article-excerpt">
+                        Создаём конфиг Cloudflare WARP для AmneziaVPN бесплатно через GitHub Codespaces. 
+                        Обход блокировок за 2 минуты.
+                    </div>
+                    <div class="article-meta">
+                        <span>📅 2026</span>
+                        <span>⏱ 5 мин чтения</span>
+                    </div>
+                    <a href="articles/warp-amnezia.html" class="article-link">
+                        → Читать инструкцию
+                    </a>
                 </div>
-                <div class="article-meta">
-                    <span>📅 2026</span>
-                    <span>⏱ 5 мин чтения</span>
-                </div>
-                <a href="articles/warp-amnezia.html" class="article-link">
-                    → Читать инструкцию
-                </a>
             </div>
             
             <!-- Статья 2: Прокси вместо VPN -->
             <div class="article-card">
                 <div class="article-icon">📖</div>
-                <div class="article-title">Как использовать прокси вместо VPN</div>
-                <div class="article-excerpt">
-                    Настройка SOCKS5 на Android через V2BOX, просмотр YouTube на Android TV через SmartTube.
-                    Прокси за 50 рублей в месяц.
+                <div class="article-content">
+                    <div class="article-title">Как использовать прокси вместо VPN</div>
+                    <div class="article-excerpt">
+                        Настройка SOCKS5 на Android через V2BOX, просмотр YouTube на Android TV через SmartTube.
+                        Прокси за 50 рублей в месяц.
+                    </div>
+                    <div class="article-meta">
+                        <span>📅 2026</span>
+                        <span>⏱ 4 мин чтения</span>
+                    </div>
+                    <a href="articles/kak-ispolzovat-proksi.html" class="article-link">
+                        → Читать инструкцию
+                    </a>
                 </div>
-                <div class="article-meta">
-                    <span>📅 2026</span>
-                    <span>⏱ 4 мин чтения</span>
-                </div>
-                <a href="articles/kak-ispolzovat-proksi.html" class="article-link">
-                    → Читать инструкцию
-                </a>
             </div>
             
             <!-- 
@@ -249,17 +316,19 @@
                 
             <div class="article-card">
                 <div class="article-icon">🔧</div>
-                <div class="article-title">Название статьи</div>
-                <div class="article-excerpt">
-                    Краткое описание статьи в 1-2 предложения.
+                <div class="article-content">
+                    <div class="article-title">Название новой статьи</div>
+                    <div class="article-excerpt">
+                        Краткое описание статьи в 1-2 предложения.
+                    </div>
+                    <div class="article-meta">
+                        <span>📅 2026</span>
+                        <span>⏱ X мин чтения</span>
+                    </div>
+                    <a href="articles/novaya-statya.html" class="article-link">
+                        → Читать инструкцию
+                    </a>
                 </div>
-                <div class="article-meta">
-                    <span>📅 2026</span>
-                    <span>⏱ X мин чтения</span>
-                </div>
-                <a href="articles/nazvanie-faila.html" class="article-link">
-                    → Читать инструкцию
-                </a>
             </div>
             -->
             
@@ -267,9 +336,11 @@
         
         <!-- Футер -->
         <div class="footer">
-            TGOnline — рабочие прокси и гайды<br>
-            <a href="/">На главную</a>
+            TGOnline — цифровое сопротивление | <a href="/">На главную</a>
         </div>
     </div>
+    
+    <!-- Umami Analytics -->
+    <script defer src="https://umami-sigma-mauve.vercel.app/script.js" data-website-id="706c1472-5d7d-48b3-9ffe-f99364dee7cd"></script>
 </body>
 </html>
