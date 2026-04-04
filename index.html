@@ -7,7 +7,6 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-capable" content="yes">
     
-    <!-- Open Graph / Социальные превью -->
     <meta property="og:title" content="MTProto Proxy — рабочие прокси для Telegram">
     <meta property="og:description" content="Свежие MTProto прокси из канала @ProxyMTProto. Обновление каждые 30 минут. Работает в РФ без VPN.">
     <meta property="og:image" content="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/preview.jpg">
@@ -15,7 +14,6 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="TGOnline">
     
-    <!-- Для Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="MTProto Proxy — рабочие прокси для Telegram">
     <meta name="twitter:description" content="Свежие MTProto прокси из канала @ProxyMTProto. Работает в РФ без VPN.">
@@ -28,7 +26,6 @@
     <link rel="apple-touch-icon" href="favicon.ico">
     
     <style>
-        /* Все стили */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -55,59 +52,20 @@
         }
         
         .site-header {
+            text-align: center;
             margin-bottom: 16px;
         }
         
-        .site-header-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 10px;
-        }
-        
-        .site-header-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .site-header-logo img {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-        }
-        
         .site-title {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 700;
             color: #2ea6ff;
+            margin-bottom: 4px;
         }
         
         .site-description {
-            font-size: 12px;
+            font-size: 13px;
             color: #8e9eae;
-        }
-        
-        .site-nav {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .site-nav a {
-            color: #8e9eae;
-            text-decoration: none;
-            font-size: 15px;
-            transition: color 0.2s;
-        }
-        
-        .site-nav a:hover {
-            color: #2ea6ff;
-        }
-        
-        .site-nav a.active {
-            color: #ffd700;
         }
         
         .info-compact {
@@ -125,6 +83,59 @@
         
         .info-compact-text {
             color: #fff;
+        }
+        
+        /* Кнопка Цифровое сопротивление */
+        .resistance-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, #1e3c5a 0%, #2b4f72 100%);
+            border-radius: 60px;
+            padding: 12px 24px;
+            margin: 20px 0;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #3a6d99;
+            cursor: pointer;
+        }
+        
+        .resistance-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(46, 166, 255, 0.3);
+        }
+        
+        .resistance-btn-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .resistance-btn-icon {
+            width: 40px;
+            height: 40px;
+            background: #0b141a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .resistance-btn-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffd700;
+            letter-spacing: 0.5px;
+        }
+        
+        .resistance-btn-arrow {
+            font-size: 24px;
+            color: #ffd700;
+            transition: transform 0.2s;
+        }
+        
+        .resistance-btn:hover .resistance-btn-arrow {
+            transform: translateX(5px);
         }
         
         .full-banner {
@@ -447,15 +458,29 @@
             text-align: center;
             font-size: 11px;
             color: #8e9eae;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
         }
         
         .footer a {
             color: #8e9eae;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
         
         .footer a:hover {
             color: #2ea6ff;
+        }
+        
+        .footer-icon {
+            width: 20px;
+            height: 20px;
+            filter: brightness(0) invert(1);
         }
         
         @media (max-width: 480px) {
@@ -506,10 +531,13 @@
                 width: 100%;
             }
             
-            .site-header-top {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
+            .resistance-btn-text {
+                font-size: 15px;
+            }
+            
+            .resistance-btn-icon {
+                width: 34px;
+                height: 34px;
             }
         }
     </style>
@@ -517,24 +545,23 @@
 <body>
     <div class="container">
         <div class="site-header">
-            <div class="site-header-top">
-                <div class="site-header-logo">
-                    <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/dogdigital.svg" alt="Doge">
-                    <div>
-                        <div class="site-title">MTProto Proxy</div>
-                        <div class="site-description">@ProxyMTProto • рабочие прокси для Telegram</div>
-                    </div>
-                </div>
-                <div class="site-nav">
-                    
-                    <a href="/articles.html">Цифровое сопротивление</a>
-                </div>
-            </div>
+            <div class="site-title">MTProto Proxy</div>
+            <div class="site-description">@ProxyMTProto • рабочие прокси для Telegram</div>
         </div>
         
         <div class="info-compact">
             <span class="info-compact-text">🔒 Нажми Connect → Открой в Telegram → Проверь статус прокси → Подключить прокси</span>
         </div>
+        
+        <a href="/articles.html" class="resistance-btn">
+            <div class="resistance-btn-left">
+                <div class="resistance-btn-icon">
+                    <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/dogdigital.svg" alt="Doge" style="width: 28px; height: 28px; filter: brightness(0) invert(1);">
+                </div>
+                <span class="resistance-btn-text">ЦИФРОВОЕ СОПРОТИВЛЕНИЕ</span>
+            </div>
+            <div class="resistance-btn-arrow">→</div>
+        </a>
         
         <div class="full-banner" onclick="window.open('https://ru.dashboard.proxy.market/?ref=E000143973', '_blank')">
             <div class="banner-image-container">
@@ -563,91 +590,6 @@
                             <div class="channel-handle">@ProxyMTProto</div>
                         </div>
                     </div>
-                    <div class="post-date">03.04.2026 16:30</div>
-                </div>
-                
-                <div class="post-text">
-                    Server: tg.safepal.life<br>Port: 443<br>Secret: ee7c5474451d78bb07ae047680e9de3d8079616e6465782e6e6574<br><a href="https://t.me/ProxyMTProto" target="_blank" class="channel-link">@ProxyMTProto</a>
-                </div>
-                
-                <div class="telegram-buttons">
-                    <a class="tgme_widget_message_inline_button url_button" href="https://t.me/proxy?server=tg.safepal.life&amp;port=443&amp;secret=ee7c5474451d78bb07ae047680e9de3d8079616e6465782e6e6574" onclick="return confirm('Open this link?\n\n'+this.href);" rel="noopener" target="_blank"><span class="tgme_widget_message_inline_button_text" dir="auto">Connect</span></a>
-                </div>
-                
-                <div class="post-stats">
-                    <div class="views">
-                        <span class="views-icon">👁</span>
-                        <span>537K</span>
-                    </div>
-                    <a href="https://t.me/ProxyMTProto/46534" target="_blank" class="original-link" rel="noopener noreferrer">
-                        <span>🔗</span>
-                        <span>Оригинал</span>
-                    </a>
-                </div>
-            </div>
-        
-            <div class="post-card">
-                <div class="post-header">
-                    <div class="channel-info">
-                        <div class="channel-avatar">📢</div>
-                        <div>
-                            <div class="channel-name">Proxy MTProto</div>
-                            <div class="channel-handle">@ProxyMTProto</div>
-                        </div>
-                    </div>
-                    <div class="post-date">03.04.2026 17:25</div>
-                </div>
-                
-                <div class="post-text">
-                    📨 Want to reach thousands of active users?Advertise with us, contact @Ads_ProxyMTProto or email us to get started.📨 Хотите охватить тысячи активных пользователей?Размещайте рекламу у нас, свяжитесь с @Ads_ProxyMTProto или напишите нам на почту 🚀
-                </div>
-                
-                <div class="telegram-buttons">
-                    <div class="tgme_widget_message text_not_supported_wrap js-widget_message" data-post="ProxyMTProto/46535" data-view="eyJjIjotMTM5NTM2Mzg2MSwicCI6NDY1MzUsInQiOjE3NzUzMDQ4NzYsImgiOiI2YzI0NzA4OTRjODNkYzA5NTEifQ">
-<div class="tgme_widget_message_user"><a href="https://t.me/ProxyMTProto"><i class="tgme_widget_message_user_photo bgcolor3" data-content="P"><img src="https://cdn1.telesco.pe/file/HLSGxvFTXQLxg2ttzveq6DgJNZk1D6VLX0bPXmiU0Gz01MuYx7npj3Zv-M06BEeBd83MOuEMd6uuVOaTsjQt3ZA2tS0a7EELG4uO6ScSb6Js2WQWGinfwSsTOXNkq00oilW0S0fuhtlXjH7o1kJxLZcQpyhDoK6TaOppx6ddGc04INGa3LGYUxv38ctGmIGRsfPzphqZ80L-kBanjkWNgdXoOs5AMtpnEwkvp4EYAb7DuYxqxFh3sH2ASXFcjnmpyPlog2Xq0w86V8iJImd8SjefdVN9_KFGYAVc2GfUXf0lhuTPfZdgu3BK6GXRUanf1nACUdg9QWv8yDcZnylfcQ.jpg"/></i></a></div>
-<div class="tgme_widget_message_bubble">
-<i class="tgme_widget_message_bubble_tail">
-<svg class="bubble_icon" height="20px" viewbox="0 0 9 20" width="9px">
-<g fill="none">
-<path class="background" d="M8,1 L9,1 L9,20 L8,20 L8,18 C7.807,15.161 7.124,12.233 5.950,9.218 C5.046,6.893 3.504,4.733 1.325,2.738 L1.325,2.738 C0.917,2.365 0.89,1.732 1.263,1.325 C1.452,1.118 1.72,1 2,1 L8,1 Z" fill="#ffffff"></path>
-<path class="border_1x" d="M9,1 L2,1 C1.72,1 1.452,1.118 1.263,1.325 C0.89,1.732 0.917,2.365 1.325,2.738 C3.504,4.733 5.046,6.893 5.95,9.218 C7.124,12.233 7.807,15.161 8,18 L8,20 L9,20 L9,1 Z M2,0 L9,0 L9,20 L7,20 L7,20 L7.002,18.068 C6.816,15.333 6.156,12.504 5.018,9.58 C4.172,7.406 2.72,5.371 0.649,3.475 C-0.165,2.729 -0.221,1.464 0.525,0.649 C0.904,0.236 1.439,0 2,0 Z" fill="#d7e3ec"></path>
-<path class="border_2x" d="M9,1 L2,1 C1.72,1 1.452,1.118 1.263,1.325 C0.89,1.732 0.917,2.365 1.325,2.738 C3.504,4.733 5.046,6.893 5.95,9.218 C7.124,12.233 7.807,15.161 8,18 L8,20 L9,20 L9,1 Z M2,0.5 L9,0.5 L9,20 L7.5,20 L7.5,20 L7.501,18.034 C7.312,15.247 6.64,12.369 5.484,9.399 C4.609,7.15 3.112,5.052 0.987,3.106 C0.376,2.547 0.334,1.598 0.894,0.987 C1.178,0.677 1.579,0.5 2,0.5 Z"></path>
-<path class="border_3x" d="M9,1 L2,1 C1.72,1 1.452,1.118 1.263,1.325 C0.89,1.732 0.917,2.365 1.325,2.738 C3.504,4.733 5.046,6.893 5.95,9.218 C7.124,12.233 7.807,15.161 8,18 L8,20 L9,20 L9,1 Z M2,0.667 L9,0.667 L9,20 L7.667,20 L7.667,20 L7.668,18.023 C7.477,15.218 6.802,12.324 5.64,9.338 C4.755,7.064 3.243,4.946 1.1,2.983 C0.557,2.486 0.52,1.643 1.017,1.1 C1.269,0.824 1.626,0.667 2,0.667 Z"></path>
-</g>
-</svg>
-</i>
-<div class="tgme_widget_message_author accent_color"><a class="tgme_widget_message_owner_name" href="https://t.me/ProxyMTProto"><span dir="auto">Proxy MTProto</span></a></div>
-<div class="tgme_widget_message_text js-message_text" dir="auto"><i class="emoji" style="background-image:url('//telegram.org/img/emoji/40/F09F93A8.png')"><b>📨</b></i> Want to reach thousands of active users?<br/>Advertise with us, contact <a href="https://t.me/Ads_ProxyMTProto" target="_blank">@Ads_ProxyMTProto</a> or email us to get started.<br/><br/><i class="emoji" style="background-image:url('//telegram.org/img/emoji/40/F09F93A8.png')"><b>📨</b></i> <b>Хотите охватить тысячи активных пользователей?<br/>Размещайте рекламу у нас, свяжитесь с</b> <a href="https://t.me/Ads_ProxyMTProto" target="_blank">@Ads_ProxyMTProto</a> <b>или напишите нам на почту</b> <i class="emoji" style="background-image:url('//telegram.org/img/emoji/40/F09F9A80.png')"><b>🚀</b></i></div>
-<div class="tgme_widget_message_reactions js-message_reactions"><span class="tgme_reaction tgme_reaction_paid"><i class="icon icon-telegram-stars"></i>4</span></div><div class="tgme_widget_message_footer compact js-message_footer">
-<div class="tgme_widget_message_info short js-message_info">
-<span class="tgme_widget_message_views">535K</span><span class="copyonly"> views</span><span class="tgme_widget_message_meta"><a class="tgme_widget_message_date" href="https://t.me/ProxyMTProto/46535"><time class="time" datetime="2026-04-03T14:25:01+00:00">14:25</time></a></span>
-</div>
-</div>
-</div>
-</div>
-                </div>
-                
-                <div class="post-stats">
-                    <div class="views">
-                        <span class="views-icon">👁</span>
-                        <span>535K</span>
-                    </div>
-                    <a href="https://t.me/ProxyMTProto/46535" target="_blank" class="original-link" rel="noopener noreferrer">
-                        <span>🔗</span>
-                        <span>Оригинал</span>
-                    </a>
-                </div>
-            </div>
-        
-            <div class="post-card">
-                <div class="post-header">
-                    <div class="channel-info">
-                        <div class="channel-avatar">📢</div>
-                        <div>
-                            <div class="channel-name">Proxy MTProto</div>
-                            <div class="channel-handle">@ProxyMTProto</div>
-                        </div>
-                    </div>
                     <div class="post-date">03.04.2026 17:30</div>
                 </div>
                 
@@ -662,7 +604,7 @@
                 <div class="post-stats">
                     <div class="views">
                         <span class="views-icon">👁</span>
-                        <span>554K</span>
+                        <span>557K</span>
                     </div>
                     <a href="https://t.me/ProxyMTProto/46536" target="_blank" class="original-link" rel="noopener noreferrer">
                         <span>🔗</span>
@@ -694,7 +636,7 @@
                 <div class="post-stats">
                     <div class="views">
                         <span class="views-icon">👁</span>
-                        <span>558K</span>
+                        <span>561K</span>
                     </div>
                     <a href="https://t.me/ProxyMTProto/46537" target="_blank" class="original-link" rel="noopener noreferrer">
                         <span>🔗</span>
@@ -726,7 +668,7 @@
                 <div class="post-stats">
                     <div class="views">
                         <span class="views-icon">👁</span>
-                        <span>551K</span>
+                        <span>554K</span>
                     </div>
                     <a href="https://t.me/ProxyMTProto/46538" target="_blank" class="original-link" rel="noopener noreferrer">
                         <span>🔗</span>
@@ -735,26 +677,6 @@
                 </div>
             </div>
         
-            <div class="astro-banner" onclick="window.open('https://astroproxy.com/r/6b1442a44cbc36a3c277b86bb1f19e9b?lang=ru', '_blank')">
-                <div class="astro-image-container">
-                    <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/astro.webp" 
-                         alt="Astroproxy"
-                         onerror="this.style.display='none'">
-                </div>
-                <div class="astro-text">
-                    <div class="astro-slogan">Твой билет в мир PlayStation</div>
-                    <div class="astro-description">С помощью прокси оплачивай подписки в Турции, США и других регионах без границ!</div>
-                    <div class="astro-button-wrapper">
-                        <a href="https://astroproxy.com/r/6b1442a44cbc36a3c277b86bb1f19e9b?lang=ru" 
-                           class="astro-button" 
-                           target="_blank" 
-                           rel="noopener noreferrer">
-                            Попробовать
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
             <div class="post-card">
                 <div class="post-header">
                     <div class="channel-info">
@@ -778,7 +700,7 @@
                 <div class="post-stats">
                     <div class="views">
                         <span class="views-icon">👁</span>
-                        <span>579K</span>
+                        <span>583K</span>
                     </div>
                     <a href="https://t.me/ProxyMTProto/46539" target="_blank" class="original-link" rel="noopener noreferrer">
                         <span>🔗</span>
@@ -810,7 +732,7 @@
                 <div class="post-stats">
                     <div class="views">
                         <span class="views-icon">👁</span>
-                        <span>581K</span>
+                        <span>585K</span>
                     </div>
                     <a href="https://t.me/ProxyMTProto/46540" target="_blank" class="original-link" rel="noopener noreferrer">
                         <span>🔗</span>
@@ -819,6 +741,26 @@
                 </div>
             </div>
         
+            <div class="astro-banner" onclick="window.open('https://astroproxy.com/r/6b1442a44cbc36a3c277b86bb1f19e9b?lang=ru', '_blank')">
+                <div class="astro-image-container">
+                    <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/astro.webp" 
+                         alt="Astroproxy"
+                         onerror="this.style.display='none'">
+                </div>
+                <div class="astro-text">
+                    <div class="astro-slogan">Твой билет в мир PlayStation</div>
+                    <div class="astro-description">С помощью прокси оплачивай подписки в Турции, США и других регионах без границ!</div>
+                    <div class="astro-button-wrapper">
+                        <a href="https://astroproxy.com/r/6b1442a44cbc36a3c277b86bb1f19e9b?lang=ru" 
+                           class="astro-button" 
+                           target="_blank" 
+                           rel="noopener noreferrer">
+                            Попробовать
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
             <div class="post-card">
                 <div class="post-header">
                     <div class="channel-info">
@@ -842,7 +784,7 @@
                 <div class="post-stats">
                     <div class="views">
                         <span class="views-icon">👁</span>
-                        <span>575K</span>
+                        <span>580K</span>
                     </div>
                     <a href="https://t.me/ProxyMTProto/46541" target="_blank" class="original-link" rel="noopener noreferrer">
                         <span>🔗</span>
@@ -874,7 +816,7 @@
                 <div class="post-stats">
                     <div class="views">
                         <span class="views-icon">👁</span>
-                        <span>560K</span>
+                        <span>565K</span>
                     </div>
                     <a href="https://t.me/ProxyMTProto/46542" target="_blank" class="original-link" rel="noopener noreferrer">
                         <span>🔗</span>
@@ -906,9 +848,73 @@
                 <div class="post-stats">
                     <div class="views">
                         <span class="views-icon">👁</span>
-                        <span>528K</span>
+                        <span>533K</span>
                     </div>
                     <a href="https://t.me/ProxyMTProto/46543" target="_blank" class="original-link" rel="noopener noreferrer">
+                        <span>🔗</span>
+                        <span>Оригинал</span>
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-card">
+                <div class="post-header">
+                    <div class="channel-info">
+                        <div class="channel-avatar">📢</div>
+                        <div>
+                            <div class="channel-name">Proxy MTProto</div>
+                            <div class="channel-handle">@ProxyMTProto</div>
+                        </div>
+                    </div>
+                    <div class="post-date">03.04.2026 23:30</div>
+                </div>
+                
+                <div class="post-text">
+                    Server: proxytop.space<br>Port: 443<br>Secret: 7d793037a0760186574b0282f2f435e7<br><a href="https://t.me/ProxyMTProto" target="_blank" class="channel-link">@ProxyMTProto</a>
+                </div>
+                
+                <div class="telegram-buttons">
+                    <a class="tgme_widget_message_inline_button url_button" href="https://t.me/proxy?server=proxytop.space&amp;port=443&amp;secret=7d793037a0760186574b0282f2f435e7" onclick="return confirm('Open this link?\n\n'+this.href);" rel="noopener" target="_blank"><span class="tgme_widget_message_inline_button_text" dir="auto">Connect</span></a>
+                </div>
+                
+                <div class="post-stats">
+                    <div class="views">
+                        <span class="views-icon">👁</span>
+                        <span>578K</span>
+                    </div>
+                    <a href="https://t.me/ProxyMTProto/46544" target="_blank" class="original-link" rel="noopener noreferrer">
+                        <span>🔗</span>
+                        <span>Оригинал</span>
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-card">
+                <div class="post-header">
+                    <div class="channel-info">
+                        <div class="channel-avatar">📢</div>
+                        <div>
+                            <div class="channel-name">Proxy MTProto</div>
+                            <div class="channel-handle">@ProxyMTProto</div>
+                        </div>
+                    </div>
+                    <div class="post-date">04.04.2026 08:07</div>
+                </div>
+                
+                <div class="post-text">
+                    Server: Unknown<br>Port: 1488<br>Secret: ee494c3d5858be223fcbb9970d8bf05a036d6f746f76736b696b682e7275<br><a href="https://t.me/ProxyMTProto" target="_blank" class="channel-link">@ProxyMTProto</a>
+                </div>
+                
+                <div class="telegram-buttons">
+                    <a class="tgme_widget_message_inline_button url_button" href="https://t.me/proxy?server=107.175.189.200&amp;port=8447&amp;secret=554b3dd4c9d6fbbe2101c12765bb4229" onclick="return confirm('Open this link?\n\n'+this.href);" rel="noopener" target="_blank"><span class="tgme_widget_message_inline_button_text" dir="auto">Connect</span></a><a class="tgme_widget_message_inline_button url_button" href="https://t.me/proxy?server=212.147.227.141&amp;port=443&amp;secret=dddf41156dfe75c54286615c14adf1d1b7" onclick="return confirm('Open this link?\n\n'+this.href);" rel="noopener" target="_blank"><span class="tgme_widget_message_inline_button_text" dir="auto">Connect</span></a><a class="tgme_widget_message_inline_button url_button" href="https://t.me/proxy?server=o6xodum.duckdns.org&amp;port=1488&amp;secret=ee494c3d5858be223fcbb9970d8bf05a036d6f746f76736b696b682e7275" onclick="return confirm('Open this link?\n\n'+this.href);" rel="noopener" target="_blank"><span class="tgme_widget_message_inline_button_text" dir="auto">Connect</span></a>
+                </div>
+                
+                <div class="post-stats">
+                    <div class="views">
+                        <span class="views-icon">👁</span>
+                        <span>429K</span>
+                    </div>
+                    <a href="https://t.me/ProxyMTProto/46545" target="_blank" class="original-link" rel="noopener noreferrer">
                         <span>🔗</span>
                         <span>Оригинал</span>
                     </a>
@@ -938,14 +944,14 @@
         </div>
         
         <div class="footer">
-            <div>Обновлено: 04.04.2026 15:14 (МСК)</div>
-            <div style="margin-top: 8px;">
-                <a href="/articles.html">📚 Цифровое сопротивление</a>
-            </div>
+            <div>Обновлено: 04.04.2026 15:32 (МСК)</div>
+            <a href="/articles.html">
+                <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/dogdigital.svg" alt="Doge" class="footer-icon">
+                Цифровое сопротивление
+            </a>
         </div>
     </div>
     
-    <!-- Umami Analytics -->
     <script defer src="https://umami-sigma-mauve.vercel.app/script.js" data-website-id="706c1472-5d7d-48b3-9ffe-f99364dee7cd"></script>
     
 </body>
