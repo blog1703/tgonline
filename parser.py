@@ -301,7 +301,7 @@ def generate_html(data):
         
         .site-header {{
             text-align: center;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }}
         
         .site-title {{
@@ -320,28 +320,25 @@ def generate_html(data):
             background: linear-gradient(135deg, #1e3c5a 0%, #2b4f72 100%);
             border-radius: 50px;
             padding: 10px 16px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             border: 1px solid #3a6d99;
             font-size: 13px;
+            font-weight: 500;
             color: #fff;
         }}
         
-        .info-compact-text {{
-            color: #fff;
-        }}
-        
-        /* Кнопка Цифровое сопротивление */
         .resistance-btn {{
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
+            gap: 8px;
             background: linear-gradient(135deg, #1e3c5a 0%, #2b4f72 100%);
-            border-radius: 60px;
-            padding: 12px 24px;
-            margin: 20px 0;
+            border-radius: 50px;
+            padding: 8px 16px;
+            margin-bottom: 20px;
             text-decoration: none;
             transition: transform 0.2s, box-shadow 0.2s;
             border: 1px solid #3a6d99;
@@ -353,37 +350,26 @@ def generate_html(data):
             box-shadow: 0 8px 20px rgba(46, 166, 255, 0.3);
         }}
         
-        .resistance-btn-left {{
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }}
-        
         .resistance-btn-icon {{
-            width: 40px;
-            height: 40px;
-            background: #0b141a;
+            width: 28px;
+            height: 28px;
+            background: #ffffff;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
         }}
         
+        .resistance-btn-icon img {{
+            width: 18px;
+            height: 18px;
+            filter: brightness(0) invert(0);
+        }}
+        
         .resistance-btn-text {{
-            font-size: 18px;
-            font-weight: 600;
-            color: #ffd700;
-            letter-spacing: 0.5px;
-        }}
-        
-        .resistance-btn-arrow {{
-            font-size: 24px;
-            color: #ffd700;
-            transition: transform 0.2s;
-        }}
-        
-        .resistance-btn:hover .resistance-btn-arrow {{
-            transform: translateX(5px);
+            font-size: 13px;
+            font-weight: 500;
+            color: #ffffff;
         }}
         
         .full-banner {{
@@ -709,7 +695,7 @@ def generate_html(data):
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 16px;
             flex-wrap: wrap;
         }}
         
@@ -726,9 +712,9 @@ def generate_html(data):
         }}
         
         .footer-icon {{
-            width: 20px;
-            height: 20px;
-            filter: brightness(0) invert(1);
+            width: 16px;
+            height: 16px;
+            filter: brightness(0) invert(0);
         }}
         
         @media (max-width: 480px) {{
@@ -779,13 +765,22 @@ def generate_html(data):
                 width: 100%;
             }}
             
-            .resistance-btn-text {{
-                font-size: 15px;
+            .resistance-btn-icon {{
+                width: 24px;
+                height: 24px;
             }}
             
-            .resistance-btn-icon {{
-                width: 34px;
-                height: 34px;
+            .resistance-btn-icon img {{
+                width: 14px;
+                height: 14px;
+            }}
+            
+            .resistance-btn-text {{
+                font-size: 12px;
+            }}
+            
+            .footer {{
+                gap: 10px;
             }}
         }}
     </style>
@@ -802,13 +797,10 @@ def generate_html(data):
         </div>
         
         <a href="/articles.html" class="resistance-btn">
-            <div class="resistance-btn-left">
-                <div class="resistance-btn-icon">
-                    <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/dogdigital.svg" alt="Doge" style="width: 28px; height: 28px; filter: brightness(0) invert(1);">
-                </div>
-                <span class="resistance-btn-text">ЦИФРОВОЕ СОПРОТИВЛЕНИЕ</span>
+            <div class="resistance-btn-icon">
+                <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/dogdigital.svg" alt="Doge">
             </div>
-            <div class="resistance-btn-arrow">→</div>
+            <span class="resistance-btn-text">ЦИФРОВОЕ СОПРОТИВЛЕНИЕ</span>
         </a>
         
         <div class="full-banner" onclick="window.open('https://ru.dashboard.proxy.market/?ref=E000143973', '_blank')">
