@@ -892,7 +892,7 @@ def main():
     channel = os.environ.get('CHANNEL_NAME', 'ProxyMTProto')
     print(f"🚀 Начинаем парсинг канала @{channel}")
     
-    post_data = get_last_posts(channel, limit=6)
+    post_data = get_last_posts(channel, limit=10)
     
     if post_data and post_data.get('success'):
         print(f"✅ Получено {len(post_data['posts'])} постов")
