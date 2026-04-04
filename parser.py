@@ -774,7 +774,7 @@ def generate_html(data):
                     </div>
                 </div>
                 <div class="site-nav">
-                    <a href="/" class="active">Прокси</a>
+                    
                     <a href="/articles.html">Цифровое сопротивление</a>
                 </div>
             </div>
