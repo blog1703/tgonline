@@ -276,7 +276,7 @@ def generate_html(data):
     <link rel="apple-touch-icon" href="favicon.ico">
     
     <style>
-        /* Все твои стили остаются без изменений */
+        /* Все стили */
         * {{
             box-sizing: border-box;
             margin: 0;
@@ -304,19 +304,58 @@ def generate_html(data):
         
         .site-header {{
             margin-bottom: 16px;
-            text-align: center;
+        }}
+        
+        .site-header-top {{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 10px;
+        }}
+        
+        .site-header-logo {{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }}
+        
+        .site-header-logo img {{
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
         }}
         
         .site-title {{
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             color: #2ea6ff;
-            margin-bottom: 4px;
         }}
         
         .site-description {{
-            font-size: 13px;
+            font-size: 12px;
             color: #8e9eae;
+        }}
+        
+        .site-nav {{
+            display: flex;
+            gap: 20px;
+        }}
+        
+        .site-nav a {{
+            color: #8e9eae;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.2s;
+        }}
+        
+        .site-nav a:hover {{
+            color: #2ea6ff;
+        }}
+        
+        .site-nav a.active {{
+            color: #ffd700;
         }}
         
         .info-compact {{
@@ -648,97 +687,6 @@ def generate_html(data):
             background: #2b3945;
         }}
         
-        .articles-section {{
-            margin: 30px 0 20px 0;
-        }}
-        
-        .articles-title {{
-            font-size: 16px;
-            font-weight: 600;
-            color: #ffd700;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            border-left: 4px solid #ffd700;
-            padding-left: 10px;
-        }}
-        
-        .articles-grid {{
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-        }}
-        
-        @media (min-width: 500px) and (max-width: 768px) {{
-            .articles-grid:has(.article-card:first-child:nth-last-child(2)) {{
-                grid-template-columns: 1fr 1fr;
-            }}
-        }}
-        
-        @media (min-width: 769px) {{
-            .articles-grid:has(.article-card:first-child:nth-last-child(2)) {{
-                grid-template-columns: 1fr 1fr;
-            }}
-        }}
-        
-        .article-card {{
-            background: linear-gradient(135deg, #1e2a36 0%, #1a2530 100%);
-            border-radius: 16px;
-            padding: 16px;
-            border: 1px solid #2b3945;
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: flex;
-            flex-direction: column;
-        }}
-        
-        .article-card:hover {{
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-            border-color: #2ea6ff;
-        }}
-        
-        .article-icon {{
-            font-size: 32px;
-            margin-bottom: 12px;
-        }}
-        
-        .article-title {{
-            font-size: 18px;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }}
-        
-        .article-excerpt {{
-            font-size: 13px;
-            color: #8e9eae;
-            margin-bottom: 16px;
-            line-height: 1.5;
-            flex-grow: 1;
-        }}
-        
-        .article-link {{
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: #2ea6ff;
-            font-weight: 600;
-            font-size: 14px;
-            text-decoration: none;
-            padding: 8px 0;
-            border-top: 1px solid #2b3945;
-            margin-top: 8px;
-        }}
-        
-        .article-link:hover {{
-            color: #ffd700;
-        }}
-        
-        .article-link span {{
-            font-size: 18px;
-        }}
-        
         .footer {{
             margin-top: 20px;
             padding: 16px;
@@ -749,16 +697,13 @@ def generate_html(data):
             color: #8e9eae;
         }}
         
-        .github-link {{
+        .footer a {{
             color: #8e9eae;
             text-decoration: none;
-            border-bottom: 1px dotted #4a5a6a;
-            transition: all 0.2s;
         }}
         
-        .github-link:hover {{
+        .footer a:hover {{
             color: #2ea6ff;
-            border-bottom-color: #2ea6ff;
         }}
         
         @media (max-width: 480px) {{
@@ -809,8 +754,10 @@ def generate_html(data):
                 width: 100%;
             }}
             
-            .article-title {{
-                font-size: 16px;
+            .site-header-top {{
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
             }}
         }}
     </style>
@@ -818,8 +765,19 @@ def generate_html(data):
 <body>
     <div class="container">
         <div class="site-header">
-            <div class="site-title">MTProto Proxy</div>
-            <div class="site-description">@ProxyMTProto • рабочие прокси для Telegram</div>
+            <div class="site-header-top">
+                <div class="site-header-logo">
+                    <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/dogdigital.svg" alt="Doge">
+                    <div>
+                        <div class="site-title">MTProto Proxy</div>
+                        <div class="site-description">@ProxyMTProto • рабочие прокси для Telegram</div>
+                    </div>
+                </div>
+                <div class="site-nav">
+                    <a href="/" class="active">Прокси</a>
+                    <a href="/articles.html">Цифровое сопротивление</a>
+                </div>
+            </div>
         </div>
         
         <div class="info-compact">
@@ -846,40 +804,15 @@ def generate_html(data):
             {posts_html}
         </div>
         
-        <div class="articles-section">
-            <div class="articles-title">📚 Полезные материалы</div>
-            <div class="articles-grid">
-                <div class="article-card">
-                    <div class="article-icon">📖</div>
-                    <div class="article-title">Как использовать прокси для доступа к интернету</div>
-                    <div class="article-excerpt">Настройка SOCKS5 на Android, SmartTube для Android TV и где купить прокси за 50₽ в месяц.</div>
-                    <a href="articles/kak-ispolzovat-proksi.html" class="article-link">
-                        <span>→</span> Читать статью
-                    </a>
-                </div>
-                <div class="article-card">
-                    <div class="article-icon">☁️</div>
-                    <div class="article-title">Cloudflare WARP + AmneziaVPN — доступный интернет всем</div>
-                    <div class="article-excerpt">Создаём конфиг Cloudflare WARP для AmneziaVPN бесплатно через GitHub Codespaces. Обход блокировок за 2 минуты.</div>
-                    <a href="articles/warp-amnezia.html" class="article-link">
-                       <span>→</span> Читать статью
-                   </a>
-                </div>
-            </div>
-        </div>
-        
         <div class="footer">
             <div>Обновлено: {formatted_parsed} (МСК)</div>
-            <!--
-            <div style="margin-top: 4px;">
-                 <a href="https://github.com/blog1703/tgonline" class="github-link" target="_blank" rel="noopener noreferrer">
-                    🐙 Исходный код на GitHub
-                 </a>
+            <div style="margin-top: 8px;">
+                <a href="/articles.html">📚 Цифровое сопротивление</a>
             </div>
-            -->
         </div>
     </div>
     
+    <!-- Umami Analytics -->
     <script defer src="https://umami-sigma-mauve.vercel.app/script.js" data-website-id="706c1472-5d7d-48b3-9ffe-f99364dee7cd"></script>
     
 </body>
