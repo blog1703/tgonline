@@ -53,7 +53,7 @@
         
         .site-header {
             text-align: center;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
         
         .site-title {
@@ -72,28 +72,25 @@
             background: linear-gradient(135deg, #1e3c5a 0%, #2b4f72 100%);
             border-radius: 50px;
             padding: 10px 16px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             border: 1px solid #3a6d99;
             font-size: 13px;
+            font-weight: 500;
             color: #fff;
         }
         
-        .info-compact-text {
-            color: #fff;
-        }
-        
-        /* Кнопка Цифровое сопротивление */
         .resistance-btn {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
+            gap: 8px;
             background: linear-gradient(135deg, #1e3c5a 0%, #2b4f72 100%);
-            border-radius: 60px;
-            padding: 12px 24px;
-            margin: 20px 0;
+            border-radius: 50px;
+            padding: 8px 16px;
+            margin-bottom: 20px;
             text-decoration: none;
             transition: transform 0.2s, box-shadow 0.2s;
             border: 1px solid #3a6d99;
@@ -105,37 +102,26 @@
             box-shadow: 0 8px 20px rgba(46, 166, 255, 0.3);
         }
         
-        .resistance-btn-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
         .resistance-btn-icon {
-            width: 40px;
-            height: 40px;
-            background: #0b141a;
+            width: 28px;
+            height: 28px;
+            background: #ffffff;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         
+        .resistance-btn-icon img {
+            width: 18px;
+            height: 18px;
+            filter: brightness(0) invert(0);
+        }
+        
         .resistance-btn-text {
-            font-size: 18px;
-            font-weight: 600;
-            color: #ffd700;
-            letter-spacing: 0.5px;
-        }
-        
-        .resistance-btn-arrow {
-            font-size: 24px;
-            color: #ffd700;
-            transition: transform 0.2s;
-        }
-        
-        .resistance-btn:hover .resistance-btn-arrow {
-            transform: translateX(5px);
+            font-size: 13px;
+            font-weight: 500;
+            color: #ffffff;
         }
         
         .full-banner {
@@ -461,7 +447,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 16px;
             flex-wrap: wrap;
         }
         
@@ -478,9 +464,9 @@
         }
         
         .footer-icon {
-            width: 20px;
-            height: 20px;
-            filter: brightness(0) invert(1);
+            width: 16px;
+            height: 16px;
+            filter: brightness(0) invert(0);
         }
         
         @media (max-width: 480px) {
@@ -531,13 +517,22 @@
                 width: 100%;
             }
             
-            .resistance-btn-text {
-                font-size: 15px;
+            .resistance-btn-icon {
+                width: 24px;
+                height: 24px;
             }
             
-            .resistance-btn-icon {
-                width: 34px;
-                height: 34px;
+            .resistance-btn-icon img {
+                width: 14px;
+                height: 14px;
+            }
+            
+            .resistance-btn-text {
+                font-size: 12px;
+            }
+            
+            .footer {
+                gap: 10px;
             }
         }
     </style>
@@ -554,13 +549,10 @@
         </div>
         
         <a href="/articles.html" class="resistance-btn">
-            <div class="resistance-btn-left">
-                <div class="resistance-btn-icon">
-                    <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/dogdigital.svg" alt="Doge" style="width: 28px; height: 28px; filter: brightness(0) invert(1);">
-                </div>
-                <span class="resistance-btn-text">ЦИФРОВОЕ СОПРОТИВЛЕНИЕ</span>
+            <div class="resistance-btn-icon">
+                <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/dogdigital.svg" alt="Doge">
             </div>
-            <div class="resistance-btn-arrow">→</div>
+            <span class="resistance-btn-text">ЦИФРОВОЕ СОПРОТИВЛЕНИЕ</span>
         </a>
         
         <div class="full-banner" onclick="window.open('https://ru.dashboard.proxy.market/?ref=E000143973', '_blank')">
@@ -604,7 +596,7 @@
                 <div class="post-stats">
                     <div class="views">
                         <span class="views-icon">👁</span>
-                        <span>557K</span>
+                        <span>560K</span>
                     </div>
                     <a href="https://t.me/ProxyMTProto/46536" target="_blank" class="original-link" rel="noopener noreferrer">
                         <span>🔗</span>
@@ -636,7 +628,7 @@
                 <div class="post-stats">
                     <div class="views">
                         <span class="views-icon">👁</span>
-                        <span>561K</span>
+                        <span>564K</span>
                     </div>
                     <a href="https://t.me/ProxyMTProto/46537" target="_blank" class="original-link" rel="noopener noreferrer">
                         <span>🔗</span>
@@ -668,7 +660,7 @@
                 <div class="post-stats">
                     <div class="views">
                         <span class="views-icon">👁</span>
-                        <span>554K</span>
+                        <span>558K</span>
                     </div>
                     <a href="https://t.me/ProxyMTProto/46538" target="_blank" class="original-link" rel="noopener noreferrer">
                         <span>🔗</span>
@@ -700,7 +692,7 @@
                 <div class="post-stats">
                     <div class="views">
                         <span class="views-icon">👁</span>
-                        <span>583K</span>
+                        <span>586K</span>
                     </div>
                     <a href="https://t.me/ProxyMTProto/46539" target="_blank" class="original-link" rel="noopener noreferrer">
                         <span>🔗</span>
@@ -732,7 +724,7 @@
                 <div class="post-stats">
                     <div class="views">
                         <span class="views-icon">👁</span>
-                        <span>585K</span>
+                        <span>589K</span>
                     </div>
                     <a href="https://t.me/ProxyMTProto/46540" target="_blank" class="original-link" rel="noopener noreferrer">
                         <span>🔗</span>
@@ -784,7 +776,7 @@
                 <div class="post-stats">
                     <div class="views">
                         <span class="views-icon">👁</span>
-                        <span>580K</span>
+                        <span>584K</span>
                     </div>
                     <a href="https://t.me/ProxyMTProto/46541" target="_blank" class="original-link" rel="noopener noreferrer">
                         <span>🔗</span>
@@ -816,7 +808,7 @@
                 <div class="post-stats">
                     <div class="views">
                         <span class="views-icon">👁</span>
-                        <span>565K</span>
+                        <span>570K</span>
                     </div>
                     <a href="https://t.me/ProxyMTProto/46542" target="_blank" class="original-link" rel="noopener noreferrer">
                         <span>🔗</span>
@@ -848,7 +840,7 @@
                 <div class="post-stats">
                     <div class="views">
                         <span class="views-icon">👁</span>
-                        <span>533K</span>
+                        <span>537K</span>
                     </div>
                     <a href="https://t.me/ProxyMTProto/46543" target="_blank" class="original-link" rel="noopener noreferrer">
                         <span>🔗</span>
@@ -880,7 +872,7 @@
                 <div class="post-stats">
                     <div class="views">
                         <span class="views-icon">👁</span>
-                        <span>578K</span>
+                        <span>582K</span>
                     </div>
                     <a href="https://t.me/ProxyMTProto/46544" target="_blank" class="original-link" rel="noopener noreferrer">
                         <span>🔗</span>
@@ -912,7 +904,7 @@
                 <div class="post-stats">
                     <div class="views">
                         <span class="views-icon">👁</span>
-                        <span>429K</span>
+                        <span>435K</span>
                     </div>
                     <a href="https://t.me/ProxyMTProto/46545" target="_blank" class="original-link" rel="noopener noreferrer">
                         <span>🔗</span>
@@ -944,7 +936,7 @@
         </div>
         
         <div class="footer">
-            <div>Обновлено: 04.04.2026 15:32 (МСК)</div>
+            <div>Обновлено: 04.04.2026 15:48 (МСК)</div>
             <a href="/articles.html">
                 <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/dogdigital.svg" alt="Doge" class="footer-icon">
                 Цифровое сопротивление
