@@ -255,7 +255,6 @@ def generate_html(data):
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-capable" content="yes">
     
-    <!-- Open Graph / Социальные превью -->
     <meta property="og:title" content="MTProto Proxy — рабочие прокси для Telegram">
     <meta property="og:description" content="Свежие MTProto прокси из канала @ProxyMTProto. Обновление каждые 30 минут. Работает в РФ без VPN.">
     <meta property="og:image" content="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/preview.jpg">
@@ -263,7 +262,6 @@ def generate_html(data):
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="TGOnline">
     
-    <!-- Для Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="MTProto Proxy — рабочие прокси для Telegram">
     <meta name="twitter:description" content="Свежие MTProto прокси из канала @ProxyMTProto. Работает в РФ без VPN.">
@@ -276,7 +274,6 @@ def generate_html(data):
     <link rel="apple-touch-icon" href="favicon.ico">
     
     <style>
-        /* Все стили */
         * {{
             box-sizing: border-box;
             margin: 0;
@@ -303,59 +300,20 @@ def generate_html(data):
         }}
         
         .site-header {{
+            text-align: center;
             margin-bottom: 16px;
         }}
         
-        .site-header-top {{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 10px;
-        }}
-        
-        .site-header-logo {{
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }}
-        
-        .site-header-logo img {{
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-        }}
-        
         .site-title {{
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 700;
             color: #2ea6ff;
+            margin-bottom: 4px;
         }}
         
         .site-description {{
-            font-size: 12px;
+            font-size: 13px;
             color: #8e9eae;
-        }}
-        
-        .site-nav {{
-            display: flex;
-            gap: 20px;
-        }}
-        
-        .site-nav a {{
-            color: #8e9eae;
-            text-decoration: none;
-            font-size: 15px;
-            transition: color 0.2s;
-        }}
-        
-        .site-nav a:hover {{
-            color: #2ea6ff;
-        }}
-        
-        .site-nav a.active {{
-            color: #ffd700;
         }}
         
         .info-compact {{
@@ -373,6 +331,59 @@ def generate_html(data):
         
         .info-compact-text {{
             color: #fff;
+        }}
+        
+        /* Кнопка Цифровое сопротивление */
+        .resistance-btn {{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, #1e3c5a 0%, #2b4f72 100%);
+            border-radius: 60px;
+            padding: 12px 24px;
+            margin: 20px 0;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #3a6d99;
+            cursor: pointer;
+        }}
+        
+        .resistance-btn:hover {{
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(46, 166, 255, 0.3);
+        }}
+        
+        .resistance-btn-left {{
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }}
+        
+        .resistance-btn-icon {{
+            width: 40px;
+            height: 40px;
+            background: #0b141a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }}
+        
+        .resistance-btn-text {{
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffd700;
+            letter-spacing: 0.5px;
+        }}
+        
+        .resistance-btn-arrow {{
+            font-size: 24px;
+            color: #ffd700;
+            transition: transform 0.2s;
+        }}
+        
+        .resistance-btn:hover .resistance-btn-arrow {{
+            transform: translateX(5px);
         }}
         
         .full-banner {{
@@ -695,15 +706,29 @@ def generate_html(data):
             text-align: center;
             font-size: 11px;
             color: #8e9eae;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
         }}
         
         .footer a {{
             color: #8e9eae;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }}
         
         .footer a:hover {{
             color: #2ea6ff;
+        }}
+        
+        .footer-icon {{
+            width: 20px;
+            height: 20px;
+            filter: brightness(0) invert(1);
         }}
         
         @media (max-width: 480px) {{
@@ -754,10 +779,13 @@ def generate_html(data):
                 width: 100%;
             }}
             
-            .site-header-top {{
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
+            .resistance-btn-text {{
+                font-size: 15px;
+            }}
+            
+            .resistance-btn-icon {{
+                width: 34px;
+                height: 34px;
             }}
         }}
     </style>
@@ -765,24 +793,23 @@ def generate_html(data):
 <body>
     <div class="container">
         <div class="site-header">
-            <div class="site-header-top">
-                <div class="site-header-logo">
-                    <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/dogdigital.svg" alt="Doge">
-                    <div>
-                        <div class="site-title">MTProto Proxy</div>
-                        <div class="site-description">@ProxyMTProto • рабочие прокси для Telegram</div>
-                    </div>
-                </div>
-                <div class="site-nav">
-                    
-                    <a href="/articles.html">Цифровое сопротивление</a>
-                </div>
-            </div>
+            <div class="site-title">MTProto Proxy</div>
+            <div class="site-description">@ProxyMTProto • рабочие прокси для Telegram</div>
         </div>
         
         <div class="info-compact">
             <span class="info-compact-text">🔒 Нажми Connect → Открой в Telegram → Проверь статус прокси → Подключить прокси</span>
         </div>
+        
+        <a href="/articles.html" class="resistance-btn">
+            <div class="resistance-btn-left">
+                <div class="resistance-btn-icon">
+                    <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/dogdigital.svg" alt="Doge" style="width: 28px; height: 28px; filter: brightness(0) invert(1);">
+                </div>
+                <span class="resistance-btn-text">ЦИФРОВОЕ СОПРОТИВЛЕНИЕ</span>
+            </div>
+            <div class="resistance-btn-arrow">→</div>
+        </a>
         
         <div class="full-banner" onclick="window.open('https://ru.dashboard.proxy.market/?ref=E000143973', '_blank')">
             <div class="banner-image-container">
@@ -806,13 +833,13 @@ def generate_html(data):
         
         <div class="footer">
             <div>Обновлено: {formatted_parsed} (МСК)</div>
-            <div style="margin-top: 8px;">
-                <a href="/articles.html">📚 Цифровое сопротивление</a>
-            </div>
+            <a href="/articles.html">
+                <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/dogdigital.svg" alt="Doge" class="footer-icon">
+                Цифровое сопротивление
+            </a>
         </div>
     </div>
     
-    <!-- Umami Analytics -->
     <script defer src="https://umami-sigma-mauve.vercel.app/script.js" data-website-id="706c1472-5d7d-48b3-9ffe-f99364dee7cd"></script>
     
 </body>
