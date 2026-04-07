@@ -836,7 +836,7 @@ def generate_html(data):
         document.getElementById('contactEmail').innerHTML = '<a href="mailto:' + e + '">' + e + '</a>';
     </script>
     
-    <script defer src="https://umami-sigma-mauve.vercel.app/script.js" data-website-id="706c1472-5d7d-48b3-9ffe-f99364dee7cd"></script>
+    <script defer src="https://umami-stats.adrianj250888.workers.dev/script.js" data-website-id="706c1472-5d7d-48b3-9ffe-f99364dee7cd"></script>
     
 </body>
 </html>"""
