@@ -693,28 +693,27 @@ def generate_html(data):
             font-size: 11px;
             color: #8e9eae;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
+            gap: 8px;
         }}
         
         .footer a {{
-            color: #8e9eae;
+            color: #2ea6ff;
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }}
         
         .footer a:hover {{
-            color: #2ea6ff;
+            text-decoration: underline;
         }}
         
-        .footer-icon {{
-            width: 16px;
-            height: 16px;
-            filter: brightness(0) invert(0);
+        .footer-contacts {{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            flex-wrap: wrap;
         }}
         
         @media (max-width: 480px) {{
@@ -780,7 +779,7 @@ def generate_html(data):
             }}
             
             .footer {{
-                gap: 10px;
+                gap: 6px;
             }}
         }}
     </style>
@@ -825,12 +824,17 @@ def generate_html(data):
         
         <div class="footer">
             <div>Обновлено: {formatted_parsed} (МСК)</div>
-            <a href="/articles.html">
-                <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/dogdigital.svg" alt="Doge" class="footer-icon">
-                Цифровое сопротивление
-            </a>
+            <div class="footer-contacts">
+                <span>📧</span>
+                <span>По вопросам сотрудничества: <span id="contactEmail"></span></span>
+            </div>
         </div>
     </div>
+    
+    <script>
+        let e = "telegaonline" + "@" + "proton.me";
+        document.getElementById('contactEmail').innerHTML = '<a href="mailto:' + e + '">' + e + '</a>';
+    </script>
     
     <script defer src="https://umami-sigma-mauve.vercel.app/script.js" data-website-id="706c1472-5d7d-48b3-9ffe-f99364dee7cd"></script>
     
