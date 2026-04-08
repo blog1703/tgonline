@@ -2,7 +2,7 @@
   "redirects": [
     {
       "source": "/(.*)",
-      "destination": "https://telegaproxy.vercel.app/$1",
+      "destination": "telegaproxy.vercel.app/$1",
       "permanent": true
     }
   ]
