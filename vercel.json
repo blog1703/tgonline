@@ -2,14 +2,8 @@
   "redirects": [
     {
       "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "telegaonline.vercel.app"
-        }
-      ],
-      "destination": "telegaproxy.vercel.app/$1",
-      "statusCode": 301
+      "destination": "https://telegaproxy.vercel.app/$1",
+      "permanent": true
     }
   ]
 }
