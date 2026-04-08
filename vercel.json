@@ -8,7 +8,7 @@
           "value": "telegaonline.vercel.app"
         }
       ],
-      "destination": "https://telegaonlinee.vercel.app/$1",
+      "destination": "telegaproxy.vercel.app/$1",
       "statusCode": 301
     }
   ]
