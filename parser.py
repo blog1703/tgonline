@@ -111,7 +111,7 @@ def generate_html(data):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>MTProto Proxy | Telegram прокси</title>
+    <title>MTProto Proxy</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <style>
@@ -181,6 +181,9 @@ def generate_html(data):
         post_text = post['post_text']
         channel_link = f'<a href="https://t.me/ProxyMTProto" target="_blank" class="channel-link">@ProxyMTProto</a>'
         post_text = post_text.replace('@ProxyMTProto', channel_link)
+        # Если хотите убрать ссылку на Telegram, раскомментируйте строку ниже и закомментируйте две строки выше:
+        # post_text = post_text.replace('@ProxyMTProto', '@ProxyMTProto')
+        
         post_text_html = post_text.replace('\n', '<br>')
         
         posts_html += f"""
@@ -255,19 +258,19 @@ def generate_html(data):
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-capable" content="yes">
     
-    <meta property="og:title" content="MTProto Proxy — рабочие прокси для Telegram">
-    <meta property="og:description" content="Свежие MTProto прокси из канала @ProxyMTProto. Обновление каждые 30 минут. Работает в РФ без VPN.">
+    <meta property="og:title" content="MTProto Proxy | Рабочие прокси">
+    <meta property="og:description" content="Свежие MTProto прокси из канала @ProxyMTProto. Обновление каждые 30 минут.">
     <meta property="og:image" content="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/preview.jpg">
     <meta property="og:url" content="https://telegaonline.vercel.app">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="TGOnline">
     
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="MTProto Proxy — рабочие прокси для Telegram">
-    <meta name="twitter:description" content="Свежие MTProto прокси из канала @ProxyMTProto. Работает в РФ без VPN.">
+    <meta name="twitter:title" content="MTProto Proxy | Рабочие прокси">
+    <meta name="twitter:description" content="Свежие MTProto прокси из канала @ProxyMTProto. Обновление каждые 30 минут.">
     <meta name="twitter:image" content="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/preview.jpg">
     
-    <title>MTProto Proxy | Рабочие прокси для Telegram</title>
+    <title>MTProto Proxy | Рабочие прокси</title>
     
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -330,46 +333,67 @@ def generate_html(data):
             color: #fff;
         }}
         
-        .resistance-btn {{
+        /* Стили для плашки */
+        .vpn-notice {{
+            background: linear-gradient(135deg, #1e3c5a 0%, #2b4f72 100%);
+            border-radius: 16px;
+            padding: 16px 40px 16px 20px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: linear-gradient(135deg, #1e3c5a 0%, #2b4f72 100%);
-            border-radius: 50px;
-            padding: 8px 16px;
-            margin-bottom: 20px;
-            text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
+            gap: 14px;
             border: 1px solid #3a6d99;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }}
+        
+        .vpn-notice-icon {{
+            font-size: 32px;
+            flex-shrink: 0;
+        }}
+        
+        .vpn-notice-text {{
+            font-size: 13px;
+            line-height: 1.5;
+            color: #fff;
+            flex: 1;
+        }}
+        
+        .vpn-notice-text strong {{
+            color: #2ea6ff;
+        }}
+        
+        .vpn-notice-text a {{
+            color: #2ea6ff;
+            text-decoration: none;
+        }}
+        
+        .vpn-notice-text a:hover {{
+            text-decoration: underline;
+        }}
+        
+        .vpn-notice-close {{
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: #8e9eae;
+            font-size: 16px;
             cursor: pointer;
-        }}
-        
-        .resistance-btn:hover {{
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(46, 166, 255, 0.3);
-        }}
-        
-        .resistance-btn-icon {{
-            width: 28px;
-            height: 28px;
-            background: #ffffff;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.2s;
         }}
         
-        .resistance-btn-icon img {{
-            width: 18px;
-            height: 18px;
-            filter: brightness(0) invert(0);
-        }}
-        
-        .resistance-btn-text {{
-            font-size: 13px;
-            font-weight: 500;
-            color: #ffffff;
+        .vpn-notice-close:hover {{
+            background: rgba(255,255,255,0.2);
+            color: #fff;
         }}
         
         .full-banner {{
@@ -764,17 +788,15 @@ def generate_html(data):
                 width: 100%;
             }}
             
-            .resistance-btn-icon {{
-                width: 24px;
-                height: 24px;
+            .vpn-notice {{
+                padding: 12px 36px 12px 14px;
             }}
             
-            .resistance-btn-icon img {{
-                width: 14px;
-                height: 14px;
+            .vpn-notice-icon {{
+                font-size: 24px;
             }}
             
-            .resistance-btn-text {{
+            .vpn-notice-text {{
                 font-size: 12px;
             }}
             
@@ -788,19 +810,23 @@ def generate_html(data):
     <div class="container">
         <div class="site-header">
             <div class="site-title">MTProto Proxy</div>
-            <div class="site-description">@ProxyMTProto • рабочие прокси для Telegram</div>
+            <div class="site-description">@ProxyMTProto • свежие MTProto прокси</div>
         </div>
         
         <div class="info-compact">
-            <span class="info-compact-text">🔒 Нажми Connect → Открой в Telegram → Проверь статус прокси → Подключить прокси</span>
+            <span class="info-compact-text">🔒 Нажми Connect → Проверь статус прокси → Подключись</span>
         </div>
         
-        <a href="/articles.html" class="resistance-btn">
-            <div class="resistance-btn-icon">
-                <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/images/dogdigital.svg" alt="Doge">
+        <!-- Новая плашка без РКН и VPN, со ссылкой на зеркало -->
+        <div class="vpn-notice">
+            <div class="vpn-notice-icon">🛸</div>
+            <div class="vpn-notice-text">
+                Если сайт не открывается — попробуйте другие способы доступа.<br>
+                Актуальное зеркало: <strong><a href="https://telegaproxy.vercel.app">telegaproxy.vercel.app</a></strong><br>
+                Спасибо, что не сдаётесь.
             </div>
-            <span class="resistance-btn-text">ЦИФРОВОЕ СОПРОТИВЛЕНИЕ</span>
-        </a>
+            <button class="vpn-notice-close" onclick="this.parentElement.style.display='none'">✕</button>
+        </div>
         
         <div class="full-banner" onclick="window.open('https://ru.dashboard.proxy.market/?ref=E000143973', '_blank')">
             <div class="banner-image-container">
