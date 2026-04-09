@@ -814,12 +814,12 @@ def generate_html(data):
         </div>
         
         <div class="info-compact">
-            <span class="info-compact-text">🔒 Нажми Connect → Проверь статус прокси → Подключись</span>
+            <span class="info-compact-text"> Нажми Connect → Проверь статус прокси → Подключись</span>
         </div>
         
         <!-- Новая плашка без РКН и VPN, со ссылкой на зеркало -->
         <div class="vpn-notice">
-            <div class="vpn-notice-icon">🛸</div>
+            <div class="vpn-notice-icon"></div>
             <div class="vpn-notice-text">
                 Если сайт не открывается — попробуйте другие способы доступа.<br>
                 Актуальное зеркало: <strong><a href="https://telegaproxy.vercel.app">telegaproxy.vercel.app</a></strong><br>
