@@ -1,27 +1,27 @@
-# Updated: 2026-04-11 23:32:33 (MSK)
+# Updated: 2026-04-12 00:31:38 (MSK)
 # Total proxies: 23
 # Sources: ProxyMTProto, TProxyRU
 
-tg://proxy?server=2.27.25.192&port=443&secret=ee038521d3753473464064e3bb49abadb26d61696c2e7275
 tg://proxy?server=95.111.234.50&port=443&secret=ee349a239357a92e695d3fa1af04bf3e2c636c6f7564666c6172652e636f6d
-tg://proxy?server=62.171.183.101&port=443&secret=ee36ee4a84e1fa2cca6f1d430eee851de7636c6f7564666c6172652e636f6d
-tg://proxy?server=95.111.251.92&port=443&secret=ee17de246c63382bc403747b78889f167f636c6f7564666c6172652e636f6d
-tg://proxy?server=95.111.246.113&port=443&secret=ee5c00289ce1b8653231f033e307807741636c6f7564666c6172652e636f6d
-tg://proxy?server=sosalcraft.zapto.org&port=8443&secret=ddbc29fd4a9e787e07b7b1c93000f9d44a
-tg://proxy?server=62.171.185.192&port=443&secret=ee212563d6d8816a43be5143606cdadb35636c6f7564666c6172652e636f6d
+tg://proxy?server=62.171.135.77&port=443&secret=eeca4579380da2228bf1e70bc43b666d8c636c6f7564666c6172652e636f6d
+tg://proxy?server=147.45.42.1&port=443&secret=b462ec304c8e671058216fbde8581ba2
 tg://proxy?server=tggo.store&port=443&secret=7uzWmAwONp7D1ujd83Bwkr50Z2dvLnN0b3Jl
-tg://proxy?server=tggo.store&port=443&secret=eeecd6980c0e369ec3d6e8ddf3707092be7467676f2e73746f7265
-tg://proxy?server=voice.techlibrary.ink&port=4502&secret=ee865ae7b8c54aac37bd6fcc4ec90a9759626973636f7474692e79656b74616e65742e636f6d
-tg://proxy?server=five.proxyprosto.sbs&port=443&secret=ee5ebd2af5512770fc537a14dc2f40818877622e7275
-tg://proxy?server=83.228.246.77&port=443&secret=7qyvn1g6m2Qsh0OplMz2nLd2ay5jb20
-tg://proxy?server=164.68.120.227&port=443&secret=ee97886115d3021360b6c86f077b384389636c6f7564666c6172652e636f6d
+tg://proxy?server=164.68.115.239&port=443&secret=ee6200185881f9ca8015f8ee1f1d102343636c6f7564666c6172652e636f6d
 tg://proxy?server=62.171.164.255&port=443&secret=eed00f99d3053051a66446182549bb84c8636c6f7564666c6172652e636f6d
 tg://proxy?server=Freeon.name&port=8443&secret=ed1a5a7f339b8ff9840d52df12382970
-tg://proxy?server=164.68.115.239&port=443&secret=ee6200185881f9ca8015f8ee1f1d102343636c6f7564666c6172652e636f6d
-tg://proxy?server=voice.techlibrary.ink&port=4501&secret=eef4eb80f871f1417b706f87af8c76eaf4626973636f7474692e79656b74616e65742e636f6d
-tg://proxy?server=147.45.42.1&port=443&secret=b462ec304c8e671058216fbde8581ba2
+tg://proxy?server=sosalcraft.zapto.org&port=8443&secret=ddbc29fd4a9e787e07b7b1c93000f9d44a
+tg://proxy?server=95.111.251.92&port=443&secret=ee17de246c63382bc403747b78889f167f636c6f7564666c6172652e636f6d
+tg://proxy?server=83.228.246.77&port=443&secret=7qyvn1g6m2Qsh0OplMz2nLd2ay5jb20
+tg://proxy?server=62.171.185.192&port=443&secret=ee212563d6d8816a43be5143606cdadb35636c6f7564666c6172652e636f6d
+tg://proxy?server=tggo.store&port=443&secret=eeecd6980c0e369ec3d6e8ddf3707092be7467676f2e73746f7265
+tg://proxy?server=voice.techlibrary.ink&port=4502&secret=ee865ae7b8c54aac37bd6fcc4ec90a9759626973636f7474692e79656b74616e65742e636f6d
 tg://proxy?server=158.160.144.69&port=443&secret=9c653e59a6eebfd240cb8373c5d030bb
-tg://proxy?server=connect.rebelworldwide.online&port=2096&secret=0b4b570140af218753e8980c963f091a
+tg://proxy?server=164.68.120.227&port=443&secret=ee97886115d3021360b6c86f077b384389636c6f7564666c6172652e636f6d
+tg://proxy?server=62.171.183.101&port=443&secret=ee36ee4a84e1fa2cca6f1d430eee851de7636c6f7564666c6172652e636f6d
 tg://proxy?server=oneproxys.best&port=443&secret=a665a45920422f9d417e4867efdc4fb8
 tg://proxy?server=62.171.160.69&port=443&secret=eee8ba9dbfa8e74fbb43017f6d5ebcf930636c6f7564666c6172652e636f6d
-tg://proxy?server=62.171.135.77&port=443&secret=eeca4579380da2228bf1e70bc43b666d8c636c6f7564666c6172652e636f6d
+tg://proxy?server=five.proxyprosto.sbs&port=443&secret=ee5ebd2af5512770fc537a14dc2f40818877622e7275
+tg://proxy?server=95.111.246.113&port=443&secret=ee5c00289ce1b8653231f033e307807741636c6f7564666c6172652e636f6d
+tg://proxy?server=voice.techlibrary.ink&port=4501&secret=eef4eb80f871f1417b706f87af8c76eaf4626973636f7474692e79656b74616e65742e636f6d
+tg://proxy?server=connect.rebelworldwide.online&port=2096&secret=0b4b570140af218753e8980c963f091a
+tg://proxy?server=2.27.25.192&port=443&secret=ee038521d3753473464064e3bb49abadb26d61696c2e7275
