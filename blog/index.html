@@ -16,15 +16,15 @@
             font-family: 'Inter', sans-serif;
             background: #0f1720;
             color: #e6edf3;
-            line-height: 1.6;
+            line-height: 1.5;
             padding: 20px;
         }
 
         .container {
-            max-width: 760px;
+            max-width: 800px;
             margin: 0 auto;
             background: #161b22;
-            border-radius: 20px;
+            border-radius: 24px;
             padding: 40px 32px;
             border: 1px solid rgba(255,255,255,0.05);
         }
@@ -45,54 +45,100 @@
         h1 {
             font-size: 28px;
             font-weight: 600;
-            margin-bottom: 24px;
-            padding-bottom: 12px;
+            margin-bottom: 8px;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .blog-description {
+            font-size: 14px;
+            color: #8b949e;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
             border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
-        .posts-list {
-            list-style: none;
-            margin-top: 20px;
+        /* Сетка карточек — компактные плитки */
+        .posts-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
-        .posts-list li {
-            margin-bottom: 24px;
-            padding-bottom: 24px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .posts-list li:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .post-title {
-            font-size: 20px;
-            font-weight: 500;
-            margin-bottom: 8px;
-        }
-
-        .post-title a {
-            color: #e6edf3;
+        /* Кликабельная карточка */
+        .post-card {
+            background: #1a212c;
+            border-radius: 16px;
+            padding: 20px 24px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.04);
             text-decoration: none;
+            display: block;
+        }
+
+        .post-card:hover {
+            background: #1f2835;
+            border-color: rgba(88, 166, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Заголовок карточки */
+        .post-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #e6edf3;
+            margin-bottom: 8px;
+            line-height: 1.4;
             transition: color 0.2s;
         }
 
-        .post-title a:hover {
+        .post-card:hover .post-title {
             color: #58a6ff;
-            text-decoration: underline;
         }
 
+        /* Мета-информация */
         .post-meta {
-            font-size: 13px;
+            font-size: 12px;
             color: #8b949e;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
         }
 
+        .post-category {
+            background: rgba(88, 166, 255, 0.12);
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 500;
+            color: #58a6ff;
+        }
+
+        /* Анонс/выдержка */
         .post-excerpt {
-            font-size: 14px;
-            color: #c9d1d9;
+            font-size: 13px;
+            color: #b1bac4;
             line-height: 1.5;
+            margin-bottom: 0;
+        }
+
+        /* ссылка внутри карточки не нужна, вся карточка кликабельна */
+        .post-card a {
+            text-decoration: none;
+        }
+
+        @media (max-width: 560px) {
+            .container {
+                padding: 24px 20px;
+            }
+            .post-card {
+                padding: 16px 20px;
+            }
+            .post-title {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -102,23 +148,39 @@
     <a href="https://telegaproxy.vercel.app/" class="back-link">← На главную</a>
 
     <h1>Блог</h1>
-    <p>Здесь вы найдёте полезные статьи о настройке серверов, инструкции для игровых консолей и другие материалы.</p>
+    <div class="blog-description">
+        Полезные статьи о настройке прокси, серверов MTProto, инструкции для консолей и аналитика.
+    </div>
 
-    <ul class="posts-list">
-        <li>
-            <div class="post-title">
-                <a href="nastroyka-proksi-na-playstation-5-i-playstation-4-poshagovaya-instruktsiya.html">Настройка прокси на PlayStation 5 и PlayStation 4: пошаговая инструкция</a>
+    <div class="posts-grid">
+        <!-- КАРТОЧКА 1: Экс-советник президента о "чебурнете" (вся карточка кликабельна) -->
+        <a href="eks-sovetnik-prezidenta-german-klimenko-cheburnet-internet-ogranicheniya.html" class="post-card">
+            <div class="post-title">Экс-советник президента по развитию интернета объяснил, как делается «чебурнет»</div>
+            <div class="post-meta">
+                <span>📅 23 марта 2026</span>
+                <span class="post-category">Аналитика</span>
             </div>
-            <div class="post-meta">📅 10 апреля 2026 | 🔧 Настройки и гайды</div>
             <div class="post-excerpt">
-                Многие пользователи из СНГ сталкиваются с трудностями при покупке подписки или игр для консоли PS. В статье мы расскажем, как купить подписку на PS4 и PS5 из России и других стран с помощью прокси.
+                Герман Клименко — о защите от дронов, борьбе с мошенниками, будущем VPN в России и почему государство не ставит задачу отключить страну от зарубежного интернета.
             </div>
-        </li>
-        <!-- Здесь в будущем можно добавлять новые статьи -->
-    </ul>
+        </a>
+
+        <!-- КАРТОЧКА 2: PlayStation (вся карточка кликабельна) -->
+        <a href="nastroyka-proksi-na-playstation-5-i-playstation-4-poshagovaya-instruktsiya.html" class="post-card">
+            <div class="post-title">Настройка прокси на PlayStation 5 и PlayStation 4: пошаговая инструкция</div>
+            <div class="post-meta">
+                <span>📅 10 апреля 2026</span>
+                <span class="post-category">Настройки и гайды</span>
+            </div>
+            <div class="post-excerpt">
+                Многие пользователи из СНГ сталкиваются с трудностями при покупке подписки или игр для консоли PS. Как купить подписку на PS4 и PS5 из России и других стран с помощью прокси.
+            </div>
+        </a>
+
+        <!-- Здесь будут добавляться новые статьи — просто копируем блок .post-card -->
+    </div>
 </div>
 
-    <script defer src="https://umami-stats-ten.vercel.app/script.js" data-website-id="706c1472-5d7d-48b3-9ffe-f99364dee7cd"></script>
-
+<script defer src="https://umami-stats-ten.vercel.app/script.js" data-website-id="706c1472-5d7d-48b3-9ffe-f99364dee7cd"></script>
 </body>
 </html>
