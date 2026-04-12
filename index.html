@@ -191,14 +191,13 @@
         }
         .recommend-button:hover { background: #2ea043; }
 
-        /* СТИЛИ ДЛЯ FAQ АККОРДЕОНА */
+        /* СТИЛИ ДЛЯ FAQ АККОРДЕОНА (ПЛАВНЫЙ, НАДЁЖНЫЙ) */
         .faq-section {
             margin-top: 20px;
             text-align: left;
         }
         .faq-item {
             border-top: 1px solid rgba(255,255,255,0.08);
-            padding: 12px 0;
         }
         .faq-question {
             display: flex;
@@ -208,6 +207,7 @@
             font-size: 14px;
             font-weight: 500;
             color: #e6edf3;
+            padding: 12px 0;
         }
         .faq-question span {
             font-size: 18px;
@@ -220,15 +220,17 @@
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out;
+            transition: max-height 0.35s ease-out;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 200px; /* Достаточно для вашего текста */
+        }
+        .faq-answer-inner {
             font-size: 13px;
             color: #8b949e;
             line-height: 1.5;
+            padding-bottom: 12px;
             padding-left: 8px;
-        }
-        .faq-item.active .faq-answer {
-            max-height: 200px;
-            padding-top: 10px;
         }
 
         @media (max-width: 480px) {
@@ -253,7 +255,7 @@
 </head>
 <body>
 
-    <!-- ШАПКА (цвет как у основного фона #0f1720) -->
+    <!-- ШАПКА -->
     <header class="site-header">
         <div class="header-container">
             <a href="/blog/index.html" class="articles-link" target="_blank" rel="noopener noreferrer">Статьи</a>
@@ -283,7 +285,9 @@
                         Это официальная функция? <span>+</span>
                     </div>
                     <div class="faq-answer">
-                        Да, Telegram поддерживает работу с дополнительными серверами через встроенные настройки.
+                        <div class="faq-answer-inner">
+                            Да, Telegram поддерживает работу с дополнительными серверами через встроенные настройки.
+                        </div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -291,7 +295,9 @@
                         Почему соединение может меняться? <span>+</span>
                     </div>
                     <div class="faq-answer">
-                        Разные серверы могут иметь различную нагрузку. Вы можете выбрать другой вариант.
+                        <div class="faq-answer-inner">
+                            Разные серверы могут иметь различную нагрузку. Вы можете выбрать другой вариант.
+                        </div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -299,14 +305,16 @@
                         Нужно ли что-то устанавливать? <span>+</span>
                     </div>
                     <div class="faq-answer">
-                        Нет, используется стандартный функционал приложения Telegram.
+                        <div class="faq-answer-inner">
+                            Нет, используется стандартный функционал приложения Telegram.
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- БАННЕР (отдельный блок, ниже FAQ, перед футером) -->
+    <!-- БАННЕР -->
     <div class="recommend">
         <div class="recommend-content">
             <div class="recommend-icon">
@@ -320,7 +328,7 @@
         </div>
     </div>
 
-    <!-- ФУТЕР (цвет как у основного фона #0f1720) -->
+    <!-- ФУТЕР -->
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-text">Список обновляется автоматически</div>
