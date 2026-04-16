@@ -7,10 +7,8 @@
     <title>MTProto прокси для Telegram — быстрое подключение</title>
     <meta name="description" content="Рабочие MTProto прокси для Telegram. Подключение в один клик. Обновляемый список параметров для настройки доступа.">
     
-    <!-- Каноническая ссылка -->
     <link rel="canonical" href="https://telegaproxy.vercel.app/">
 
-    <!-- Open Graph -->
     <meta property="og:title" content="MTProto прокси для Telegram — быстрое подключение">
     <meta property="og:description" content="Рабочие MTProto прокси для Telegram. Подключение в один клик. Обновляемый список параметров для настройки доступа.">
     <meta property="og:url" content="https://telegaproxy.vercel.app/">
@@ -18,7 +16,6 @@
     <meta property="og:site_name" content="MTProto для Telegram">
     <meta property="og:locale" content="ru_RU">
 
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="MTProto прокси для Telegram — быстрое подключение">
     <meta name="twitter:description" content="Рабочие MTProto прокси для Telegram. Подключение в один клик. Обновляемый список параметров для настройки доступа.">
@@ -40,35 +37,122 @@
             width: 100%;
             background: #0f1720;
             padding: 16px 20px;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .header-container {
-            max-width: 460px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            justify-content: flex-start;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        .logo-img {
+            height: 100px;
+            width: auto;
+            display: block;
+        }
+        
+        /* Бургер-меню (общие стили) */
+        .burger-menu {
+            display: flex;
             align-items: center;
         }
-        .articles-link {
+        .burger-icon {
+            cursor: pointer;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .burger-icon span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background: #c9d1d9;
+            border-radius: 2px;
+            transition: all 0.2s;
+        }
+        .burger-icon:hover span {
+            background: #ffffff;
+        }
+        
+        /* Меню (базовые стили) */
+        .mobile-menu {
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            background: #161b22;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 12px 0;
+            min-width: 160px;
+            display: none;
+            z-index: 100;
+            flex-direction: column;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        .mobile-menu a {
             color: #c9d1d9;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 500;
-            padding: 6px 0;
-            position: relative;
-            transition: color 0.2s ease;
+            padding: 10px 20px;
+            transition: background 0.2s;
         }
-        .articles-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #58a6ff;
-            transition: width 0.2s ease;
+        .mobile-menu a:hover {
+            background: #1e2a36;
+            color: #ffffff;
         }
-        .articles-link:hover { color: #ffffff; }
-        .articles-link:hover::after { width: 100%; }
+        .mobile-menu.show {
+            display: flex;
+        }
+
+        /* На мобильных — полноэкранное меню с подложкой */
+        @media (max-width: 768px) {
+            .mobile-menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.85);
+                backdrop-filter: blur(8px);
+                border-radius: 0;
+                justify-content: center;
+                align-items: center;
+                min-width: auto;
+                box-shadow: none;
+            }
+            .mobile-menu a {
+                font-size: 24px;
+                padding: 16px 0;
+            }
+            .mobile-menu a:hover {
+                background: transparent;
+                color: #58a6ff;
+            }
+            .close-menu {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-size: 32px;
+                cursor: pointer;
+                color: #c9d1d9;
+            }
+            .close-menu:hover {
+                color: #ffffff;
+            }
+        }
+
+        /* На ПК — компактное меню */
+        @media (min-width: 769px) {
+            .close-menu {
+                display: none;
+            }
+        }
 
         .main-content {
             flex: 1;
@@ -168,7 +252,6 @@
         .footer-text { font-size: 11px; color: #6e7681; margin-bottom: 8px; }
         .update-time { font-size: 11px; color: #6e7681; }
 
-        /* Баннеры */
         .banner {
             max-width: 460px;
             margin: 0 auto;
@@ -207,7 +290,6 @@
         }
         .banner-button:hover { background: #2ea043; }
 
-        /* FAQ */
         .faq-section {
             margin-top: 20px;
             text-align: left;
@@ -272,6 +354,9 @@
             .faq-answer-inner {
                 font-size: 12px;
             }
+            .logo-img {
+                height: 60px;
+            }
         }
 
         .loader {
@@ -292,14 +377,26 @@
 
     <header class="site-header">
         <div class="header-container">
-            <a href="/blog/index.html" class="articles-link" target="_blank" rel="noopener noreferrer">Статьи</a>
+            <a href="/" class="logo-link">
+                <img src="https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/logofinal.png" alt="MTProto Proxy" class="logo-img">
+            </a>
+            <div class="burger-menu">
+                <div class="burger-icon" id="burgerIcon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="mobile-menu" id="mobileMenu">
+                    <div class="close-menu" id="closeMenu">&times;</div>
+                    <a href="/blog/index.html" target="_blank" rel="noopener noreferrer">Новости</a>
+                </div>
+            </div>
         </div>
     </header>
 
     <main class="main-content">
         <div style="width: 100%; max-width: 460px; margin: 0 auto;">
 
-            <!-- ВЕРХНИЙ БАННЕР -->
             <div class="banner top-banner">
                 <div class="banner-content">
                     <div class="banner-text" style="flex: 1;">
@@ -311,7 +408,6 @@
                 </div>
             </div>
 
-            <!-- ОСНОВНОЙ КОНТЕНТ -->
             <div class="container">
                 <h1>MTProto прокси для Telegram</h1>
                 <div class="sub">Нажмите кнопку, чтобы получить рабочий прокси</div>
@@ -326,7 +422,6 @@
                 </div>
                 <div class="status" id="statusMsg">Готово</div>
 
-                <!-- FAQ -->
                 <div class="faq-section">
                     <div class="faq-item">
                         <div class="faq-question">
@@ -361,7 +456,6 @@
                 </div>
             </div>
 
-            <!-- НИЖНИЙ БАННЕР -->
             <div class="banner bottom-banner">
                 <div class="banner-content">
                     <div class="banner-text">
@@ -546,6 +640,19 @@
             parent.classList.toggle('active');
         });
     });
+
+    // Бургер-меню
+    const burgerIcon = document.getElementById('burgerIcon');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    if (burgerIcon && mobileMenu) {
+        const toggleMenu = () => mobileMenu.classList.toggle('show');
+        burgerIcon.addEventListener('click', toggleMenu);
+        if (closeMenu) closeMenu.addEventListener('click', toggleMenu);
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu && window.innerWidth <= 768) toggleMenu();
+        });
+    }
 })();
 </script>
 
