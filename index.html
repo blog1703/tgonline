@@ -4,10 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 
-    <title>MTProto серверы для Telegram — список подключений</title>
-    <meta name="description" content="Актуальные серверы MTProto для Telegram. Получите параметры подключения и настройте доступ через официальные функции приложения.">
-    <meta name="keywords" content="mtproto server, telegram server, mtproto подключение, настройка телеграм, серверы для телеграм">
+    <title>MTProto прокси для Telegram — быстрое подключение</title>
+    <meta name="description" content="Рабочие MTProto прокси для Telegram. Подключение в один клик. Обновляемый список параметров для настройки доступа.">
     
+    <!-- Каноническая ссылка -->
+    <link rel="canonical" href="https://telegaproxy.vercel.app/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="MTProto прокси для Telegram — быстрое подключение">
+    <meta property="og:description" content="Рабочие MTProto прокси для Telegram. Подключение в один клик. Обновляемый список параметров для настройки доступа.">
+    <meta property="og:url" content="https://telegaproxy.vercel.app/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MTProto для Telegram">
+    <meta property="og:locale" content="ru_RU">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="MTProto прокси для Telegram — быстрое подключение">
+    <meta name="twitter:description" content="Рабочие MTProto прокси для Telegram. Подключение в один клик. Обновляемый список параметров для настройки доступа.">
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
@@ -284,7 +299,7 @@
     <main class="main-content">
         <div style="width: 100%; max-width: 460px; margin: 0 auto;">
 
-            <!-- ВЕРХНИЙ БАННЕР (текстовый, без фото) -->
+            <!-- ВЕРХНИЙ БАННЕР -->
             <div class="banner top-banner">
                 <div class="banner-content">
                     <div class="banner-text" style="flex: 1;">
@@ -298,10 +313,10 @@
 
             <!-- ОСНОВНОЙ КОНТЕНТ -->
             <div class="container">
-                <h1>MTProto для Telegram</h1>
-                <div class="sub">Нажмите кнопку, чтобы получить рабочий сервер</div>
-                <div class="stats" id="statsArea">Загружено: <strong id="totalCount">—</strong> серверов</div>
-                <button id="getProxyBtn">Получить сервер</button>
+                <h1>MTProto прокси для Telegram</h1>
+                <div class="sub">Нажмите кнопку, чтобы получить рабочий прокси</div>
+                <div class="stats" id="statsArea">Загружено: <strong id="totalCount">—</strong> прокси</div>
+                <button id="getProxyBtn">Получить прокси</button>
                 <div class="result-area" id="resultArea">
                     <div class="proxy-link" id="proxyLink">—</div>
                     <div class="flex-row">
@@ -346,12 +361,12 @@
                 </div>
             </div>
 
-            <!-- НИЖНИЙ БАННЕР (оставлен без изменений) -->
+            <!-- НИЖНИЙ БАННЕР -->
             <div class="banner bottom-banner">
                 <div class="banner-content">
                     <div class="banner-text">
                         <div class="banner-title">Твой билет в мир PlayStation</div>
-                        <div class="banner-desc">С помощью сервера оплачивай подписки в Турции, США и других регионах</div>
+                        <div class="banner-desc">С помощью прокси оплачивай подписки в Турции, США и других регионах</div>
                     </div>
                     <a href="/blog/nastroyka-proksi-na-playstation-5-i-playstation-4-poshagovaya-instruktsiya.html" class="banner-button" target="_blank" rel="nofollow">Попробовать</a>
                 </div>
@@ -469,10 +484,10 @@
             resultArea.style.display = 'block';
             statusMsg.textContent = 'Готово';
         } else {
-            statusMsg.textContent = 'Нет доступных серверов';
+            statusMsg.textContent = 'Нет доступных прокси';
         }
         getProxyBtn.disabled = false;
-        getProxyBtn.textContent = 'Получить сервер';
+        getProxyBtn.textContent = 'Получить прокси';
     }
 
     async function copyToClipboard(text) {
