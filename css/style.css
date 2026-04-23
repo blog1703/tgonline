@@ -416,6 +416,53 @@ button:disabled {
     padding-left: 8px;
 }
 
+/* SEO текстовый блок */
+.seo-text {
+    max-width: 460px;
+    margin: 30px auto 20px;
+    padding: 24px;
+    background: #161b22;
+    border-radius: 20px;
+    text-align: left;
+    border: 1px solid rgba(255,255,255,0.05);
+    font-size: 14px;
+    line-height: 1.6;
+    color: #c9d1d9;
+}
+
+.seo-text h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 20px 0 12px 0;
+    color: #e6edf3;
+}
+
+.seo-text h2:first-child {
+    margin-top: 0;
+}
+
+.seo-text p, .seo-text ul, .seo-text ol {
+    margin-bottom: 16px;
+    color: #b0b8c5;
+}
+
+.seo-text ul, .seo-text ol {
+    padding-left: 24px;
+}
+
+.seo-text li {
+    margin-bottom: 8px;
+}
+
+.seo-text a {
+    color: #58a6ff;
+    text-decoration: none;
+}
+
+.seo-text a:hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 480px) {
     .banner-content {
         flex-direction: column;
@@ -441,6 +488,13 @@ button:disabled {
     }
     .logo-img {
         height: 60px;
+    }
+    .seo-text {
+        padding: 18px;
+        font-size: 13px;
+    }
+    .seo-text h2 {
+        font-size: 16px;
     }
 }
 
