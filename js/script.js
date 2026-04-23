@@ -63,9 +63,8 @@
             if (updateMatch) updateTimeSpan.textContent = 'Обновлено: ' + updateMatch[1];
             const proxies = text.split('\n').filter(line => line.trim().startsWith('tg://'));
             if (!proxies.length) throw new Error('Список пуст');
-            const wasEmpty = cachedProxies.length === 0;
             cachedProxies = proxies;
-            if (wasEmpty) currentIndex = -1;
+            if (cachedProxies.length === 0) currentIndex = -1;
             totalCountSpan.textContent = proxies.length;
             totalNumSpan.textContent = proxies.length;
             statusMsg.textContent = 'Готово';
@@ -102,7 +101,7 @@
             statusMsg.textContent = 'Нет доступных прокси';
         }
         getProxyBtn.disabled = false;
-        getProxyBtn.textContent = 'Получить прокси';
+        getProxyBtn.textContent = 'Получить рабочий прокси';
     }
 
     async function copyToClipboard(text) {
