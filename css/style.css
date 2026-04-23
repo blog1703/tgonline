@@ -13,10 +13,11 @@ body {
     min-height: 100vh;
 }
 
+/* ========== УМЕНЬШЕННАЯ ШАПКА ========== */
 .site-header {
     width: 100%;
     background: #0f1720;
-    padding: 16px 20px;
+    padding: 12px 20px;
     position: relative;
     border-bottom: 1px solid rgba(255,255,255,0.05);
 }
@@ -31,45 +32,35 @@ body {
 }
 
 .logo-img {
-    height: 100px;
+    height: 48px;
     width: auto;
     display: block;
+    transition: opacity 0.2s;
 }
 
-/* Десктопная ссылка "Новости" с эффектом свечения снизу */
+.logo-img:hover {
+    opacity: 0.85;
+}
+
+/* Десктопная ссылка "Новости" — минималистичный стиль */
 .desktop-news {
     display: none;
 }
 
 .desktop-news a {
-    color: #c9d1d9;
+    color: #8b949e;
     text-decoration: none;
-    font-size: 15px;
-    font-weight: 500;
-    padding: 6px 0;
-    transition: all 0.3s ease;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 6px 12px;
+    transition: all 0.2s ease;
     position: relative;
-}
-
-.desktop-news a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 2px;
-    background: #58a6ff;
-    box-shadow: 0 0 6px #58a6ff;
-    transition: width 0.3s ease;
+    border-radius: 8px;
 }
 
 .desktop-news a:hover {
-    color: #ffffff;
-}
-
-.desktop-news a:hover::after {
-    width: 80%;
+    color: #e6edf3;
+    background: rgba(88, 166, 255, 0.08);
 }
 
 /* Бургер-меню (только для мобильных) */
@@ -80,8 +71,8 @@ body {
 
 .burger-icon {
     cursor: pointer;
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -91,13 +82,13 @@ body {
     display: block;
     height: 2px;
     width: 100%;
-    background: #c9d1d9;
+    background: #8b949e;
     border-radius: 2px;
     transition: all 0.2s;
 }
 
 .burger-icon:hover span {
-    background: #ffffff;
+    background: #e6edf3;
 }
 
 /* Мобильное меню (полноэкранное) */
@@ -107,8 +98,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(12px);
     display: none;
     justify-content: center;
     align-items: center;
@@ -117,9 +108,9 @@ body {
 }
 
 .mobile-menu a {
-    color: #ffffff;
+    color: #e6edf3;
     text-decoration: none;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 500;
     padding: 16px 0;
     transition: color 0.2s;
@@ -136,14 +127,15 @@ body {
 .close-menu {
     position: absolute;
     top: 20px;
-    right: 20px;
-    font-size: 32px;
+    right: 24px;
+    font-size: 36px;
     cursor: pointer;
-    color: #c9d1d9;
+    color: #8b949e;
+    transition: color 0.2s;
 }
 
 .close-menu:hover {
-    color: #ffffff;
+    color: #e6edf3;
 }
 
 @media (min-width: 769px) {
@@ -160,7 +152,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 32px 20px;
+    padding: 24px 20px;
 }
 
 .container {
@@ -288,8 +280,9 @@ button:disabled {
 .site-footer {
     width: 100%;
     background: #0f1720;
-    padding: 20px;
+    padding: 16px 20px;
     margin-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
 }
 
 .footer-container {
@@ -301,7 +294,7 @@ button:disabled {
 .footer-text {
     font-size: 11px;
     color: #6e7681;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .update-time {
@@ -487,7 +480,10 @@ button:disabled {
         font-size: 12px;
     }
     .logo-img {
-        height: 60px;
+        height: 36px;
+    }
+    .site-header {
+        padding: 10px 16px;
     }
     .seo-text {
         padding: 18px;
