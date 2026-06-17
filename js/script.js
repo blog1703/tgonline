@@ -98,7 +98,7 @@
             resultArea.style.display = 'block';
             statusMsg.textContent = 'Готово';
         } else {
-            statusMsg.textContent = 'Нет доступных прокси';
+            statusMsg.textContent = 'Нет доступных';
         }
         getProxyBtn.disabled = false;
         getProxyBtn.textContent = 'Получить рабочий connect';
