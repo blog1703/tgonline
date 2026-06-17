@@ -101,7 +101,7 @@
             statusMsg.textContent = 'Нет доступных прокси';
         }
         getProxyBtn.disabled = false;
-        getProxyBtn.textContent = 'Получить рабочий прокси';
+        getProxyBtn.textContent = 'Получить рабочий connect';
     }
 
     async function copyToClipboard(text) {
