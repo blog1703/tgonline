@@ -1,32 +1,29 @@
-# Updated: 2026-09-06 18:37:24 (MSK)
-# Total proxies: 28
+# Updated: 2026-09-06 21:01:00 (MSK)
+# Total proxies: 25
 # Sources: ProxyMTProto, TProxyRU
 
-tg://proxy?server=topproxt.asiaPort:&port=443&secret=eebbb00c5d6d8a742b1a762499eb7d4912617669746f2e7275@ProxyMTProto
+tg://proxy?server=stream.lovely.lat&port=443&secret=eeaadd88aa9facd454936d0c42dc128e7773747265616d2e6c6f76656c792e6c6174
+tg://proxy?server=api2.kvakzon.topPort:&port=2443&secret=eeb2a0e3b5fba31d961cba1437805cf950617069322e6b76616b7a6f6e2e746f70@ProxyMTProto
+tg://proxy?server=ir.esdata.infoPort:&port=8443&secret=EERighJJvXrFGRMCIMjdCQ@ProxyMTProto
+tg://proxy?server=UnknownPort:&port=443&secret=eefddb26d5047ce1787ece232a57832391617669746f2e7275@ProxyMTProto
+tg://proxy?server=reyhoon.shambelile.co.ukPort:&port=8443&secret=EERighJJvXrFGRMCIMJdCQ@ProxyMTProto
 tg://proxy?server=aerie.sosun4ik.top&port=443&secret=ee6a0333c1db3f8eaba5c76731a44203b6617669746f2e7275
 tg://proxy?server=194.120.230.37Port:&port=443&secret=3XnnAQIAAQAH8AMDhuJMOt0@ProxyMTProto
-tg://proxy?server=UnknownPort:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
-tg://proxy?server=media9.happtg.orgPort:&port=443&secret=ee2e7c3d85e469cb8f825f4678a716a363706574726f766963682e7275@ProxyMTProto
-tg://proxy?server=s13.assetflux.orgPort:&port=443&secret=ee3afc68787d0be6268346b66a3563001b686f66662e7275@ProxyMTProto
-tg://proxy?server=UnknownPort:&port=7443&secret=AAAAAAAAAAAAAAAAAAAAABQ=@ProxyMTProto
-tg://proxy?server=video1.lastochka.cloud&port=443&secret=eea732400de1a4a78050c262ea27b01a35706574726f766963682e7275
-tg://proxy?server=yeh.topbelka.ru&port=443&secret=ee050c8f82b0877cccd23a08c65f062b987275747562652e7275
-tg://proxy?server=node.easyproxy.cfdPort:&port=443&secret=ee6be95a795ee766da019cd30044b837c16e6f64652e6561737970726f78792e636664@ProxyMTProto
-tg://proxy?server=adproxy.mtproto.baby&port=443&secret=ddb57ee5caf6ee163bd0a0d08f491a84db
 tg://proxy?server=UnknownPort:&port=443&secret=ddf0eeb0bd9adc4fd4a93994ee3b2a216b@ProxyMTProto
-tg://proxy?server=ir.esdata.infoPort:&port=8443&secret=EERighJJvXrFGRMCIMjdCQ@ProxyMTProto
-tg://proxy?server=relay.rknsosi.shopPort:&port=443&secret=ee93e8816b5fd5c054bc95442701329e0072656c61792e726b6e736f73692e73686f70@ProxyMTProto
-tg://proxy?server=jadid.zhigool.co.ukPort:&port=25565&secret=ee1603010200010001fc030386e24c3add6d656469612e737465616d706f77657265642e636f6d@ProxyMTProto
-tg://proxy?server=UnknownPort:&port=15443&secret=ee5d739d0cab70b86961816e3a9c27d4c17777772e636c6f7564666c6172652e636f6d@ProxyMTProto
-tg://proxy?server=syzygy.sosun4ik.top&port=443&secret=ee6a0333c1db3f8eaba5c76731a44203b6617669746f2e7275
-tg://proxy?server=UnknownPort:&port=443&secret=eefddb26d5047ce1787ece232a57832391617669746f2e7275@ProxyMTProto
+tg://proxy?server=max.kimt.click&port=443&secret=ee1b153cf06dbd43c6085c359a6702eb936d61782e6b696d742e636c69636b
+tg://proxy?server=UnknownPort:&port=4455&secret=dd104462821249bd7ac519130220c25d09@ProxyMTProto
 tg://proxy?server=free101.gram.blog&port=443&secret=ee95c322e26f3d571e63dcb07b06d6161662726f777365722e79616e6465782e7275
 tg://proxy?server=mesh.eeluma.org&port=443&secret=eeaa6cb0b4a5f0726f60b57ee7548edf536d6573682e65656c756d612e6f7267
-tg://proxy?server=api2.kvakzon.topPort:&port=2443&secret=eeb2a0e3b5fba31d961cba1437805cf950617069322e6b76616b7a6f6e2e746f70@ProxyMTProto
-tg://proxy?server=adproxy.mtproto.babyPort:&port=443&secret=ddb57ee5caf6ee163bd0a0d08f491a84db@ProxyMTProto
-tg://proxy?server=petrichor.slarkfat.icu&port=443&secret=ee6a0333c1db3f8eaba5c76731a44203b6617669746f2e7275
+tg://proxy?server=UnknownPort:&port=15443&secret=ee5d739d0cab70b86961816e3a9c27d4c17777772e636c6f7564666c6172652e636f6d@ProxyMTProto
+tg://proxy?server=UnknownPort:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
+tg://proxy?server=s13.assetflux.orgPort:&port=443&secret=ee3afc68787d0be6268346b66a3563001b686f66662e7275@ProxyMTProto
+tg://proxy?server=node.easyproxy.cfdPort:&port=443&secret=ee6be95a795ee766da019cd30044b837c16e6f64652e6561737970726f78792e636664@ProxyMTProto
+tg://proxy?server=sep1.startnetwork.shopPort:&port=443&secret=ee2cd47959b9ece2cc59b76a4a0c010ae37374726d2e79616e6465782e6e6574@ProxyMTProto
 tg://proxy?server=UnknownPort:&port=443&secret=eef0eeb0bd9adc4fd4a93994ee3b2a216b63646e2e79656b74616e65742e636f6d@ProxyMTProto
-tg://proxy?server=UnknownPort:&port=4455&secret=dd104462821249bd7ac519130220c25d09@ProxyMTProto
+tg://proxy?server=UnknownPort:&port=7443&secret=AAAAAAAAAAAAAAAAAAAAABQ=@ProxyMTProto
+tg://proxy?server=media9.happtg.orgPort:&port=443&secret=ee2e7c3d85e469cb8f825f4678a716a363706574726f766963682e7275@ProxyMTProto
 tg://proxy?server=max.kimt.clickPort:&port=443&secret=ee1b153cf06dbd43c6085c359a6702eb936d61782e6b696d742e636c69636b@ProxyMTProto
-tg://proxy?server=ssh.meow0.co.ukPort:&port=22&secret=dd79e344818749bd7ac519130220c25d09@ProxyMTProto
-tg://proxy?server=max.kimt.click&port=443&secret=ee1b153cf06dbd43c6085c359a6702eb936d61782e6b696d742e636c69636b
+tg://proxy?server=relay.rknsosi.shopPort:&port=443&secret=ee93e8816b5fd5c054bc95442701329e0072656c61792e726b6e736f73692e73686f70@ProxyMTProto
+tg://proxy?server=video1.lastochka.cloud&port=443&secret=eea732400de1a4a78050c262ea27b01a35706574726f766963682e7275
+tg://proxy?server=petrichor.slarkfat.icu&port=443&secret=ee6a0333c1db3f8eaba5c76731a44203b6617669746f2e7275
+tg://proxy?server=stream.lovely.latPort:&port=443&secret=eeaadd88aa9facd454936d0c42dc128e7773747265616d2e6c6f76656c792e6c6174@ProxyMTProto
