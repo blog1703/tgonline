@@ -1,26 +1,25 @@
-# Updated: 2026-09-24 04:05:02 (MSK)
-# Total proxies: 22
+# Updated: 2026-09-24 09:28:34 (MSK)
+# Total proxies: 21
 # Sources: ProxyMTProto, TProxyRU
 
-tg://proxy?server=UnknownPort:&port=4455&secret=dd104462821249bd7ac519130220c25d09@ProxyMTProto
-tg://proxy?server=media6.happtg.orgPort:&port=443&secret=ee7391242569590e01416101927d38b565646e732d73686f702e7275@ProxyMTProto
-tg://proxy?server=freetg.mishutkin.clickPort:&port=443&secret=87e5ee876fc0254eed830e8029a81964@ProxyMTProto
-tg://proxy?server=matrixxx.top&port=853&secret=eee4508d288bf81791177a2f5e73ac06cf6d617472697878782e746f70
-tg://proxy?server=77.42.56.66Port:&port=443&secret=3XnnAQIAAQAH8AMDhuJMOt0@ProxyMTProto
-tg://proxy?server=server.syscloudio.co.ukPort:&port=8443&secret=EERighJJvXrFGRMCIMJdCQ@ProxyMTProto
-tg://proxy?server=UnknownPort:&port=8443&secret=EERighJJvXrFGRMCIMjdCQ@ProxyMTProto
-tg://proxy?server=cdn6.cdnwave.orgPort:&port=443&secret=ee7391242569590e01416101927d38b565686f66662e7275@ProxyMTProto
-tg://proxy?server=ir.macauley.infoPort:&port=8443&secret=EERighJJvXrFGRMCIMjdCQ@ProxyMTProto
-tg://proxy?server=UnknownPort:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
-tg://proxy?server=for.download.ir.zigoraaat.info.Port:&port=88&secret=ee0000f00f0f775555fffffff5006e2e696d656469612e737465616d706f77657265642e636f6d@ProxyMTProto
-tg://proxy?server=s05.neo-trading.org&port=443&secret=eef4f43f6c7b01f2f5f5644af6473a61d0686f66662e7275
-tg://proxy?server=relay.surfvpn.appPort:&port=443&secret=eedf44a4347c1eb8938c7e63340bd1ca4972656c61792e7375726676706e2e617070@ProxyMTProto
 tg://proxy?server=kostyanchekloh.lolPort:&port=443&secret=ee3f72634c46d320aaa30d8bb2682e9b497975672d6c696e6b2e7275@ProxyMTProto
-tg://proxy?server=jxjxjo.lolPort:&port=443&secret=865d8256f6769081944d727dc7954720@ProxyMTProto
+tg://proxy?server=cdn6.cdnwave.orgPort:&port=443&secret=ee7391242569590e01416101927d38b565686f66662e7275@ProxyMTProto
+tg://proxy?server=matrixxx.top&port=853&secret=eee4508d288bf81791177a2f5e73ac06cf6d617472697878782e746f70
 tg://proxy?server=proxy2.legendary.ac&port=443&secret=dda4c7c07709a2c6a29fca4fc63b1ae411
-tg://proxy?server=ykima.davay.clickPort:&port=443&secret=ee06dfdbdf271bab18c6b606484c237384796b696d612e64617661792e636c69636b@ProxyMTProto
-tg://proxy?server=cdnpulse.orgPort:&port=443&secret=dd93ca4f625e3fe727f9f3b42abef3fcf6@ProxyMTProto
-tg://proxy?server=akenai.tgPort:&port=853&secret=ee54ce330e4690cc297d2b031ff3f288b06d742e616b656e61692e636c69636b@ProxyMTProto
-tg://proxy?server=s04.neo-trading.org&port=443&secret=ee364a7bd5b928139fbc6b2b458e9fef9d686f66662e7275
 tg://proxy?server=UnknownPort:&port=443&secret=ee364a7bd5b928139fbc6b2b458e9fef9d686f66662e7275@ProxyMTProto
+tg://proxy?server=ykima.davay.clickPort:&port=443&secret=ee06dfdbdf271bab18c6b606484c237384796b696d612e64617661792e636c69636b@ProxyMTProto
+tg://proxy?server=s05.neo-trading.org&port=443&secret=eef4f43f6c7b01f2f5f5644af6473a61d0686f66662e7275
+tg://proxy?server=for.download.ir.zigoraaat.info.Port:&port=88&secret=ee0000f00f0f775555fffffff5006e2e696d656469612e737465616d706f77657265642e636f6d@ProxyMTProto
+tg://proxy?server=server.syscloudio.co.ukPort:&port=8443&secret=EERighJJvXrFGRMCIMJdCQ@ProxyMTProto
 tg://proxy?server=free3.gram.blog&port=443&secret=ee57639673cce7f03e351b8a5a857eea6c62726f777365722e79616e6465782e7275
+tg://proxy?server=cdnpulse.orgPort:&port=443&secret=dd93ca4f625e3fe727f9f3b42abef3fcf6@ProxyMTProto
+tg://proxy?server=freetg.mishutkin.clickPort:&port=443&secret=87e5ee876fc0254eed830e8029a81964@ProxyMTProto
+tg://proxy?server=relay.surfvpn.appPort:&port=443&secret=eedf44a4347c1eb8938c7e63340bd1ca4972656c61792e7375726676706e2e617070@ProxyMTProto
+tg://proxy?server=x.shmelproxy.topPort:&port=443&secret=eefc2612ff65a557fddf1d1b334395ef237975672d6c696e6b2e7275@ProxyMTProto
+tg://proxy?server=s04.neo-trading.org&port=443&secret=ee364a7bd5b928139fbc6b2b458e9fef9d686f66662e7275
+tg://proxy?server=77.42.56.66Port:&port=443&secret=3XnnAQIAAQAH8AMDhuJMOt0@ProxyMTProto
+tg://proxy?server=ir.macauley.infoPort:&port=8443&secret=EERighJJvXrFGRMCIMjdCQ@ProxyMTProto
+tg://proxy?server=jxjxjo.lolPort:&port=443&secret=865d8256f6769081944d727dc7954720@ProxyMTProto
+tg://proxy?server=UnknownPort:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
+tg://proxy?server=akenai.tgPort:&port=853&secret=ee54ce330e4690cc297d2b031ff3f288b06d742e616b656e61692e636c69636b@ProxyMTProto
+tg://proxy?server=ssh.meow0.co.ukPort:&port=22&secret=dd79e344818749bd7ac519130220c25d09@ProxyMTProto
