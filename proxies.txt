@@ -1,39 +1,37 @@
-# Updated: 2026-10-06 03:35:18 (MSK)
-# Total proxies: 35
+# Updated: 2026-10-06 10:11:22 (MSK)
+# Total proxies: 33
 # Sources: ProxyMTProto, TProxyRU
 
-tg://proxy?server=cdntide.orgPort:&port=443&secret=ddee10a29f2e8abc6797a0c9cb1d476c39@TProxyRU
 tg://proxy?server=portal.flashspder.infoPort:&port=8443&secret=1603010200010001fc030386e24c3add@TProxyRU
-tg://proxy?server=nakhand-mesvak-gerone.lolauth.infoPort:&port=8443&secret=1603010200010001fc030386e24c3add@TProxyRU
-tg://proxy?server=gram.blogPort:&port=853&secret=ee695c0e4188358e4ebb6d7a489185f6a96d742e6772616d2e796f75🇷🇺
-tg://proxy?server=predator-artist.topPort:&port=853&secret=ee54ce330e4690cc297d2b031ff3f288b06d742e616b656e61692e636c69636b🇷🇺
 tg://proxy?server=im.dumaniltd.co.ukPort:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@TProxyRU
-tg://proxy?server=ajab.lolauth.infoPort:&port=8443&secret=1603010200010001fc030386e24c3add@TProxyRU
-tg://proxy?server=UnknownPort:&port=443&secret=dd1924acaec2bb63dac896a6d02a382f38@ProxyMTProto
-tg://proxy?server=web.detourcloak.sitePort:&port=443&secret=dd77fa53c2b5473d4715b2493f8db21eb3@TProxyRU
-tg://proxy?server=mofid.saheledarya.co.uk.Port:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
-tg://proxy?server=dns.vdl.latPort:&port=443&secret=eece59031f1109f05387b7155534c7ac87646e732e76646c2e6c6174@ProxyMTProto
-tg://proxy?server=cdn.flowaccess.sitePort:&port=443&secret=dd1924acaec2bb63dac896a6d02a382f38@TProxyRU
 tg://proxy?server=itss.vpntelegram.clubPort:&port=443&secret=dd80d0a9c1f0c4a35d75e161eaf6365a3a@TProxyRU
-tg://proxy?server=ultra.mishutkin.clickPort:&port=443&secret=eed02e349163d9ea4376a2ae6a94fc550b64726976652e676f6f676c652e636f6d🇷🇺
+tg://proxy?server=max.mishutkin.click&port=443&secret=ee94989d74ad055391384d92c3c773c8d264726976652e676f6f676c652e636f6d
 tg://proxy?server=akenai.tgPort:&port=853&secret=ee54ce330e4690cc297d2b031ff3f288b06d742e616b656e61692e636c69636b@ProxyMTProto
-tg://proxy?server=darya.saheledarya.co.uk.Port:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@TProxyRU
-tg://proxy?server=server.syscloudio.co.ukPort:&port=8443&secret=EERighJJvXrFGRMCIMJdCQ@ProxyMTProto
 tg://proxy?server=night.vtoroe-dyhanie.spacePort:&port=443&secret=ee712aff3bb7aa86eefc4eda95d8aef21f79612e7275@TProxyRU
-tg://proxy?server=45.147.31.252Port:&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ🇷🇺
-tg://proxy?server=media12.happtg.orgPort:&port=443&secret=ee620777c073f53354f2dbb2cac6f2add9686f66662e7275@ProxyMTProto
-tg://proxy?server=topproxt.asiaPort:&port=443&secret=eebbb00c5d6d8a742b1a762499eb7d4912617669746f2e7275@ProxyMTProto
-tg://proxy?server=gram.blogPort:&port=853&secret=ee695c0e4188358e4ebb6d7a489185f6a96d742e6772616d2e796f75@ProxyMTProto
-tg://proxy?server=neomap.clubPort:&port=443&secret=3082e7f2e4ebb3abec0b8011fc493653@ProxyMTProto
-tg://proxy?server=91.98.97.225Port:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@TProxyRU
-tg://proxy?server=gram.blog&port=853&secret=ee695c0e4188358e4ebb6d7a489185f6a96d742e6772616d2e796f75
-tg://proxy?server=UnknownPort:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
-tg://proxy?server=max.mishutkin.clickPort:&port=443&secret=ee94989d74ad055391384d92c3c773c8d264726976652e676f6f676c652e636f6d@ProxyMTProto
-tg://proxy?server=UnknownPort:&port=4455&secret=dd104462821249bd7ac519130220c25d09@ProxyMTProto
-tg://proxy?server=UnknownPort:&port=22&secret=dd79e344818749bd7ac519130220c25d09@ProxyMTProto
-tg://proxy?server=ir-ir.grumpyoldmen.infoPort:&port=8443&secret=EERighJJvXrFGRMCIMjdCQ@ProxyMTProto
-tg://proxy?server=UnknownPort:&port=8443&secret=dd104462821249bd7ac519130220c25d09@ProxyMTProto
 tg://proxy?server=kostyanchekloh.lolPort:&port=443&secret=ee3f72634c46d320aaa30d8bb2682e9b497975672d6c696e6b2e7275🇷🇺
-tg://proxy?server=kak.hotstbvs.ruPort:&port=443&secret=19642a8b48eff48766d6f7f240209026@TProxyRU
-tg://proxy?server=ultra.mishutkin.click&port=443&secret=eed02e349163d9ea4376a2ae6a94fc550b64726976652e676f6f676c652e636f6d
+tg://proxy?server=cdntide.orgPort:&port=443&secret=ddee10a29f2e8abc6797a0c9cb1d476c39@TProxyRU
+tg://proxy?server=ir-ir.grumpyoldmen.infoPort:&port=8443&secret=EERighJJvXrFGRMCIMjdCQ@ProxyMTProto
+tg://proxy?server=max.mishutkin.clickPort:&port=443&secret=ee94989d74ad055391384d92c3c773c8d264726976652e676f6f676c652e636f6d@ProxyMTProto
+tg://proxy?server=91.98.97.225Port:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@TProxyRU
+tg://proxy?server=cdn.flowaccess.sitePort:&port=443&secret=dd1924acaec2bb63dac896a6d02a382f38@TProxyRU
+tg://proxy?server=UnknownPort:&port=4455&secret=dd104462821249bd7ac519130220c25d09@ProxyMTProto
+tg://proxy?server=web.detourcloak.sitePort:&port=443&secret=dd77fa53c2b5473d4715b2493f8db21eb3@TProxyRU
+tg://proxy?server=gram.blogPort:&port=853&secret=ee695c0e4188358e4ebb6d7a489185f6a96d742e6772616d2e796f75🇷🇺
+tg://proxy?server=x.shmelproxy.topPort:&port=443&secret=eefc2612ff65a557fddf1d1b334395ef237975672d6c696e6b2e7275@ProxyMTProto
+tg://proxy?server=darya.saheledarya.co.uk.Port:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@TProxyRU
+tg://proxy?server=dns.vdl.latPort:&port=443&secret=eece59031f1109f05387b7155534c7ac87646e732e76646c2e6c6174@ProxyMTProto
 tg://proxy?server=detourcloak.sitePort:&port=443&secret=ddb721613eedafe8faf13c829c6c72cafe@ProxyMTProto
+tg://proxy?server=UnknownPort:&port=22&secret=dd79e344818749bd7ac519130220c25d09@ProxyMTProto
+tg://proxy?server=nakhand-mesvak-gerone.lolauth.infoPort:&port=8443&secret=1603010200010001fc030386e24c3add@TProxyRU
+tg://proxy?server=UnknownPort:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
+tg://proxy?server=neomap.clubPort:&port=443&secret=3082e7f2e4ebb3abec0b8011fc493653@ProxyMTProto
+tg://proxy?server=UnknownPort:&port=443&secret=dd1924acaec2bb63dac896a6d02a382f38@ProxyMTProto
+tg://proxy?server=gram.blogPort:&port=853&secret=ee695c0e4188358e4ebb6d7a489185f6a96d742e6772616d2e796f75@ProxyMTProto
+tg://proxy?server=Qeshm.island.ir.igakwvwa.infoPort:&port=7443&secret=1603010200010001fc030386e24c3add🇷🇺
+tg://proxy?server=server.syscloudio.co.ukPort:&port=8443&secret=EERighJJvXrFGRMCIMJdCQ@ProxyMTProto
+tg://proxy?server=ajab.lolauth.infoPort:&port=8443&secret=1603010200010001fc030386e24c3add@TProxyRU
+tg://proxy?server=Lashboy.muzanesghy.co.ukPort:&port=4455&secret=dd104462821249bd7ac519130220c25d09🇷🇺
+tg://proxy?server=ssh.meow0.co.ukPort:&port=22&secret=dd79e344818749bd7ac519130220c25d09@TProxyRU
+tg://proxy?server=gram.blog&port=853&secret=ee695c0e4188358e4ebb6d7a489185f6a96d742e6772616d2e796f75
+tg://proxy?server=kak.hotstbvs.ruPort:&port=443&secret=19642a8b48eff48766d6f7f240209026@TProxyRU
+tg://proxy?server=mofid.saheledarya.co.uk.Port:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
