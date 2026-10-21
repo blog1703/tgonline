@@ -1,28 +1,28 @@
-# Updated: 2026-10-21 19:02:03 (MSK)
+# Updated: 2026-10-21 23:17:14 (MSK)
 # Total proxies: 24
 # Sources: ProxyMTProto, TProxyRU
 
-tg://proxy?server=max.kimt.click&port=443&secret=ee1b153cf06dbd43c6085c359a6702eb936d61782e6b696d742e636c69636b
-tg://proxy?server=UnknownPort:&port=443&secret=eef0eeb0bd9adc4fd4a93994ee3b2a216b63646e2e79656b74616e65742e636f6d@ProxyMTProto
-tg://proxy?server=sune79.mosswren.vip&port=443&secret=eeb0a621aecd97816306c197d21a8bf47b73756e6537392e6d6f73737772656e2e766970
-tg://proxy?server=UnknownPort:&port=443&secret=dded74276eabb934874721ad7a5c9e7c94@ProxyMTProto
-tg://proxy?server=redflag.yazaebalsyadelatproxy.vipPort:&port=443&secret=ee24c8636b7e946779a023ee708370719b726564666c61672e79617a616562616c73796164656c617470726f78792e766970@ProxyMTProto
-tg://proxy?server=194.120.230.120Port:&port=443&secret=3XnnAQIAAQAH8AMDhuJMOt0@ProxyMTProto
-tg://proxy?server=nerile71.tidelark.cc&port=443&secret=ee07d7284db4f16b9061db564fb8c3c4ac6e6572696c6537312e746964656c61726b2e6363
-tg://proxy?server=gram.blogPort:&port=853&secret=ee695c0e4188358e4ebb6d7a489185f6a96d742e6772616d2e796f75@ProxyMTProto
-tg://proxy?server=kavipo59.tidelark.ccPort:&port=443&secret=ee9267d78681726d5ff1bf826b750ba4ba6b617669706f35392e746964656c61726b2e6363@ProxyMTProto
-tg://proxy?server=UnknownPort:&port=443&secret=ddf0eeb0bd9adc4fd4a93994ee3b2a216b@ProxyMTProto
+tg://proxy?server=relay.surfvpn.appPort:&port=443&secret=eedf44a4347c1eb8938c7e63340bd1ca4972656c61792e7375726676706e2e617070@ProxyMTProto
 tg://proxy?server=cdnmarina.comPort:&port=443&secret=dd161011f2e6890fb06a45b244c6ff4e7c@ProxyMTProto
+tg://proxy?server=sune79.mosswren.vip&port=443&secret=eeb0a621aecd97816306c197d21a8bf47b73756e6537392e6d6f73737772656e2e766970
+tg://proxy?server=usb.neo-duo.co.ukPort:&port=8443&secret=EERighJJvXrFGRMCIMJdCQ@ProxyMTProto
 tg://proxy?server=UnknownPort:&port=4455&secret=dd104462821249bd7ac519130220c25d09@ProxyMTProto
-tg://proxy?server=redflag.yazaebalsyadelatproxy.vip&port=443&secret=ee13ad3d93bdcf5fed02b1252415631fd5726564666c61672e79617a616562616c73796164656c617470726f78792e766970
-tg://proxy?server=lozo50.mosswren.vip&port=443&secret=ee6ed43ef501d67531518d7d953c72edef6c6f7a6f35302e6d6f73737772656e2e766970
-tg://proxy?server=kavipo59.tidelark.cc&port=443&secret=ee9267d78681726d5ff1bf826b750ba4ba6b617669706f35392e746964656c61726b2e6363
-tg://proxy?server=redflag.yazaebalsyadelatproxy.vipPort:&port=443&secret=eeae5ab45be1bccbba85eec21085b2fd20726564666c61672e79617a616562616c73796164656c617470726f78792e766970@ProxyMTProto
-tg://proxy?server=ponyny28.tidelark.ccPort:&port=443&secret=eea02849a55daccdc7f7a05691b7ef7cd1706f6e796e7932382e746964656c61726b2e6363@ProxyMTProto
-tg://proxy?server=tg.surfvpn.infoPort:&port=443&secret=eedf44a4347c1eb8938c7e63340bd1ca4972656c61792e7375726676706e2e617070@ProxyMTProto
+tg://proxy?server=gram.blogPort:&port=853&secret=ee695c0e4188358e4ebb6d7a489185f6a96d742e6772616d2e796f75@ProxyMTProto
 tg://proxy?server=web.arixo.shopPort:&port=443&secret=dd27e57f496bbf279605f0198ea6d26067@ProxyMTProto
-tg://proxy?server=ir-ir.macauley.infoPort:&port=8443&secret=EERighJJvXrFGRMCIMjdCQ@ProxyMTProto
-tg://proxy?server=ultra.mishutkin.clickPort:&port=443&secret=eed02e349163d9ea4376a2ae6a94fc550b64726976652e676f6f676c652e636f6d@ProxyMTProto
-tg://proxy?server=darya.saheledarya.co.uk.Port:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
-tg://proxy?server=ving.mozitop.co.ukPort:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
 tg://proxy?server=UnknownPort:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
+tg://proxy?server=sukari30.tidelark.ccPort:&port=443&secret=ee14697011e0c73f03e95d7b6919a2252b73756b61726933302e746964656c61726b2e6363@ProxyMTProto
+tg://proxy?server=gram.blog&port=853&secret=ee695c0e4188358e4ebb6d7a489185f6a96d742e6772616d2e796f75
+tg://proxy?server=nyto59.mosswren.vip&port=443&secret=eefd9a9e2ac2851ddc327fe5971e25a87d6e79746f35392e6d6f73737772656e2e766970
+tg://proxy?server=male21.mosswren.vip&port=443&secret=eeb8e5365580b9ad3c2ee355dfcbc245e56d616c6532312e6d6f73737772656e2e766970
+tg://proxy?server=relay.surfvpn.app&port=443&secret=eedf44a4347c1eb8938c7e63340bd1ca4972656c61792e7375726676706e2e617070
+tg://proxy?server=kavipo59.tidelark.cc&port=443&secret=ee9267d78681726d5ff1bf826b750ba4ba6b617669706f35392e746964656c61726b2e6363
+tg://proxy?server=ir-ir.ariely.infoPort:&port=8443&secret=EERighJJvXrFGRMCIMjdCQ@ProxyMTProto
+tg://proxy?server=akenai.tgPort:&port=853&secret=ee54ce330e4690cc297d2b031ff3f288b06d742e616b656e61692e636c69636b@ProxyMTProto
+tg://proxy?server=UnknownPort:&port=443&secret=dded74276eabb934874721ad7a5c9e7c94@ProxyMTProto
+tg://proxy?server=max.kimt.click&port=443&secret=ee1b153cf06dbd43c6085c359a6702eb936d61782e6b696d742e636c69636b
+tg://proxy?server=194.120.230.120Port:&port=443&secret=3XnnAQIAAQAH8AMDhuJMOt0@ProxyMTProto
+tg://proxy?server=tg.surfvpn.infoPort:&port=443&secret=eedf44a4347c1eb8938c7e63340bd1ca4972656c61792e7375726676706e2e617070@ProxyMTProto
+tg://proxy?server=ultra.mishutkin.clickPort:&port=443&secret=eed02e349163d9ea4376a2ae6a94fc550b64726976652e676f6f676c652e636f6d@ProxyMTProto
+tg://proxy?server=male21.mosswren.vipPort:&port=443&secret=eeb8e5365580b9ad3c2ee355dfcbc245e56d616c6532312e6d6f73737772656e2e766970@ProxyMTProto
+tg://proxy?server=ghoghnoos.ir.awedsj.info.Port:&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
+tg://proxy?server=UnknownPort:&port=443&secret=eef0eeb0bd9adc4fd4a93994ee3b2a216b63646e2e79656b74616e65742e636f6d@ProxyMTProto
