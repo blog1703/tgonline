@@ -1,28 +1,30 @@
-# Updated: 2026-10-22 17:20:55 (MSK)
-# Total proxies: 24
+# Updated: 2026-10-22 21:41:52 (MSK)
+# Total proxies: 26
 # Sources: ProxyMTProto, TProxyRU
 
-tg://proxy?server=UnknownPort:&port=443&secret=dded74276eabb934874721ad7a5c9e7c94@ProxyMTProto
-tg://proxy?server=maravi19.tidelark.cc&port=443&secret=ee313ccc8ef064342771087caad4a82b616d617261766931392e746964656c61726b2e6363
-tg://proxy?server=gram.blog&port=853&secret=ee695c0e4188358e4ebb6d7a489185f6a96d742e6772616d2e796f75
-tg://proxy?server=s1.moworkvpn.site&port=443&secret=ee7f544ee791d0f5b888d20b955d16b2f1737461636b6f766572666c6f772e636f6d
-tg://proxy?server=redflag.yazaebalsyadelatproxy.vip&port=443&secret=ee13ad3d93bdcf5fed02b1252415631fd5726564666c61672e79617a616562616c73796164656c617470726f78792e766970
-tg://proxy?server=redflag.yazaebalsyadelatproxy.vipPort:&port=443&secret=eea02849a55daccdc7f7a05691b7ef7cd1726564666c61672e79617a616562616c73796164656c617470726f78792e766970@ProxyMTProto
-tg://proxy?server=s2.moworkvpn.site&port=8443&secret=ee8da87e8ee453db25d1f0cb08f544c1296a6574627261696e732e636f6d
-tg://proxy?server=nede81.mosswren.vip&port=443&secret=ee56df43598f1fce0f2fb3a1233652ee546e65646538312e6d6f73737772656e2e766970
-tg://proxy?server=UnknownPort:&port=443&secret=eef0eeb0bd9adc4fd4a93994ee3b2a216b63646e2e79656b74616e65742e636f6d@ProxyMTProto
-tg://proxy?server=lavashak.mikhay.co.ukPort:&port=8443&secret=EERighJJvXrFGRMCIMJdCQ@ProxyMTProto
-tg://proxy?server=darya.saheledarya.co.uk.Port:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
-tg://proxy?server=redflag.yazaebalsyadelatproxy.vipPort:&port=443&secret=eeae5ab45be1bccbba85eec21085b2fd20726564666c61672e79617a616562616c73796164656c617470726f78792e766970@ProxyMTProto
 tg://proxy?server=relay.surfvpn.app&port=443&secret=eedf44a4347c1eb8938c7e63340bd1ca4972656c61792e7375726676706e2e617070
-tg://proxy?server=web.arixo.shopPort:&port=443&secret=dd27e57f496bbf279605f0198ea6d26067@ProxyMTProto
-tg://proxy?server=194.120.230.120Port:&port=443&secret=3XnnAQIAAQAH8AMDhuJMOt0@ProxyMTProto
-tg://proxy?server=kabab.mikhay.co.ukPort:&port=8443&secret=EERighJJvXrFGRMCIMJdCQ@ProxyMTProto
-tg://proxy?server=gram.blogPort:&port=853&secret=ee695c0e4188358e4ebb6d7a489185f6a96d742e6772616d2e796f75@ProxyMTProto
-tg://proxy?server=UnknownPort:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
-tg://proxy?server=cdnswell.comPort:&port=443&secret=dd203c1c0173ed19b5bf9f28f81777eaec@ProxyMTProto
+tg://proxy?server=s1.moworkvpn.site&port=443&secret=ee7f544ee791d0f5b888d20b955d16b2f1737461636b6f766572666c6f772e636f6d
+tg://proxy?server=UnknownPort:&port=8443&secret=EERighJJvXrFGRMCIMjdCQ@ProxyMTProto
+tg://proxy?server=maravi19.tidelark.cc&port=443&secret=ee313ccc8ef064342771087caad4a82b616d617261766931392e746964656c61726b2e6363
+tg://proxy?server=tg.getsurfvpn.com&port=443&secret=eedf44a4347c1eb8938c7e63340bd1ca4972656c61792e7375726676706e2e617070
 tg://proxy?server=cdnmarina.comPort:&port=443&secret=dd161011f2e6890fb06a45b244c6ff4e7c@ProxyMTProto
-tg://proxy?server=ving.mozitop.co.ukPort:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
-tg://proxy?server=fast.mishutkin.clickPort:&port=443&secret=eef767ebee5708dadc985d58ad6e04560664726976652e676f6f676c652e636f6d@ProxyMTProto
-tg://proxy?server=UnknownPort:&port=443&secret=ddf0eeb0bd9adc4fd4a93994ee3b2a216b@ProxyMTProto
+tg://proxy?server=t6.nevcodeframe.com&port=443&secret=ee0e4d933242164450da8a7e6b469b629774362e6e6576636f64656672616d652e636f6d
+tg://proxy?server=194.120.230.120Port:&port=443&secret=3XnnAQIAAQAH8AMDhuJMOt0@ProxyMTProto
+tg://proxy?server=sumi71.mosswren.vipPort:&port=443&secret=ee214011ba04108a7b1836df3a5e918b3b73756d6937312e6d6f73737772656e2e766970@ProxyMTProto
+tg://proxy?server=delvari.ir.aysghfkzcxg.info.Port:&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
 tg://proxy?server=cdnwave.orgPort:&port=443&secret=dd65373b054948c84eb4a74630d4a79b22@ProxyMTProto
+tg://proxy?server=UnknownPort:&port=443&secret=dded74276eabb934874721ad7a5c9e7c94@ProxyMTProto
+tg://proxy?server=web.arixo.shopPort:&port=443&secret=dd27e57f496bbf279605f0198ea6d26067@ProxyMTProto
+tg://proxy?server=UnknownPort:&port=443&secret=ddf0eeb0bd9adc4fd4a93994ee3b2a216b@ProxyMTProto
+tg://proxy?server=tg.getsurfvpn.comPort:&port=443&secret=eedf44a4347c1eb8938c7e63340bd1ca4972656c61792e7375726676706e2e617070@ProxyMTProto
+tg://proxy?server=ving.mozitop.co.ukPort:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
+tg://proxy?server=UnknownPort:&port=443&secret=eef0eeb0bd9adc4fd4a93994ee3b2a216b63646e2e79656b74616e65742e636f6d@ProxyMTProto
+tg://proxy?server=UnknownPort:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
+tg://proxy?server=s2.moworkvpn.site&port=8443&secret=ee8da87e8ee453db25d1f0cb08f544c1296a6574627261696e732e636f6d
+tg://proxy?server=redflag.yazaebalsyadelatproxy.vip&port=443&secret=ee13ad3d93bdcf5fed02b1252415631fd5726564666c61672e79617a616562616c73796164656c617470726f78792e766970
+tg://proxy?server=darya.saheledarya.co.uk.Port:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
+tg://proxy?server=t5.nevcodeframe.com&port=443&secret=ee4e7e658f96af22ada977fa3e2e472e6274352e6e6576636f64656672616d652e636f6d
+tg://proxy?server=cdnswell.comPort:&port=443&secret=dd203c1c0173ed19b5bf9f28f81777eaec@ProxyMTProto
+tg://proxy?server=ponyzo32.tidelark.ccPort:&port=443&secret=eeb8e5365580b9ad3c2ee355dfcbc245e5706f6e797a6f33322e746964656c61726b2e6363@ProxyMTProto
+tg://proxy?server=nede81.mosswren.vip&port=443&secret=ee56df43598f1fce0f2fb3a1233652ee546e65646538312e6d6f73737772656e2e766970
+tg://proxy?server=relay.surfvpn.appPort:&port=443&secret=eedf44a4347c1eb8938c7e63340bd1ca4972656c61792e7375726676706e2e617070@ProxyMTProto
