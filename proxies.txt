@@ -1,29 +1,30 @@
-# Updated: 2026-11-20 04:22:54 (MSK)
-# Total proxies: 25
+# Updated: 2026-11-20 11:52:57 (MSK)
+# Total proxies: 26
 # Sources: ProxyMTProto, TProxyRU
 
-tg://proxy?server=quill.velvetwindow.cc&port=443&secret=eed09fb30e9ba945e3eb272875413c8c947175696c6c2e76656c76657477696e646f772e6363
-tg://proxy?server=UnknownPort:&port=4455&secret=dd104462821249bd7ac519130220c25d09@ProxyMTProto
-tg://proxy?server=crest.paperteapot.com&port=443&secret=eed09fb30e9ba945e3eb272875413c8c9463726573742e7061706572746561706f742e636f6d
+tg://proxy?server=rimira82.ashwren.xyzPort:&port=443&secret=eed9f17e3daed2eba291d36ea30d9aded862726f777365722e79616e6465782e7275@ProxyMTProto
+tg://proxy?server=UnknownPort:&port=8443&secret=EERighJJvXrFGRMCIMjdCQ@ProxyMTProto
+tg://proxy?server=UnknownPort:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
 tg://proxy?server=ir-ir.rdenham.co.ukPort:&port=8443&secret=EERighJJvXrFGRMCIMjdCQ@ProxyMTProto
 tg://proxy?server=91.107.180.53Port:&port=443&secret=3XnnAQIAAQAH8AMDhuJMOt0@ProxyMTProto
-tg://proxy?server=proxy.nizya.clubPort:&port=443&secret=ee05cf8e164f926f4a664b2404d276a1d670726f78792e6e697a79612e636c7562@ProxyMTProto
-tg://proxy?server=Strait-of-Hormuz.ir.bcsadwtgd.info.Port:&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
-tg://proxy?server=mint.paperteapot.com&port=443&secret=eed09fb30e9ba945e3eb272875413c8c946d696e742e7061706572746561706f742e636f6d
-tg://proxy?server=gardenkite.heronglade.spacePort:&port=443&secret=ee4b20619b99880640b45f275c18e20555706574726f766963682e7275@ProxyMTProto
-tg://proxy?server=mint.velvetwindow.cc&port=443&secret=eed09fb30e9ba945e3eb272875413c8c946d696e742e76656c76657477696e646f772e6363
 tg://proxy?server=—&port=443&secret=reserve
-tg://proxy?server=UnknownPort:&port=443&secret=ddf0eeb0bd9adc4fd4a93994ee3b2a216b@ProxyMTProto
+tg://proxy?server=ultraproxy.shopPort:&port=443&secret=eeec15a78c3842e866c302c8526175a68c7975672d6c696e6b2e7275@ProxyMTProto
+tg://proxy?server=crest.paperteapot.com&port=443&secret=eed09fb30e9ba945e3eb272875413c8c9463726573742e7061706572746561706f742e636f6d
+tg://proxy?server=sapphireaurora.paperteapot.com&port=443&secret=eed09fb30e9ba945e3eb272875413c8c9473617070686972656175726f72612e7061706572746561706f742e636f6d
+tg://proxy?server=UnknownPort:&port=443&secret=dd519fde42027f143e4fc82a97e59baff8@ProxyMTProto
+tg://proxy?server=UnknownPort:&port=4515&secret=eee9a4f23b1d768c04a8d7f39120ca5b6e626973636f7474692e79656b74616e65742e636f6d@ProxyMTProto
+tg://proxy?server=UnknownPort:&port=443&secret=eebec6acb2a5464709485d7cbeedd8612b686f66662e7275@ProxyMTProto
 tg://proxy?server=UnknownPort:&port=443&secret=eeec15a78c3842e866c302c8526175a68c7975672d6c696e6b2e7275@ProxyMTProto
-tg://proxy?server=speed.runserver.co.uk.Port:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
-tg://proxy?server=proxtstar.livePort:&port=443&secret=eeec15a78c3842e866c302c8526175a68c7975672d6c696e6b2e7275@ProxyMTProto
+tg://proxy?server=Strait-of-Hormuz.ir.bcsadwtgd.info.Port:&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
+tg://proxy?server=crest.velvetwindow.cc&port=443&secret=eed09fb30e9ba945e3eb272875413c8c9463726573742e76656c76657477696e646f772e6363
+tg://proxy?server=gardenkite.heronglade.spacePort:&port=443&secret=ee4b20619b99880640b45f275c18e20555706574726f766963682e7275@ProxyMTProto
+tg://proxy?server=bia.hastim.co.ukPort:&port=8443&secret=EERighJJvXrFGRMCIMJdCQ@ProxyMTProto
+tg://proxy?server=sapphireaurora.velvetwindow.cc&port=443&secret=eed09fb30e9ba945e3eb272875413c8c9473617070686972656175726f72612e76656c76657477696e646f772e6363
 tg://proxy?server=quill.paperteapot.com&port=443&secret=eed09fb30e9ba945e3eb272875413c8c947175696c6c2e7061706572746561706f742e636f6d
 tg://proxy?server=tg.prxtg.topPort:&port=443&secret=ee2d1bb45f31056d1063563fc6e38e5a1064726976652e676f6f676c652e636f6d@ProxyMTProto
-tg://proxy?server=UnknownPort:&port=8443&secret=EERighJJvXrFGRMCIMjdCQ@ProxyMTProto
-tg://proxy?server=UnknownPort:&port=443&secret=dd519fde42027f143e4fc82a97e59baff8@ProxyMTProto
-tg://proxy?server=crest.velvetwindow.cc&port=443&secret=eed09fb30e9ba945e3eb272875413c8c9463726573742e76656c76657477696e646f772e6363
-tg://proxy?server=mobile.prxtg.topPort:&port=443&secret=ee8ae40a2aa7554a058f3340b6449e4e666d6f62696c652e70727874672e746f70@ProxyMTProto
-tg://proxy?server=UnknownPort:&port=443&secret=eebec6acb2a5464709485d7cbeedd8612b686f66662e7275@ProxyMTProto
-tg://proxy?server=UnknownPort:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
-tg://proxy?server=UnknownPort:&port=443&secret=eef0eeb0bd9adc4fd4a93994ee3b2a216b63646e2e79656b74616e65742e636f6d@ProxyMTProto
-tg://proxy?server=194.120.230.37Port:&port=443&secret=3XnnAQIAAQAH8AMDhuJMOt0@ProxyMTProto
+tg://proxy?server=quill.velvetwindow.cc&port=443&secret=eed09fb30e9ba945e3eb272875413c8c947175696c6c2e76656c76657477696e646f772e6363
+tg://proxy?server=orchid.velvetwindow.ccPort:&port=443&secret=eed09fb30e9ba945e3eb272875413c8c946f72636869642e76656c76657477696e646f772e6363@ProxyMTProto
+tg://proxy?server=proxtstar.livePort:&port=443&secret=eeec15a78c3842e866c302c8526175a68c7975672d6c696e6b2e7275@ProxyMTProto
+tg://proxy?server=UnknownPort:&port=4455&secret=dd104462821249bd7ac519130220c25d09@ProxyMTProto
+tg://proxy?server=breeze.velvetwindow.ccPort:&port=443&secret=eed09fb30e9ba945e3eb272875413c8c94627265657a652e76656c76657477696e646f772e6363@ProxyMTProto
+tg://proxy?server=ving.mozitop.co.ukPort:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
