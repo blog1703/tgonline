@@ -1,28 +1,28 @@
-# Updated: 2026-11-21 23:37:29 (MSK)
+# Updated: 2026-11-22 03:57:07 (MSK)
 # Total proxies: 24
 # Sources: ProxyMTProto, TProxyRU
 
-tg://proxy?server=UnknownPort:&port=443&secret=ddf0eeb0bd9adc4fd4a93994ee3b2a216b@ProxyMTProto
-tg://proxy?server=max.fastprx.topPort:&port=443&secret=eecfa453767a4b15622b61914eced5705164726976652e676f6f676c652e636f6d@ProxyMTProto
-tg://proxy?server=teledomen.lolPort:&port=443&secret=ee47865459ee8e60d17b7374b5c7b53d086d6170792e636f6d@ProxyMTProto
+tg://proxy?server=matrixxx.wtf&port=443&secret=ee9250b2b65b8921d01a306376fc2dd2ca6d617472697878782e777466
+tg://proxy?server=UnknownPort:&port=443&secret=ee7e417407b715ff26d9fafff34e31a33b686f66662e7275@ProxyMTProto
+tg://proxy?server=UnknownPort:&port=443&secret=eed80703ad02e82988a4b6b4d437fe2c9c76616c656e6b692e6b656d65726f766f2e6f6e6c696e65@ProxyMTProto
+tg://proxy?server=maple.velvetwindow.cc&port=443&secret=eed09fb30e9ba945e3eb272875413c8c946d61706c652e76656c76657477696e646f772e6363
 tg://proxy?server=violetvalley.velvetwindow.cc&port=443&secret=eed09fb30e9ba945e3eb272875413c8c9476696f6c657476616c6c65792e76656c76657477696e646f772e6363
+tg://proxy?server=matrixxx.vip&port=443&secret=eed0c83b444210a4302be4b1fe17714d4e6d617472697878782e766970
+tg://proxy?server=darya.saheledarya.co.uk.Port:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
+tg://proxy?server=maple.paperteapot.com&port=443&secret=eed09fb30e9ba945e3eb272875413c8c946d61706c652e7061706572746561706f742e636f6d
+tg://proxy?server=matrixxx.vipPort:&port=443&secret=eed0c83b444210a4302be4b1fe17714d4e6d617472697878782e766970@ProxyMTProto
+tg://proxy?server=max.fastprx.topPort:&port=443&secret=eecfa453767a4b15622b61914eced5705164726976652e676f6f676c652e636f6d@ProxyMTProto
+tg://proxy?server=UnknownPort:&port=443&secret=eef0eeb0bd9adc4fd4a93994ee3b2a216b63646e2e79656b74616e65742e636f6d@ProxyMTProto
+tg://proxy?server=UnknownPort:&port=443&secret=eeec15a78c3842e866c302c8526175a68c7975672d6c696e6b2e7275@ProxyMTProto
+tg://proxy?server=dl.linux-orggv.co.ukPort:&port=8443&secret=EERighJJvXrFGRMCIMJdCQ@ProxyMTProto
+tg://proxy?server=UnknownPort:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
+tg://proxy?server=Strait-of-Hormuz.ir.bcsadwtgd.info.Port:&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
+tg://proxy?server=UnknownPort:&port=8443&secret=ee888877776666555544443333222211117474322e6d79726b612e6469676974616c@ProxyMTProto
+tg://proxy?server=UnknownPort:&port=4455&secret=dd104462821249bd7ac519130220c25d09@ProxyMTProto
+tg://proxy?server=teledomen.lolPort:&port=443&secret=ee47865459ee8e60d17b7374b5c7b53d086d6170792e636f6d@ProxyMTProto
+tg://proxy?server=teledomen.lol&port=443&secret=ee47865459ee8e60d17b7374b5c7b53d086d6170792e636f6d
+tg://proxy?server=info.sibasiba.spacePort:&port=443&secret=7rMwK4zm8Y5eXzI2Dh1wpP9pbmZvLnNpYmFzaWJhLnNwYWNl@ProxyMTProto
 tg://proxy?server=violetvalley.paperteapot.com&port=443&secret=eed09fb30e9ba945e3eb272875413c8c9476696f6c657476616c6c65792e7061706572746561706f742e636f6d
 tg://proxy?server=dns.speed-benz.co.ukPort:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
-tg://proxy?server=teledomen.lol&port=443&secret=ee47865459ee8e60d17b7374b5c7b53d086d6170792e636f6d
-tg://proxy?server=matrixxx.vipPort:&port=443&secret=eed0c83b444210a4302be4b1fe17714d4e6d617472697878782e766970@ProxyMTProto
-tg://proxy?server=UnknownPort:&port=4455&secret=dd104462821249bd7ac519130220c25d09@ProxyMTProto
-tg://proxy?server=matrixxx.wtf&port=443&secret=ee9250b2b65b8921d01a306376fc2dd2ca6d617472697878782e777466
-tg://proxy?server=UnknownPort:&port=443&secret=eef0eeb0bd9adc4fd4a93994ee3b2a216b63646e2e79656b74616e65742e636f6d@ProxyMTProto
-tg://proxy?server=info.sibasiba.spacePort:&port=443&secret=7rMwK4zm8Y5eXzI2Dh1wpP9pbmZvLnNpYmFzaWJhLnNwYWNl@ProxyMTProto
-tg://proxy?server=darya.saheledarya.co.uk.Port:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
-tg://proxy?server=Strait-of-Hormuz.ir.bcsadwtgd.info.Port:&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
-tg://proxy?server=maple.velvetwindow.cc&port=443&secret=eed09fb30e9ba945e3eb272875413c8c946d61706c652e76656c76657477696e646f772e6363
-tg://proxy?server=maple.paperteapot.com&port=443&secret=eed09fb30e9ba945e3eb272875413c8c946d61706c652e7061706572746561706f742e636f6d
-tg://proxy?server=UnknownPort:&port=8443&secret=ee888877776666555544443333222211117474322e6d79726b612e6469676974616c@ProxyMTProto
-tg://proxy?server=UnknownPort:&port=443&secret=ee7e417407b715ff26d9fafff34e31a33b686f66662e7275@ProxyMTProto
-tg://proxy?server=UnknownPort:&port=443&secret=eeec15a78c3842e866c302c8526175a68c7975672d6c696e6b2e7275@ProxyMTProto
-tg://proxy?server=UnknownPort:&port=443&secret=eed80703ad02e82988a4b6b4d437fe2c9c76616c656e6b692e6b656d65726f766f2e6f6e6c696e65@ProxyMTProto
-tg://proxy?server=matrixxx.vip&port=443&secret=eed0c83b444210a4302be4b1fe17714d4e6d617472697878782e766970
-tg://proxy?server=UnknownPort:&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ@ProxyMTProto
+tg://proxy?server=UnknownPort:&port=443&secret=ddf0eeb0bd9adc4fd4a93994ee3b2a216b@ProxyMTProto
 tg://proxy?server=91.107.180.53Port:&port=443&secret=3XnnAQIAAQAH8AMDhuJMOt0@ProxyMTProto
-tg://proxy?server=dl.linux-orggv.co.ukPort:&port=8443&secret=EERighJJvXrFGRMCIMJdCQ@ProxyMTProto
